@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://bwvhrhtofctsn"]
+
+[ext_resource type="Script" path="res://Nodes/Game/Player/Cursor/Cursor.cs" id="1_5k717"]
+[ext_resource type="Texture2D" uid="uid://b5kqpihgls04m" path="res://Nodes/Game/Player/Cursor/cursor.png" id="2_v8voc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4ucc"]
+atlas = ExtResource("2_v8voc")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k76es"]
+atlas = ExtResource("2_v8voc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hy051"]
+atlas = ExtResource("2_v8voc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlgji"]
+atlas = ExtResource("2_v8voc")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch8ra"]
+atlas = ExtResource("2_v8voc")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xaid"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4ucc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k76es")
+}],
+"loop": true,
+"name": &"hidden",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hy051")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlgji")
+}],
+"loop": true,
+"name": &"set",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch8ra")
+}],
+"loop": true,
+"name": &"write",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_puolg"]
+radius = 3.0
+
+[node name="Cursor" type="Area2D"]
+script = ExtResource("1_5k717")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_0xaid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_puolg")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]

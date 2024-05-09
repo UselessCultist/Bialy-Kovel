@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bku3wcln6anw2"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_0c5ks"]
+script/source = "using Godot;
+using System;
+
+public partial class Resource : Node
+{
+}
+"
+
+[node name="Resource" type="Node"]
+script = SubResource("CSharpScript_0c5ks")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhgek5ax0u88t"]
+
+[ext_resource type="Script" path="res://Nodes/Game/Player/Player.cs" id="1_uqokq"]
+[ext_resource type="PackedScene" uid="uid://dukhewjcw706d" path="res://Nodes/Game/Player/UI/UI.tscn" id="2_3du2q"]
+[ext_resource type="PackedScene" uid="uid://b66fchw7pwj7l" path="res://Nodes/Game/Player/Camera/Camera.tscn" id="3_1w21w"]
+[ext_resource type="PackedScene" uid="uid://bwvhrhtofctsn" path="res://Nodes/Game/Player/Cursor/Cursor.tscn" id="4_2tatm"]
+
+[node name="Player" type="Node"]
+script = ExtResource("1_uqokq")
+
+[node name="Camera" parent="." instance=ExtResource("3_1w21w")]
+
+[node name="UI" parent="." instance=ExtResource("2_3du2q")]
+
+[node name="Cursor" parent="." instance=ExtResource("4_2tatm")]

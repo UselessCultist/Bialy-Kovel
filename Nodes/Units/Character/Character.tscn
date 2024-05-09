@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp2ruiari1ckb"]
+
+[ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_pppap"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_pppap")

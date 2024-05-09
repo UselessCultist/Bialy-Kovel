@@ -1,0 +1,263 @@
+[gd_scene load_steps=13 format=3 uid="uid://dukhewjcw706d"]
+
+[ext_resource type="Texture2D" uid="uid://2b1xq41mgvnn" path="res://Texture/MagicalUI/Sprites/Body/Book.png" id="1_qgaj7"]
+[ext_resource type="Texture2D" uid="uid://dooderkacvupn" path="res://Texture/Game/Resource/Basic Grass Biom things 1.png" id="2_70pnt"]
+[ext_resource type="Script" path="res://Nodes/Game/Player/UI/WoodLabel.cs" id="3_cxnt1"]
+[ext_resource type="Script" path="res://Nodes/Game/Player/UI/StoneLabel.cs" id="3_jw6gd"]
+[ext_resource type="Texture2D" uid="uid://c4sqcynfsyrxb" path="res://Texture/MagicalUI/Sprites/Body/Scroll2.png" id="3_v3480"]
+[ext_resource type="Texture2D" uid="uid://jp4e76fqse2n" path="res://Texture/Game/Help/help_worker_image.png" id="5_3t8rc"]
+[ext_resource type="Texture2D" uid="uid://c0a38eyii3cl1" path="res://Texture/Game/Help/help_stone_image.png" id="6_slo0v"]
+[ext_resource type="Texture2D" uid="uid://d0rmkwj6eu7mx" path="res://Texture/Game/Help/help_storage_image.png" id="7_76s4f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbtpn"]
+atlas = ExtResource("2_70pnt")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r7ief"]
+font_size = 17
+font_color = Color(0, 0, 0, 0.866667)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xl0q"]
+atlas = ExtResource("2_70pnt")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j515u"]
+font_size = 32
+font_color = Color(0, 0, 0, 0.941176)
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resources" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_bottom = 141.0
+grow_horizontal = 0
+rotation = -1.5708
+scale = Vector2(1, -1)
+pivot_offset = Vector2(400, 0)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("3_v3480")
+flip_v = true
+
+[node name="Grid" type="GridContainer" parent="Control/Resources"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 101.0
+offset_right = 382.0
+offset_bottom = 321.0
+rotation = -1.5708
+scale = Vector2(1, -1)
+
+[node name="WoodRow" type="VFlowContainer" parent="Control/Resources/Grid"]
+layout_mode = 2
+alignment = 2
+
+[node name="Wood" type="TextureRect" parent="Control/Resources/Grid/WoodRow"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_sbtpn")
+
+[node name="Value" type="Label" parent="Control/Resources/Grid/WoodRow"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_r7ief")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_cxnt1")
+metadata/_edit_use_anchors_ = true
+
+[node name="StoneRow" type="VFlowContainer" parent="Control/Resources/Grid"]
+layout_mode = 2
+alignment = 2
+
+[node name="Stone" type="TextureRect" parent="Control/Resources/Grid/StoneRow"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_4xl0q")
+
+[node name="Value" type="Label" parent="Control/Resources/Grid/StoneRow"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_r7ief")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_jw6gd")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 1
+offset_right = 386.0
+offset_bottom = 319.0
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("1_qgaj7")
+texture_pressed = ExtResource("1_qgaj7")
+texture_hover = ExtResource("1_qgaj7")
+
+[node name="Help" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -158.0
+offset_right = 196.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.6, 1.6)
+pivot_offset = Vector2(193, 159.5)
+texture = ExtResource("1_qgaj7")
+
+[node name="Left" type="RichTextLabel" parent="Control/Help"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 25.0
+offset_right = 189.0
+offset_bottom = 232.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/Help/Left"]
+layout_mode = 2
+offset_left = 2.5
+offset_top = 5.0
+offset_right = 64.5
+offset_bottom = 83.0
+texture = ExtResource("5_3t8rc")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Control/Help/Left/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.25
+offset_top = 0.625
+offset_right = -1.25
+offset_bottom = 0.625
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0, 0, 0, 1)
+border_width = 2.0
+editor_only = false
+
+[node name="Label" type="Label" parent="Control/Help/Left/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 65.0
+offset_top = -5.0
+offset_right = 370.0
+offset_bottom = 553.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Нажмите ПКМ наведя курсор на работника что бы его выбрать, зажав Shift и нажав ПКМ по работнику вы добавите его в группу выделенных едениц."
+label_settings = SubResource("LabelSettings_j515u")
+autowrap_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control/Help/Left"]
+layout_mode = 0
+offset_left = 2.75002
+offset_top = 131.687
+offset_right = 43.75
+offset_bottom = 191.688
+texture = ExtResource("6_slo0v")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Control/Help/Left/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.25
+offset_top = 0.625
+offset_right = -1.25
+offset_bottom = 0.625
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0, 0, 0, 1)
+border_width = 2.0
+editor_only = false
+
+[node name="Label" type="Label" parent="Control/Help/Left/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = -3.0
+offset_right = 447.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Если среди выбранных едениц есть работники то вы можете нажать ЛКМ по ресурсам, тем самым отправив их на добычу."
+label_settings = SubResource("LabelSettings_j515u")
+autowrap_mode = 2
+
+[node name="Right" type="RichTextLabel" parent="Control/Help"]
+layout_mode = 0
+offset_left = 197.75
+offset_top = 25.0
+offset_right = 362.75
+offset_bottom = 232.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/Help/Right"]
+layout_mode = 2
+offset_left = 2.5
+offset_top = 5.0
+offset_right = 64.5
+offset_bottom = 83.0
+texture = ExtResource("7_76s4f")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Control/Help/Right/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.25
+offset_top = 0.625
+offset_right = -1.25
+offset_bottom = 0.625
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0, 0, 0, 1)
+border_width = 2.0
+editor_only = false
+
+[node name="Label" type="Label" parent="Control/Help/Right/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.24998
+offset_top = 91.6875
+offset_right = 438.75
+offset_bottom = 286.688
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Что бы вы могли пользоваться ресурсами работники должны их занести на склад, ресурсы доступные к вашему распоряжению будут отображаться в правом верхнем углу."
+label_settings = SubResource("LabelSettings_j515u")
+autowrap_mode = 2

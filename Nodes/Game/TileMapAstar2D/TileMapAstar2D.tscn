@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://be53xh0tadc76"]
+
+[ext_resource type="Script" path="res://Nodes/Game/TileMapAstar2D/TileMapAstar2D.cs" id="1_arsj2"]
+
+[sub_resource type="TileSet" id="TileSet_3wxcv"]
+
+[node name="TileMapAstar2D" type="TileMapLayer"]
+tile_set = SubResource("TileSet_3wxcv")
+script = ExtResource("1_arsj2")
+metadata/ObjectInCell = NodePath("")

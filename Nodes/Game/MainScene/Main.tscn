@@ -1,0 +1,154 @@
+[gd_scene load_steps=7 format=3 uid="uid://j0gqo1mrwqo"]
+
+[ext_resource type="Texture2D" uid="uid://bclmabp21fugw" path="res://Texture/MagicalUI/Sprites/Headers/Header1.png" id="1_cdo65"]
+[ext_resource type="Texture2D" uid="uid://cfvwkcjcxtkoa" path="res://Texture/MagicalUI/Sprites/Body/Scroll3.png" id="3_4rcoa"]
+[ext_resource type="FontFile" uid="uid://dqy15lut3m2ki" path="res://Fonts/MainProgramName/bay-tavern-s-regular.otf" id="3_oi46u"]
+[ext_resource type="Texture2D" uid="uid://dpykk8ydljfm0" path="res://Texture/Game/Main/MainPageImage.png" id="4_47htj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6507u"]
+font = ExtResource("3_oi46u")
+font_size = 30
+font_color = Color(0.0352941, 0.0392157, 0.0784314, 1)
+
+[sub_resource type="Theme" id="Theme_jlpf0"]
+default_font_size = 16
+
+[node name="Main" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -86.5
+offset_top = -76.0
+offset_right = 86.5
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_47htj")
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="TextureRect" parent="Control/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_cdo65")
+
+[node name="Label" type="Label" parent="Control/GridContainer/Name"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -521.0
+offset_top = -99.0
+offset_right = 521.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(637.5, 112)
+text = "BIALY KOVEL"
+label_settings = SubResource("LabelSettings_6507u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonPanel" type="TextureRect" parent="Control/GridContainer"]
+layout_mode = 2
+texture = ExtResource("3_4rcoa")
+
+[node name="GridContainer" type="GridContainer" parent="Control/GridContainer/ButtonPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -88.0
+offset_right = 102.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="Control/GridContainer/ButtonPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme = SubResource("Theme_jlpf0")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+text = "В приключение!"
+flat = true
+
+[node name="History" type="Button" parent="Control/GridContainer/ButtonPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme = SubResource("Theme_jlpf0")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+text = "История"
+flat = true
+
+[node name="Options" type="Button" parent="Control/GridContainer/ButtonPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme = SubResource("Theme_jlpf0")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+text = "Настройки
+"
+flat = true
+
+[node name="Exit" type="Button" parent="Control/GridContainer/ButtonPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme = SubResource("Theme_jlpf0")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+text = "Выход
+"
+flat = true
