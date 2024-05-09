@@ -33,7 +33,6 @@ public class CommandMoveTo:ICommand
         try
         {
             _ability.Move(_target);
-            _character.Animation.Play("move");
         }
         catch 
         {
@@ -114,7 +113,7 @@ public partial class MoveAbility : NavigationAgent2D
     public void Move(Vector2 position) 
     {
         _target_position = position;
-        UpdatePath();
+        _change_state(State.FOLLOW);
     }
 
     public void Move(Character target)
@@ -215,16 +214,9 @@ public partial class MoveAbility : NavigationAgent2D
 
     void _update_path() 
     {
-        lock (_collision)
-        {
-            if (_collision != null) { _collision.UnsolidUnitCellZone(); }
-            _path = _tile_map.FindPath((Vector2I)_character.Position, (Vector2I)_target_position);
-            if (_collision != null) { _collision.SolidUnitCellZone(); }
-            if (_path.Length > 1)
-            {
-                _change_state(State.FOLLOW);
-            }
-        }
+        if (_collision != null) { _collision.UnsolidCenterCellZone(); }
+        _path = _tile_map.FindPath((Vector2I)_character.Position, (Vector2I)_target_position);
+        if (_collision != null) { _collision.SolidCenterCellZone(); }
     }
 
     void _update_target()
@@ -232,9 +224,9 @@ public partial class MoveAbility : NavigationAgent2D
         _target_position = _target.Position;
     }
 
-    public async void UpdatePath() 
+    public void UpdatePath() 
     {
-        await Task.Factory.StartNew(()=>{ _update_path(); });
+        _update_path();
     }
         
     private void _change_state(State new_state)
@@ -248,7 +240,7 @@ public partial class MoveAbility : NavigationAgent2D
                 break;
             case State.FOLLOW:
 
-                _update_path();
+                UpdatePath();
                 if (_path.Length < 1)
                 {
                     _change_state(State.IDLE);

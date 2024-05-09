@@ -12,7 +12,6 @@ public partial class Collision : Node
     // центр
     Vector2I _center;
     Vector2I _zero_point;
-    Vector2I _last_point;
     // отвечает за действие с коллизией (физикой)
     CollisionObject2D _collision;
     Shape2D _shape;
@@ -97,6 +96,18 @@ public partial class Collision : Node
     {
         Vector2I zero_arr_point_coord = _center - local_cell_center_pos;
         return zero_arr_point_coord;
+    }
+
+    public void SolidCenterCellZone()
+    {
+        TileData data = _tile_map.GetCellTileData(_center);
+        _tile_map.Grid.SetPointSolid(_center, true);
+    }
+
+    public void UnsolidCenterCellZone()
+    {
+        TileData data = _tile_map.GetCellTileData(_center);
+        _tile_map.Grid.SetPointSolid(_center, false);
     }
 
     public void SolidUnitCellZone()

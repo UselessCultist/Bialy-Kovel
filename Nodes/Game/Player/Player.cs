@@ -38,7 +38,7 @@ public partial class Player : Node
 		foreach (Character c in _selectedUnits) 
 		{
 			var command = new CommandMoveTo(c, target);
-			c.AddCommand(command);
+			c.SetCommand(command);
 		}
 	}
 
@@ -48,7 +48,7 @@ public partial class Player : Node
         foreach (Character c in _selectedUnits)
         {
             var command = new CommandMoveToUnit(c, target);
-            c.AddCommand(command);
+            c.SetCommand(command);
         }
     }
 
@@ -58,7 +58,7 @@ public partial class Player : Node
         foreach (Character c in _selectedUnits)
         {
             var command = new CommandAttack(c, target);
-            c.AddCommand(command);
+            c.SetCommand(command);
         }
     }
 
@@ -68,7 +68,7 @@ public partial class Player : Node
         foreach (Character c in _selectedUnits)
         {
             var command = new CommandExtract(c, target);
-            c.AddCommand(command);
+            c.SetCommand(command);
         }
     }
 

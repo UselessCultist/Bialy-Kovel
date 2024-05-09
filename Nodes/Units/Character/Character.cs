@@ -58,6 +58,7 @@ public partial class Character : CharacterBody2D, IAbilities, IComandQueue
     public void SetCommand(ICommand command)
     {
         _queueCommand.Clear();
+        if (_inProcess != null) UndoCommand();
         AddCommand(command);
     }
 
