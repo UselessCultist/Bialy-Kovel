@@ -24,6 +24,9 @@ public partial class AI : Node
 	public override void _Process(double delta)
 	{
 		if (_state == State.OFF) { return; }
+
+
+
 		if (_unit.InProcess == null) 
 		{
 			_unit.InvokeNext();

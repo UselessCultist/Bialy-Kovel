@@ -10,6 +10,8 @@ public partial class HealthAbility : Node
         _isInvulnerable = IsInvulnerable;
     }
 
+    public TextureProgressBar progressBar;
+
     private float _health;
     private float _maxHealth;
     private bool _isInvulnerable = false;
@@ -74,10 +76,49 @@ public partial class HealthAbility : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-	}
+        progressBar = new();
+        progressBar.Visible = false;
+
+        AtlasTexture UnderTexture = new AtlasTexture();
+        AtlasTexture ProgressTexture = new AtlasTexture();
+
+        Image image_under = Image.LoadFromFile("res://Texture/Health & Stamina 1.2/Health&Stamina/Red/Border.png");
+        Image image_progress = Image.LoadFromFile("res://Texture/Health & Stamina 1.2/Health&Stamina/Red/Colors.png");
+
+        Texture2D texture_under = ImageTexture.CreateFromImage(image_under);
+        Texture2D texture_progress = ImageTexture.CreateFromImage(image_progress);
+
+        UnderTexture.Atlas = texture_under;
+        ProgressTexture.Atlas = texture_progress;
+
+        UnderTexture.Region = new(95,20,50,9);
+        ProgressTexture.Region = new(95,20,50,8);
+
+        progressBar.TextureUnder = UnderTexture;
+        progressBar.TextureProgress = ProgressTexture;
+
+        progressBar.Scale = new(0.6f,0.6f);
+        progressBar.Position += new Vector2(-7,20);
+
+        Control control = new Control();
+
+        control.AddChild(progressBar);
+
+        AddChild(control);
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+        var hp_percentage = _health / _maxHealth;
+        if (hp_percentage < 0.95) 
+        {
+            progressBar.Visible = !IsDead();
+            progressBar.Value = hp_percentage*100;
+        }
+        else 
+        {
+            progressBar.Visible = false;
+        }
 	}
 }

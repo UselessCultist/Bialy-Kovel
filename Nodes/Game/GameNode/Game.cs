@@ -143,6 +143,8 @@ public partial class Game : Node
             AddChild(Factory.CreateWorker(player, new(i,1)));
         }
 
+
+        AddChild(Factory.CreateEnemySoldier(computer, new(1, 1)));
         AddChild(Factory.CreateStone(new(-10, -10)));
         AddChild(Factory.CreateStone(new(5, 5)));
         AddChild(Factory.CreateStone(new(6, 2)));

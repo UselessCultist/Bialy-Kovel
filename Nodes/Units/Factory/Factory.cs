@@ -3,6 +3,35 @@ using System.Linq;
 
 public class Factory
 {
+    // = Enemy
+    // == Unit
+    // === Soldier
+    public static Character CreateEnemySoldier(Player player, Vector2I position)
+    {
+        Character character = new Character(Type.Unit);
+        Image image = Image.LoadFromFile("res://Texture/Units/Enemy/Soldier/MoscowSoldier.png");
+
+        // Add abilities
+        character.AddAbility(new Sprite(image));
+        character.AddAbility(new AnimationAbility());
+        character.AddAbility(new MoveAbility());
+        character.AddAbility(new HealthAbility(50, false));
+        character.AddAbility(new ExtractResource());
+        character.AddAbility(new AttackAbility());
+        character.AddAbility(new SelectArea());
+        character.AddAbility(new AI());
+
+        // Set options
+        character.PlayerOwner = player;
+        character.Position = new
+            (
+                position.X < 0 ? position.X * 16 + 8 : position.X * 16 - 8,
+                position.Y < 0 ? position.Y * 16 + 8 : position.Y * 16 - 8
+            );
+
+        return character;
+    }
+
     // == Unit
     // === Worker
     public static Character CreateWorker()
@@ -131,7 +160,7 @@ public class Factory
 
         Image image = Image.LoadFromFile("res://Texture/Game/Resource/Basic Grass Biom things 1.png");
         AtlasTexture atlas = new AtlasTexture();
-        Texture2D texture = ImageTexture.CreateFromImage(image); ;
+        Texture2D texture = ImageTexture.CreateFromImage(image);
         atlas.Atlas = texture;
         atlas.Region = new(16, 0, 32, 32);
 
