@@ -1,7 +1,7 @@
 using Godot;
 using System.Linq;
 
-public class Factory
+public static class Factory
 {
     // = Enemy
     // == Unit
@@ -11,6 +11,15 @@ public class Factory
         Character character = new Character(Type.Unit);
         Image image = Image.LoadFromFile("res://Texture/Units/Enemy/Soldier/MoscowSoldier.png");
 
+        int[][] sizeInCells = new int[][]
+        {
+                         /* 1 */
+            /*1*/new int[]{-1 }
+        };
+
+        CircleShape2D circleShape2D = new CircleShape2D();
+        circleShape2D.Radius = 8;
+
         // Add abilities
         character.AddAbility(new Sprite(image));
         character.AddAbility(new AnimationAbility());
@@ -19,6 +28,7 @@ public class Factory
         character.AddAbility(new ExtractResource());
         character.AddAbility(new AttackAbility());
         character.AddAbility(new SelectArea());
+        character.AddAbility(new Collision(sizeInCells, circleShape2D));
         character.AddAbility(new AI());
 
         // Set options
@@ -38,14 +48,28 @@ public class Factory
     {
         Character character = new Character(Type.Unit);
 
+        int[][] sizeInCells = new int[][]
+        {
+                         /* 1 */
+            /*1*/new int[]{-1 }
+        };
+
+        CircleShape2D circleShape2D = new CircleShape2D();
+        circleShape2D.Radius = 8;
+
+        var shape = new CapsuleShape2D();
+        shape.Height = 32;
+        shape.Radius = 7;
+
         // Add abilities
         character.AddAbility(new Sprite());
         character.AddAbility(new AnimationAbility());
         character.AddAbility(new MoveAbility());
-        character.AddAbility(new SelectArea());
+        character.AddAbility(new SelectArea(shape));
         character.AddAbility(new HealthAbility(50, false));
         character.AddAbility(new ExtractResource());
         character.AddAbility(new AttackAbility());
+        character.AddAbility(new Collision(sizeInCells, circleShape2D));
         character.AddAbility(new AI());
 
         // Set options
@@ -114,16 +138,16 @@ public class Factory
         Character character = new Character(Type.Resource);
 
         // Create elements for object
-        var shape = new CapsuleShape2D();
-        shape.Height = 8;
-        shape.Radius = 8;
-
-        Image image = Image.LoadFromFile("res://Texture/Game/Resource/Basic Grass Biom things 1.png");
         int[][] sizeInCells = new int[][]
         {
                          /* 1 */
             /*1*/new int[]{-1 }
         };
+
+        CircleShape2D circleShape2D = new CircleShape2D();
+        circleShape2D.Radius = 8;
+
+        Image image = Image.LoadFromFile("res://Texture/Game/Resource/Basic Grass Biom things 1.png");
         AtlasTexture atlas = new AtlasTexture();
         Texture2D texture = ImageTexture.CreateFromImage(image); ;
         atlas.Atlas = texture;
@@ -132,10 +156,10 @@ public class Factory
         // Add abilities
         character.AddAbility(new Sprite(atlas.GetImage()));
         character.AddAbility(new AnimationAbility());
-        character.AddAbility(new SelectArea(shape));
+        character.AddAbility(new SelectArea(circleShape2D));
         character.AddAbility(new HealthAbility(40, false));
         character.AddAbility(new Resource(ResourceType.Stone));
-        character.AddAbility(new Collision(sizeInCells, null));
+        character.AddAbility(new Collision(sizeInCells, circleShape2D));
 
         // Set options
         character.PlayerOwner = null;

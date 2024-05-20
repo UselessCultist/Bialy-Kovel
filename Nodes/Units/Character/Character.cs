@@ -7,6 +7,7 @@ public enum Type { Unit, Resource, Building }
 
 public partial class Character : CharacterBody2D, IAbilities, IComandQueue
 {
+    public Character() { }
     public Character(Type type) 
     {
         _type = type;
@@ -17,9 +18,9 @@ public partial class Character : CharacterBody2D, IAbilities, IComandQueue
     Queue<ICommand> _queueCommand = new();
     ICommand _inProcess = null;
     State _state;
-    Type _type;
+    [Export] Type _type;
 
-    public Player PlayerOwner { get; set; }
+    [Export] public Player PlayerOwner { get; set; }
     public Type Type { get { return _type; } }
     public AnimationPlayer Animation { get{return _animation;} }
     public ICommand InProcess { get { return _inProcess; } }
@@ -49,9 +50,10 @@ public partial class Character : CharacterBody2D, IAbilities, IComandQueue
         }
     }
 
-    public void UndoCommand() 
+    public void UndoCommand()
     {
         _inProcess.Undo();
+        _inProcess = null;
         _state = State.REST;
     }
 
@@ -59,6 +61,7 @@ public partial class Character : CharacterBody2D, IAbilities, IComandQueue
     {
         _queueCommand.Clear();
         if (_inProcess != null) UndoCommand();
+        _inProcess = null;
         AddCommand(command);
     }
 

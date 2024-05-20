@@ -1,8 +1,9 @@
 using Godot;
 using System;
 
-public partial class HealthAbility : Node
+public partial class HealthAbility : Node2D
 {
+    public HealthAbility() { }
     public HealthAbility(int MaxHealth, bool IsInvulnerable) 
     {
         _maxHealth = MaxHealth;
@@ -12,10 +13,10 @@ public partial class HealthAbility : Node
 
     public TextureProgressBar progressBar;
 
-    private float _health;
-    private float _maxHealth;
-    private bool _isInvulnerable = false;
-    private bool _isDead = false;
+    [Export] private float _health;
+    [Export] private float _maxHealth;
+    [Export] private bool _isInvulnerable = false;
+    [Export] private bool _isDead = false;
 
     public bool IsInvulnerable() { return _isInvulnerable; }
     public virtual bool IsDead() { return _isDead; }

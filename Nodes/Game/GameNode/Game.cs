@@ -34,7 +34,7 @@ public interface IAbilities
 }
 
 //============ AWC (Ability With Commands) ============
-public partial class AbilityWithCommands : Node, IComandQueue
+public partial class AbilityWithCommands : Node2D, IComandQueue
 {
     protected AnimationPlayer _animation;
     protected Queue<ICommand> _queueCommand = new();
@@ -67,7 +67,20 @@ public partial class AbilityWithCommands : Node, IComandQueue
 
     public virtual void UndoCommand()
     {
+        if (_inProcess == null) { return; }
         _inProcess.Undo();
+        _inProcess = null;
+    }
+
+    public virtual void ClearCommandQueue() 
+    {
+        _queueCommand.Clear();
+    }
+
+    public virtual void StopCommands()
+    {
+        UndoCommand();
+        ClearCommandQueue();
     }
 
     public virtual void SetCommand(ICommand command)
@@ -144,12 +157,12 @@ public partial class Game : Node
         }
 
 
-        AddChild(Factory.CreateEnemySoldier(computer, new(1, 1)));
+        //AddChild(Factory.CreateEnemySoldier(computer, new(1, 1)));
         AddChild(Factory.CreateStone(new(-10, -10)));
         AddChild(Factory.CreateStone(new(5, 5)));
         AddChild(Factory.CreateStone(new(6, 2)));
         AddChild(Factory.CreateStone(new(10, 20)));
-        AddChild(Factory.CreateStorage(player, new(10,5)));
+        AddChild(Factory.CreateStorage(player, new(50,5)));
         AddChild(Factory.CreateStorage(player, new(-10, 10)));
     }
 }

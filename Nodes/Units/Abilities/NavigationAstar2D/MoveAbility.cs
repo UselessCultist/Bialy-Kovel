@@ -271,9 +271,10 @@ public partial class MoveAbility : NavigationAgent2D
     }
 
     // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    public async override void _Ready()
     {
         Game game = GetGameNode();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         if (game == null) { throw new Exception("Game is null"); }
 
         _character = GetParent<Character>();

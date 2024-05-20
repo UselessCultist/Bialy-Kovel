@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CommandMoveNode&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAIABAQAIAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Game\Abilities\MoveNode\MoveNode.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MoveNode">
+    <Position X="16.25" Y="7" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="MoveNode.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\Game\Abilities\MoveNode\MoveNode.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAABAAAIIAAAAAAAAACBgAIAAIAAAAJgAAQBAAAAA=</HashCode>
+      <FileName>Nodes\Game\Abilities\MoveNode\MoveNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AbilityWithCommands">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAIAAAAACAAgAAAQAgIAAQAAAARAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Game\GameNode\Game.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Game">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="Game.GameReadyEventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\Game\GameNode\Game.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAIAAAAAAAAAAAAAgAAAAAAQAAAAAAAAEAAAAKAAA=</HashCode>
+      <FileName>Nodes\Game\GameNode\Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Camera">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABIAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Game\Player\Camera\Camera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cursor">
+    <Position X="4" Y="6" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Cursor.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\Game\Player\Cursor\Cursor.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QBAAAABAAACAAAAAAAAACAEAAAAIAAAAAgAAAAAIAAA=</HashCode>
+      <FileName>Nodes\Game\Player\Cursor\Cursor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneLabel">
+    <Position X="9.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Game\Player\UI\StoneLabel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WoodLabel" Collapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Game\Player\UI\WoodLabel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="14.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAIAAAABBAgAAEAAAgSAAAEAAAAAAAAAAACAQCAAA=</HashCode>
+      <FileName>Nodes\Game\Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TileMapAstar2D">
+    <Position X="11" Y="5.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="TileMapAstar2D.Tile" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\Game\TileMapAstar2D\TileMapAstar2D.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAEgBAAAAGAAIAACAAgIAAAAAAAIAAAgAAEIAAAAA=</HashCode>
+      <FileName>Nodes\Game\TileMapAstar2D\TileMapAstar2D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AI">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="AI.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\Units\Abilities\AI\AI.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAgAAAAAAAAI=</HashCode>
+      <FileName>Nodes\Units\Abilities\AI\AI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnimationAbility">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAABAAAAAIAIAAAAAAAAAAAAAAAAAAAAQgEAAAAAAEA=</HashCode>
+      <FileName>Nodes\Units\Abilities\Animation\AnimationAbility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommandAttack" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIBEQAAAAAAAAAQAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\AttackAbility\AttackAbility.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AttackAbility">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="AttackAbility.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\Units\Abilities\AttackAbility\AttackAbility.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAIAAABAAAAAAAAAAAAACAAAUIAIRAAAKgQGAAAAAAI=</HashCode>
+      <FileName>Nodes\Units\Abilities\AttackAbility\AttackAbility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Collision">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAIAIKAAEAAACAAAEAABAAQAAAAAAwABEEARgE=</HashCode>
+      <FileName>Nodes\Units\Abilities\Collision\Collision.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommandExtract" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIBEQAAAAACAAAQAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\ExtractResource\ExtractResource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ExtractResource">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="ExtractResource.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\Units\Abilities\ExtractResource\ExtractResource.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>YEKAAAAAAAAAQEAAAAAACAEAQAAIQAAAIgCAAAAQAAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\ExtractResource\ExtractResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthAbility" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAQAAkAAAAAAIAAEgAAAAAAAABCAhAAgAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\HealthAbility\HealthAbility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommandMoveTo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIBEQAAAAAAAAAQAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\NavigationAstar2D\MoveAbility.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CommandMoveToUnit" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIBEQAAAAAAAAAQAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\NavigationAstar2D\MoveAbility.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MoveAbility">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="MoveAbility.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\Units\Abilities\NavigationAstar2D\MoveAbility.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAIAAIACAIICAEAAEAIBCgAAQAEYAgAApgCARQAAQAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\NavigationAstar2D\MoveAbility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Resource">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\Resource\Resource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SelectArea" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\Selectable\SelectArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sprite">
+    <Position X="12.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\Sprite\Sprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Storage">
+    <Position X="7.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\Storage\Storage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Character.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Nodes\Units\Character\Character.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAEAAAAAIAAAAQCgCAACAQAgIAAQAAAASAAQAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Character\Character.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Factory">
+    <Position X="11" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAIAAAAAQAAQAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Factory\Factory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ICommand">
+    <Position X="7.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Game\GameNode\Game.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IComandQueue">
+    <Position X="5.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAACAAAAAAQAAIAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Game\GameNode\Game.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IAbilities">
+    <Position X="4" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAAAAAA=</HashCode>
+      <FileName>Nodes\Game\GameNode\Game.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="PlayerState">
+    <Position X="11" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAABAAAAAAAQAAAAA=</HashCode>
+      <FileName>Nodes\Game\Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ResourceType">
+    <Position X="14.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Abilities\Resource\Resource.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Type">
+    <Position X="12.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Units\Character\Character.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="ChangeStateEventHandler" Collapsed="true">
+    <Position X="11" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Game\Abilities\MoveNode\MoveNode.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="EventHandler" Collapsed="true">
+    <Position X="12.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Nodes\Game\GameNode\Game.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

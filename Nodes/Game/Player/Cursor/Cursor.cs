@@ -50,7 +50,7 @@ public partial class Cursor : Node2D
         _underCursor = unit;
     }
 
-    public void OnBodyExited(Node2D area)
+    public void OnBodyExited(Node2D unit)
     {
         _underCursor = null;
     }

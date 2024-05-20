@@ -68,13 +68,32 @@ public partial class TileMapAstar2D : TileMapLayer
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-        _astar.Region = new Rect2I(-250, -250, 500, 500);   
+        _astar.Region = new Rect2I(-100, -100, 250, 200);   
         _astar.CellSize = CELL_SIZE;
         _astar.Offset = new(CELL_SIZE.X*0.5f, CELL_SIZE.Y*0.5f);
         _astar.DefaultComputeHeuristic = AStarGrid2D.Heuristic.Euclidean;
         _astar.DefaultEstimateHeuristic = AStarGrid2D.Heuristic.Euclidean;
         _astar.DiagonalMode = AStarGrid2D.DiagonalModeEnum.AtLeastOneWalkable;
         _astar.Update();
+
+        for (int i = 0; i < _astar.Region.Size.X; i++)
+        {
+            for (int j = 0; j < _astar.Region.Size.Y; j++)
+            {
+                Vector2I tile_pos = new 
+                (
+                    i+_astar.Region.Position.X,
+                    j+_astar.Region.Position.Y
+                );
+
+                var tile_data = GetCellTileData(tile_pos);
+                var a = tile_data.GetCustomDataByLayerId(0);
+                if ((bool)tile_data.GetCustomDataByLayerId(0) == false) 
+                {
+                    _astar.SetPointSolid(tile_pos);
+                }
+            }
+        }
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

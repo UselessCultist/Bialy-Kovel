@@ -1,0 +1,41 @@
+[gd_scene load_steps=11 format=3 uid="uid://dcwcj4ilbehv3"]
+
+[ext_resource type="Texture2D" uid="uid://dooderkacvupn" path="res://Texture/Game/Resource/Basic Grass Biom things 1.png" id="1_pwled"]
+[ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_tn5ct"]
+[ext_resource type="PackedScene" uid="uid://7n5ay50evhqs" path="res://Nodes/Units/Abilities/Sprite/Sprite.tscn" id="2_3kv5a"]
+[ext_resource type="PackedScene" uid="uid://c6qfhi3l23bam" path="res://Nodes/Units/Abilities/Selectable/SelectArea.tscn" id="4_302sm"]
+[ext_resource type="PackedScene" uid="uid://c3l1kuj1tsmnj" path="res://Nodes/Units/Abilities/HealthAbility/HealthAbility.tscn" id="5_ypcum"]
+[ext_resource type="PackedScene" uid="uid://2n5b53lbjpuw" path="res://Nodes/Units/Abilities/Animation/AnimationAbility.tscn" id="6_ib52k"]
+[ext_resource type="PackedScene" uid="uid://hnxortfgtnvj" path="res://Nodes/Units/Abilities/Resource/Resource.tscn" id="7_i0okr"]
+[ext_resource type="PackedScene" uid="uid://b1wdmsf3gfxnu" path="res://Nodes/Units/Abilities/Collision/Collision.tscn" id="8_6h8u4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_223nn"]
+atlas = ExtResource("1_pwled")
+region = Rect2(16, 0, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vgsk"]
+radius = 8.0
+
+[node name="Tree" type="CharacterBody2D"]
+script = ExtResource("1_tn5ct")
+_type = 1
+
+[node name="Sprite" parent="." instance=ExtResource("2_3kv5a")]
+position = Vector2(0, -13)
+scale = Vector2(1, 1)
+texture = SubResource("AtlasTexture_223nn")
+
+[node name="SelectArea" parent="." instance=ExtResource("4_302sm")]
+position = Vector2(0, -13)
+
+[node name="HealthAbility" parent="." instance=ExtResource("5_ypcum")]
+scale = Vector2(0.5, 0.5)
+_health = 40.0
+_maxHealth = 40.0
+
+[node name="AnimationAbility" parent="." instance=ExtResource("6_ib52k")]
+
+[node name="Resource" parent="." instance=ExtResource("7_i0okr")]
+
+[node name="Collision" parent="." instance=ExtResource("8_6h8u4")]
+shape = SubResource("CircleShape2D_0vgsk")

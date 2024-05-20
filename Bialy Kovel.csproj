@@ -7,6 +7,10 @@
     <RootNamespace>BialyKovel</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="GameObjects\Tree\" />
     <Folder Include="Nodes\Units\Abilities\NavigationAstar2D\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

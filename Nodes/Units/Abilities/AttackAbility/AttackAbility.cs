@@ -1,4 +1,7 @@
 using System;
+using System.Net.NetworkInformation;
+using Godot;
+
 //================== Pattern Command ==================
 // Интерфейс паттерна и важные классы находится в Game.cs
 public class CommandAttack : ICommand
@@ -25,7 +28,7 @@ public class CommandAttack : ICommand
 
         try
         {
-            _ability.Attack(_target);
+            _ability.SetTarget(_target);
         }
         catch
         {
@@ -46,10 +49,26 @@ public partial class AttackAbility : AbilityWithCommands
 
     Character _unit;
     Character _target;
+    Area2D _attack_area = new();
+    Area2D _target_area;
+    CollisionShape2D _attack_shape = new();
+
     int _damage = 10;
-    float _distance = 16;
-    private bool impact { get; set; } = false;
-    State _state;
+    bool _reload = false;
+    State _state = State.REST;
+
+    public AttackAbility()
+    {
+        CircleShape2D circleShape2D = new CircleShape2D();
+        circleShape2D.Radius = 16;
+        _attack_shape.Shape = circleShape2D;
+        _attack_area.AddChild(_attack_shape);
+    }
+
+    public AttackAbility(Shape2D AttackShape) 
+    {
+        _attack_shape.Shape = AttackShape;
+    }
 
     private void _change_state(State new_state)
     {
@@ -69,16 +88,20 @@ public partial class AttackAbility : AbilityWithCommands
                     target_health.GetDamage(_damage);
                     if (target_health.IsDead()) { _target = null; End(); }
                 }
-                _change_state(State.RELOAD);
+                Reload();
                 return;
             case State.RELOAD:
                 break;
         }
-
         _state = new_state;
     }
 
-    static bool _can_kill_that(Character target) 
+    bool _is_in_attack_area() 
+    {
+        return _attack_area.OverlapsArea(_target_area);
+    }
+
+    bool _can_kill_that(Character target) 
     {
         HealthAbility target_health = target.GetAbility<HealthAbility>();
 
@@ -96,36 +119,36 @@ public partial class AttackAbility : AbilityWithCommands
         return false;
     }
 
-    public void Attack(Character target)
-	{
+    public void SetTarget(Character target) 
+    {
         _target = target;
-        if (_can_kill_that(target))
-        {
-            if (target.Position.DistanceTo(_unit.Position) <= _distance)
-            {
-                _change_state(State.SWING);
-                _unit.Animation.Play("attack");
-            }
-            else
-            {
-                _change_state(State.FOLLOW);
-                CommandMoveToUnit command_move = new CommandMoveToUnit(_unit, target);
-                SetCommand(command_move);
-                InvokeNext();
-            }
-        }
-        else 
-        {
-            _target = null;
-            End();
-        }
-	}
+        _target_area = _target.GetAbility<Collision>().CollisionArea;
+    }
+
+    async void Attack()
+	{
+        _change_state(State.SWING);
+        _unit.Animation.Play("attack");
+        await ToSignal(GetTree().CreateTimer(0.7f), SceneTreeTimer.SignalName.Timeout);
+        _change_state(State.ATTACK);
+    }
+
+    async void Reload() 
+    {
+        _reload = true;
+        _change_state(State.RELOAD);
+        await ToSignal(GetTree().CreateTimer(0.2f), SceneTreeTimer.SignalName.Timeout);
+        _change_state(State.REST);
+        _reload = false;
+    }
 
     public void Stop()
     {
         _change_state(State.REST);
+        StopCommands();
+
+        _reload = false;
         _target = null;
-        impact = false;
     }
 
     public override void InvokeNext()
@@ -137,7 +160,6 @@ public partial class AttackAbility : AbilityWithCommands
             EventHandler handler = () => { };
             handler = () =>
             {
-                _change_state(State.REST);
                 _inProcess = null;
             };
             _inProcess.Handler += handler;
@@ -151,25 +173,48 @@ public partial class AttackAbility : AbilityWithCommands
 	{
         _unit = GetParent<Character>();
         if (_unit == null) { throw new Exception("This object can't use attack ability"); }
-	}
+
+        AddChild(_attack_area);
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+        if (_state == State.SWING || _reload) 
+        {
+            return;
+        }
+
         if (_state == State.REST && _target != null)
         {
-            Attack(_target); 
+            if (_can_kill_that(_target))
+            {
+                if (_is_in_attack_area())
+                {
+                    Attack();
+                }
+                else
+                {
+                    _change_state(State.FOLLOW);
+                    CommandMoveToUnit command_move = new CommandMoveToUnit(_unit, _target);
+                    SetCommand(command_move);
+                    InvokeNext();
+                }
+            }
+            else
+            {
+                _target = null;
+                End();
+            }
         }
 
-        if (_state == State.SWING && impact) 
+        if (_state == State.FOLLOW) 
         {
-            _change_state(State.ATTACK);
-            return; 
-        }
-
-        if (_state == State.RELOAD && !impact) 
-        {
-            _change_state(State.REST);
+            if (_is_in_attack_area())
+            {
+                UndoCommand();
+                Attack();
+            }
         }
     }
 }

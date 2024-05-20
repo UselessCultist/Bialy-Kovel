@@ -5,10 +5,7 @@ public partial class SelectArea : CollisionShape2D
 {
     public SelectArea() 
     {
-        var shape = new CapsuleShape2D();
-        shape.Height = 32;
-        shape.Radius = 7;
-        Shape = shape;
+
     }
     public SelectArea(Shape2D shape) 
     {

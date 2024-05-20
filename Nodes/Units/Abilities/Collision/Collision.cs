@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-public partial class Collision : Node
+public partial class Collision : Node2D
 {
     public static Thread CollisionThread;
     Character _character;
@@ -13,16 +13,28 @@ public partial class Collision : Node
     Vector2I _center;
     Vector2I _zero_point;
     // отвечает за действие с коллизией (физикой)
-    CollisionObject2D _collision;
-    Shape2D _shape;
+    Area2D _area = new();
+    CollisionShape2D _collision = new();
+    [Export]Shape2D shape = null;
     TileMapAstar2D _tile_map;
     List<Vector2I> _collision_cells;
+
+    public Area2D CollisionArea { get { return _area; } }
+
+    public Collision() 
+    {
+        if (shape != null) 
+        {
+            _collision.Shape = shape;
+        }
+    }
 
     public Collision(int[][] SizeInCells, Shape2D shape) 
     {
         _sizeInCells = SizeInCells;
-        _shape = shape;
+        _collision.Shape = shape;
 
+        _area.AddChild(_collision);
     }
 
     public Game GetGameNode()
@@ -38,6 +50,11 @@ public partial class Collision : Node
         }
         while (search != null);
         return null;
+    }
+
+    public bool ShapeIsNull() 
+    {
+        return _collision.Shape == null;
     }
 
     void updateCenter() 
@@ -100,13 +117,11 @@ public partial class Collision : Node
 
     public void SolidCenterCellZone()
     {
-        TileData data = _tile_map.GetCellTileData(_center);
         _tile_map.Grid.SetPointSolid(_center, true);
     }
 
     public void UnsolidCenterCellZone()
     {
-        TileData data = _tile_map.GetCellTileData(_center);
         _tile_map.Grid.SetPointSolid(_center, false);
     }
 
@@ -118,7 +133,6 @@ public partial class Collision : Node
             TileData data = _tile_map.GetCellTileData(cell);
 
             _tile_map.Grid.SetPointSolid(cell, true);
-            data.SetCustomDataByLayerId(0, character_path);
         }
     }
 
@@ -126,10 +140,7 @@ public partial class Collision : Node
     {
         foreach (var cell in _collision_cells)
         {
-            TileData data = _tile_map.GetCellTileData(cell);
-
             _tile_map.Grid.SetPointSolid(cell, false);
-            data.SetCustomDataByLayerId(0, "");
         }
     }
 
@@ -190,6 +201,8 @@ public partial class Collision : Node
         {
             ability.ChangePathPoint += changeCollisionPosition;
         }
+
+        AddChild(_area);
 
         updateCenter();
         updateCells();

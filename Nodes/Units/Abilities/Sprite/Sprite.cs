@@ -3,12 +3,15 @@ using System;
 
 public partial class Sprite : Sprite2D
 {
-
-	public Sprite() 
+    public Sprite() 
 	{
-		Image image = Image.LoadFromFile("res://Texture/Units/Worker/Human.png");
-		Texture2D texture = ImageTexture.CreateFromImage(image);
-		Texture = texture;
+        if (Texture == null) 
+        {
+            Image image = Image.LoadFromFile("res://Texture/Units/Worker/Human.png");
+            Texture2D texture = ImageTexture.CreateFromImage(image);
+
+            Texture = texture;
+        }
 	}
 
     public Sprite(Image image)

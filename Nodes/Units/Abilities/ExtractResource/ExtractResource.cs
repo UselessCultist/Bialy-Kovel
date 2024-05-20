@@ -156,6 +156,8 @@ public partial class ExtractResource : AbilityWithCommands
     public void Stop()
     {
         _change_state(State.REST);
+        StopCommands();
+
         _target = null;
         _extract_type = ResourceType.MAX;
     }
@@ -210,7 +212,7 @@ public partial class ExtractResource : AbilityWithCommands
                     ToStorage();
                     return;
                 }
-                else 
+                else
                 {
                     _inventory_resource[(int)_extract_type] = res_value;
                 }

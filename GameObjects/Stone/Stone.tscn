@@ -1,0 +1,44 @@
+[gd_scene load_steps=12 format=3 uid="uid://baadk1hxnh1te"]
+
+[ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_6w4ph"]
+[ext_resource type="PackedScene" uid="uid://7n5ay50evhqs" path="res://Nodes/Units/Abilities/Sprite/Sprite.tscn" id="1_xdwmy"]
+[ext_resource type="Texture2D" uid="uid://dooderkacvupn" path="res://Texture/Game/Resource/Basic Grass Biom things 1.png" id="2_svpk5"]
+[ext_resource type="PackedScene" uid="uid://c6qfhi3l23bam" path="res://Nodes/Units/Abilities/Selectable/SelectArea.tscn" id="3_ojuxx"]
+[ext_resource type="PackedScene" uid="uid://c3l1kuj1tsmnj" path="res://Nodes/Units/Abilities/HealthAbility/HealthAbility.tscn" id="4_1ktim"]
+[ext_resource type="PackedScene" uid="uid://2n5b53lbjpuw" path="res://Nodes/Units/Abilities/Animation/AnimationAbility.tscn" id="5_e2pmg"]
+[ext_resource type="PackedScene" uid="uid://hnxortfgtnvj" path="res://Nodes/Units/Abilities/Resource/Resource.tscn" id="6_c38cv"]
+[ext_resource type="PackedScene" uid="uid://b1wdmsf3gfxnu" path="res://Nodes/Units/Abilities/Collision/Collision.tscn" id="7_pstn4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1btho"]
+atlas = ExtResource("2_svpk5")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cctwx"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3b8py"]
+radius = 60.0
+
+[node name="Stone" type="CharacterBody2D"]
+script = ExtResource("1_6w4ph")
+_type = 1
+
+[node name="Sprite" parent="." instance=ExtResource("1_xdwmy")]
+scale = Vector2(1, 1)
+texture = SubResource("AtlasTexture_1btho")
+
+[node name="SelectArea" parent="." instance=ExtResource("3_ojuxx")]
+shape = SubResource("CircleShape2D_cctwx")
+
+[node name="HealthAbility" parent="." instance=ExtResource("4_1ktim")]
+position = Vector2(0, 4)
+scale = Vector2(0.5, 0.5)
+_health = 40.0
+_maxHealth = 40.0
+
+[node name="AnimationAbility" parent="." instance=ExtResource("5_e2pmg")]
+
+[node name="Resource" parent="." instance=ExtResource("6_c38cv")]
+
+[node name="Collision" parent="." instance=ExtResource("7_pstn4")]
+shape = SubResource("CircleShape2D_3b8py")

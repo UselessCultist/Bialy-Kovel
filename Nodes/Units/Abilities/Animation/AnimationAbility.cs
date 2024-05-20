@@ -84,23 +84,6 @@ public partial class AnimationAbility : AnimationPlayer
         Animation attack = new();
         int trackIndex;
 
-        var unit = GetParentOrNull<Character>();
-        if (unit != null)
-        {
-            var ability = unit.GetAbility<AttackAbility>();
-            if (ability != null)
-            {
-                var ability_path = ability.GetPath();
-
-                trackIndex = attack.AddTrack(Animation.TrackType.Value);
-                attack.ValueTrackSetUpdateMode(trackIndex, Animation.UpdateMode.Continuous);
-                attack.TrackSetPath(trackIndex, ability_path + ":impact");
-                attack.TrackInsertKey(trackIndex, 0.0f, 0);
-                attack.TrackInsertKey(trackIndex, 0.8f, 1);
-                attack.TrackInsertKey(trackIndex, 1f, 0);
-            }
-        }
-
         trackIndex = attack.AddTrack(Animation.TrackType.Value);
         attack.ValueTrackSetUpdateMode(trackIndex, Animation.UpdateMode.Capture);
         attack.TrackSetPath(trackIndex, _sprite_path + ":position:x");

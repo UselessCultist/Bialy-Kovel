@@ -15,8 +15,8 @@ public partial class Player : Node
     }
 
     int[] _resource = new int[(int)ResourceType.MAX];
-    int _playerID = 1;
-    PlayerState _state = PlayerState.Player;
+    [Export] int _playerID = 1;
+    [Export] PlayerState _state = PlayerState.Player;
 	Cursor _cursor;
 
     List<Character> _selectedUnits = new();
