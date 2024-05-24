@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0qawmbo4pwoj"]
+
+[ext_resource type="Script" path="res://Nodes/Units/Abilities/NavigationAstar2D/MoveAbility.cs" id="1_uakeh"]
+
+[node name="MoveAbility" type="NavigationAgent2D"]
+script = ExtResource("1_uakeh")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1vkvc1k4oyx0"]
+
+[ext_resource type="Script" path="res://Nodes/Units/Abilities/ExtractResource/ExtractResource.cs" id="1_vnbyy"]
+
+[node name="ExtractResource" type="Node2D"]
+script = ExtResource("1_vnbyy")

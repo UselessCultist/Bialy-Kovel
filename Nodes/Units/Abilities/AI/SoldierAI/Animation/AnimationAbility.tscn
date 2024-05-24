@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://2n5b53lbjpuw"]
+
+[ext_resource type="Script" path="res://Nodes/Units/Abilities/Animation/AnimationAbility.cs" id="1_dlph6"]
+
+[sub_resource type="Animation" id="Animation_xf4i7"]
+resource_name = "Attack"
+
+[sub_resource type="Animation" id="Animation_pkw0h"]
+resource_name = "move"
+loop_mode = 1
+step = 0.01
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j0hcf"]
+_data = {
+"attack": SubResource("Animation_xf4i7"),
+"move": SubResource("Animation_pkw0h")
+}
+
+[node name="AnimationAbility" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_j0hcf")
+}
+script = ExtResource("1_dlph6")

@@ -17,7 +17,7 @@ region = Rect2(128, 16, 16, 16)
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3b8py"]
-radius = 60.0
+radius = 8.0
 
 [node name="Stone" type="CharacterBody2D"]
 script = ExtResource("1_6w4ph")
@@ -32,12 +32,15 @@ shape = SubResource("CircleShape2D_cctwx")
 [node name="HealthAbility" parent="." instance=ExtResource("4_1ktim")]
 position = Vector2(0, 4)
 scale = Vector2(0.5, 0.5)
-_health = 40.0
-_maxHealth = 40.0
+_health = 20.0
+_maxHealth = 20.0
 
 [node name="AnimationAbility" parent="." instance=ExtResource("5_e2pmg")]
 
 [node name="Resource" parent="." instance=ExtResource("6_c38cv")]
+_resourceType = 1
 
 [node name="Collision" parent="." instance=ExtResource("7_pstn4")]
+cell_width = 1
+cell_height = 1
 shape = SubResource("CircleShape2D_3b8py")

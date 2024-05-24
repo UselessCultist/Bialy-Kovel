@@ -1,0 +1,50 @@
+[gd_scene load_steps=14 format=3 uid="uid://d1roex7kwa6lr"]
+
+[ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_xllmt"]
+[ext_resource type="PackedScene" uid="uid://bu4io0nsqmwl0" path="res://Nodes/Units/Abilities/AI/WorkerAI/AI.tscn" id="2_3dqkn"]
+[ext_resource type="PackedScene" uid="uid://2n5b53lbjpuw" path="res://Nodes/Units/Abilities/Animation/AnimationAbility.tscn" id="3_18254"]
+[ext_resource type="PackedScene" uid="uid://c3l1kuj1tsmnj" path="res://Nodes/Units/Abilities/HealthAbility/HealthAbility.tscn" id="4_g7g52"]
+[ext_resource type="PackedScene" uid="uid://c6qfhi3l23bam" path="res://Nodes/Units/Abilities/Selectable/SelectArea.tscn" id="5_mfhmn"]
+[ext_resource type="PackedScene" uid="uid://7n5ay50evhqs" path="res://Nodes/Units/Abilities/Sprite/Sprite.tscn" id="6_ya4td"]
+[ext_resource type="Texture2D" uid="uid://bxy5sd4ky5xn1" path="res://Texture/Units/Enemy/Soldier/MoscowSoldier.png" id="7_bf888"]
+[ext_resource type="PackedScene" uid="uid://d0qawmbo4pwoj" path="res://Nodes/Units/Abilities/NavigationAstar2D/MoveAbility.tscn" id="7_ihv4k"]
+[ext_resource type="PackedScene" uid="uid://b1wdmsf3gfxnu" path="res://Nodes/Units/Abilities/Collision/Collision.tscn" id="8_fcyab"]
+[ext_resource type="PackedScene" uid="uid://nye8j4p40e0d" path="res://Nodes/Units/Abilities/AttackAbility/AttackAbility.tscn" id="9_icrfn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ff0jf"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_65c7n"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjlc5"]
+size = Vector2(43, 43)
+
+[node name="EnemySoldier" type="CharacterBody2D"]
+script = ExtResource("1_xllmt")
+
+[node name="AI" parent="." instance=ExtResource("2_3dqkn")]
+
+[node name="AnimationAbility" parent="." instance=ExtResource("3_18254")]
+
+[node name="HealthAbility" parent="." instance=ExtResource("4_g7g52")]
+scale = Vector2(0.5, 0.5)
+
+[node name="SelectArea" parent="." instance=ExtResource("5_mfhmn")]
+position = Vector2(0, -14)
+
+[node name="Sprite" parent="." instance=ExtResource("6_ya4td")]
+position = Vector2(0, -14)
+texture = ExtResource("7_bf888")
+
+[node name="MoveAbility" parent="." instance=ExtResource("7_ihv4k")]
+_speed = 60.0
+_interact_shape = SubResource("RectangleShape2D_ff0jf")
+
+[node name="Collision" parent="." instance=ExtResource("8_fcyab")]
+cell_width = 1
+cell_height = 1
+shape = SubResource("CircleShape2D_65c7n")
+
+[node name="AttackAbility" parent="." instance=ExtResource("9_icrfn")]
+_shape = SubResource("RectangleShape2D_bjlc5")

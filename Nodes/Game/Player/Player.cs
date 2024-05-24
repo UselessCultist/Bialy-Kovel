@@ -15,6 +15,7 @@ public partial class Player : Node
     }
 
     int[] _resource = new int[(int)ResourceType.MAX];
+    bool shift = false;
     [Export] int _playerID = 1;
     [Export] PlayerState _state = PlayerState.Player;
 	Cursor _cursor;
@@ -32,43 +33,43 @@ public partial class Player : Node
         _resource[(int)resource] += add_value;
     }
 
-	public void CommandMoveSelectedUnits(Vector2 target)
+	public void CommandMoveSelectedUnits(Vector2 target, bool set_add)
 	{
 		if (_selectedUnits.Count == 0) { return; };
 		foreach (Character c in _selectedUnits) 
 		{
 			var command = new CommandMoveTo(c, target);
-			c.SetCommand(command);
+            if (set_add) { c.SetCommand(command);} else { c.AddCommand(command);};
 		}
 	}
 
-    public void CommandMoveToUnit(Character target)
+    public void CommandMoveToUnit(Character target, bool set_add)
     {
         if (_selectedUnits.Count == 0) { return; };
         foreach (Character c in _selectedUnits)
         {
             var command = new CommandMoveToUnit(c, target);
-            c.SetCommand(command);
+            if (set_add) { c.SetCommand(command); } else { c.AddCommand(command); };
         }
     }
 
-    public void CommandAttackUnit(Character target)
+    public void CommandAttackUnit(Character target, bool set_add)
     {
         if (_selectedUnits.Count == 0) { return; };
         foreach (Character c in _selectedUnits)
         {
             var command = new CommandAttack(c, target);
-            c.SetCommand(command);
+            if (set_add) { c.SetCommand(command); } else { c.AddCommand(command); };
         }
     }
 
-    public void CommandExtractResource(Character target) 
+    public void CommandExtractResource(Character target, bool set_add) 
     {
         if (_selectedUnits.Count == 0) { return; };
         foreach (Character c in _selectedUnits)
         {
             var command = new CommandExtract(c, target);
-            c.SetCommand(command);
+            if (set_add) { c.SetCommand(command); } else { c.AddCommand(command); };
         }
     }
 
@@ -81,16 +82,23 @@ public partial class Player : Node
     public override void _PhysicsProcess(double delta)
     {
         if (_state == PlayerState.Computer) { return; }
+
+        shift = Input.IsKeyPressed(Key.Shift);
+
         if (Input.IsActionJustPressed("left_click")) 
 		{
-			if (_cursor.UnderCursor is Character) 
-			{
+            if (_cursor.UnderCursor is Character)
+            {
                 Character _unitUnderCursor = _cursor.UnderCursor as Character;
-                if (_unitUnderCursor.PlayerOwner.ID == _playerID) 
+                if (_unitUnderCursor.PlayerOwner.ID == _playerID)
                 {
-                    _selectedUnits.Clear();
+                    if (!shift) _selectedUnits.Clear();
                     _selectedUnits.Add(_unitUnderCursor);
                 }
+            }
+            else 
+            {
+                _selectedUnits.Clear();
             }
 		}
 
@@ -104,21 +112,21 @@ public partial class Player : Node
                 {
                     if (_unitUnderCursor.PlayerOwner.ID != _playerID)
                     {
-                        CommandAttackUnit(_unitUnderCursor);
+                        CommandAttackUnit(_unitUnderCursor, !shift);
                     }
                     else 
                     {
-                        CommandMoveToUnit(_unitUnderCursor);
+                        CommandMoveToUnit(_unitUnderCursor, !shift);
                     }
                 }
                 else
                 {
-                    CommandExtractResource(_unitUnderCursor);
+                    CommandExtractResource(_unitUnderCursor, !shift);
                 }
             }
             else 
             {
-                CommandMoveSelectedUnits(_cursor.Position);
+                CommandMoveSelectedUnits(_cursor.Position, !shift);
             }
         }
     }

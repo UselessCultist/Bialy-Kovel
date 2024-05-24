@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://cbme4yc5tsjyv"]
 
 [ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_gs67f"]
-[ext_resource type="PackedScene" uid="uid://bu4io0nsqmwl0" path="res://Nodes/Units/Abilities/AI/AI.tscn" id="2_lne6w"]
+[ext_resource type="PackedScene" uid="uid://bu4io0nsqmwl0" path="res://Nodes/Units/Abilities/AI/WorkerAI/AI.tscn" id="2_lne6w"]
 [ext_resource type="PackedScene" uid="uid://2n5b53lbjpuw" path="res://Nodes/Units/Abilities/Animation/AnimationAbility.tscn" id="3_v6yin"]
 [ext_resource type="PackedScene" uid="uid://c3l1kuj1tsmnj" path="res://Nodes/Units/Abilities/HealthAbility/HealthAbility.tscn" id="4_4pw71"]
 [ext_resource type="PackedScene" uid="uid://c6qfhi3l23bam" path="res://Nodes/Units/Abilities/Selectable/SelectArea.tscn" id="5_1f4e0"]
@@ -15,7 +15,7 @@
 size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix8jh"]
-radius = 16.0
+radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7x4v"]
 size = Vector2(33, 33)
