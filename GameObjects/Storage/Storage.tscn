@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dal7xbj7aqkn0" path="res://Texture/Game/Buildings/storage.png" id="6_t5spm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcy3d"]
-size = Vector2(128, 48)
+size = Vector2(136, 56)
 
 [node name="Storage" type="CharacterBody2D"]
 script = ExtResource("1_8yij3")

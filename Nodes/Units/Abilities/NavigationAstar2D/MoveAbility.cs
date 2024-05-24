@@ -118,7 +118,7 @@ public partial class MoveAbility : NavigationAgent2D
 
     Area2D _interact_area = new();
     CollisionShape2D _interact_collision = new();
-    [Export] CircleShape2D _interact_shape;
+    [Export] RectangleShape2D _interact_shape;
 
     public void Move(Vector2 position) 
     {
@@ -293,7 +293,7 @@ public partial class MoveAbility : NavigationAgent2D
             _interact_area.AddChild(_interact_collision);
         }
 
-        AddChild(_interact_area);
+        GetParent().AddChild(_interact_area);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

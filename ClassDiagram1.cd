@@ -40,7 +40,7 @@
       </Delegate>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>QAAAIAAAAAAAAAAAAAgAAAAAAQAAAAAAAAEAAAAKAAA=</HashCode>
+      <HashCode>QAAAIAAAAAAAAAAAAAgAAAAAAAAAAAAAAAEAAAAKAAA=</HashCode>
       <FileName>Nodes\Game\GameNode\Game.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -139,14 +139,14 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>QAIAAABAAAAAAAAAAAAACAAAUIAIRAAAKgQGAAAAAAI=</HashCode>
+      <HashCode>QAIAAgBAAAAAAAAAAAAACAAAUIAIRAAAKgQGAAAAAAI=</HashCode>
       <FileName>Nodes\Units\Abilities\AttackAbility\AttackAbility.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Collision">
     <Position X="16.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QCAAAAAIAIKAAEAAACAAAEAABAAQAAAAAAwABEEARgE=</HashCode>
+      <HashCode>QACAAIAIAIKAAEAAAACAAEBAAAAQAAAAAIgABEAARgE=</HashCode>
       <FileName>Nodes\Units\Abilities\Collision\Collision.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -168,7 +168,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>YEKAAAAAAAAAQEAAAAAACAEAQAAIQAAAIgCAAAAQAAA=</HashCode>
+      <HashCode>YEKAAAAAAAAAQEAQAAAACAEAQAAIQAAAIgCAAAAQAAA=</HashCode>
       <FileName>Nodes\Units\Abilities\ExtractResource\ExtractResource.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -190,7 +190,7 @@
   <Class Name="CommandMoveToUnit" BaseTypeListCollapsed="true">
     <Position X="5.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIBEQAAAAAAAAAQAAAAAAQAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAIBEQAAAAACAAAQAAAAAAQAAAAAAAAAAA=</HashCode>
       <FileName>Nodes\Units\Abilities\NavigationAstar2D\MoveAbility.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -205,7 +205,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>QAIAAIACAIICAEAAEAIBCgAAQAEYAgAApgCARQAAQAA=</HashCode>
+      <HashCode>QCIAAIACAMICAEAAEAIBCAAAQAMYAgAArgCAQQAAQAA=</HashCode>
       <FileName>Nodes\Units\Abilities\NavigationAstar2D\MoveAbility.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -251,13 +251,6 @@
       <FileName>Nodes\Units\Character\Character.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Factory">
-    <Position X="11" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAIAAAAAAAAAIAAAAAQAAQAAAABAAAAAAAAAAA=</HashCode>
-      <FileName>Nodes\Units\Factory\Factory.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Interface Name="ICommand">
     <Position X="7.5" Y="10.25" Width="1.5" />

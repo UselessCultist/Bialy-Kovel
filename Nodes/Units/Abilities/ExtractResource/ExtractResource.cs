@@ -112,8 +112,9 @@ public partial class ExtractResource : AbilityWithCommands
 
         pathComplete = () => 
         {
-            Storage ability = _target.GetAbility<Storage>();
-            ResourceToStorage(ability);
+            Storage storage_ability = _target.GetAbility<Storage>();
+            ResourceToStorage(storage_ability);
+            ability.PathToTargetComplete -= pathComplete;
         };
 
         handler = () =>

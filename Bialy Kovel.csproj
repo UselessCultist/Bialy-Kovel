@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="GameObjects\Tree\" />
     <Folder Include="Nodes\Units\Abilities\NavigationAstar2D\" />
+    <Folder Include="Nodes\Units\Factory\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="ClassDiagram1.cd" />

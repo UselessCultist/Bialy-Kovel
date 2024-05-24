@@ -52,6 +52,7 @@ public partial class AttackAbility : AbilityWithCommands
     Area2D _attack_area = new();
     Area2D _target_area;
     CollisionShape2D _attack_shape = new();
+    [Export] RectangleShape2D _shape;
 
     int _damage = 10;
     bool _reload = false;
@@ -59,10 +60,7 @@ public partial class AttackAbility : AbilityWithCommands
 
     public AttackAbility()
     {
-        CircleShape2D circleShape2D = new CircleShape2D();
-        circleShape2D.Radius = 16;
-        _attack_shape.Shape = circleShape2D;
-        _attack_area.AddChild(_attack_shape);
+
     }
 
     public AttackAbility(Shape2D AttackShape) 
@@ -173,6 +171,9 @@ public partial class AttackAbility : AbilityWithCommands
 	{
         _unit = GetParent<Character>();
         if (_unit == null) { throw new Exception("This object can't use attack ability"); }
+
+        _attack_shape.Shape = _shape;
+        _attack_area.AddChild(_attack_shape);
 
         AddChild(_attack_area);
     }
