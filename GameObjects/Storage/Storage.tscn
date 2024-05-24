@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=3 uid="uid://bch5y3qp26yeu"]
+
+[ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_8yij3"]
+[ext_resource type="PackedScene" uid="uid://b1wdmsf3gfxnu" path="res://Nodes/Units/Abilities/Collision/Collision.tscn" id="2_un7w5"]
+[ext_resource type="PackedScene" uid="uid://c3l1kuj1tsmnj" path="res://Nodes/Units/Abilities/HealthAbility/HealthAbility.tscn" id="3_fw1x4"]
+[ext_resource type="PackedScene" uid="uid://veipxr6mvtf" path="res://Nodes/Units/Abilities/Storage/Storage.tscn" id="4_b0lrg"]
+[ext_resource type="PackedScene" uid="uid://7n5ay50evhqs" path="res://Nodes/Units/Abilities/Sprite/Sprite.tscn" id="5_ku5mo"]
+[ext_resource type="Texture2D" uid="uid://dal7xbj7aqkn0" path="res://Texture/Game/Buildings/storage.png" id="6_t5spm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcy3d"]
+size = Vector2(128, 48)
+
+[node name="Storage" type="CharacterBody2D"]
+script = ExtResource("1_8yij3")
+
+[node name="Collision" parent="." instance=ExtResource("2_un7w5")]
+cell_width = 9
+cell_height = 3
+shape = SubResource("RectangleShape2D_xcy3d")
+
+[node name="HealthAbility" parent="." instance=ExtResource("3_fw1x4")]
+_health = 300.0
+_maxHealth = 300.0
+
+[node name="Storage" parent="." instance=ExtResource("4_b0lrg")]
+
+[node name="Sprite" parent="." instance=ExtResource("5_ku5mo")]
+position = Vector2(0, -8)
+texture = ExtResource("6_t5spm")

@@ -44,6 +44,7 @@ public partial class ExtractResource : AbilityWithCommands
     public EventHandler End = () => { };
     int[] _inventory_resource = new int[(int)ResourceType.MAX];
     const int _inventory_max = 30;
+    [Export] int distance_to_interact_with_storage = 8;
     Character _character;
     Character _target = null;
     ResourceType _extract_type = ResourceType.MAX;
@@ -97,7 +98,7 @@ public partial class ExtractResource : AbilityWithCommands
 
         if (storage == null) 
         {
-            End();
+            Stop();
             return;
         }
 
@@ -107,14 +108,23 @@ public partial class ExtractResource : AbilityWithCommands
         AddCommand(command);
 
         EventHandler handler = () => { };
+        EventHandler pathComplete = () => { };
+
+        pathComplete = () => 
+        {
+            Storage ability = _target.GetAbility<Storage>();
+            ResourceToStorage(ability);
+        };
+
         handler = () =>
         {
             _change_state(State.EXTRACT);
-            Storage ability = _target.GetAbility<Storage>();
-            ResourceToStorage(ability);
             _target = null;
+            ability.PathToTargetComplete -= pathComplete;
         };
+
         command.Handler += handler;
+        ability.PathToTargetComplete += pathComplete;
 
         InvokeNext();
     }
@@ -132,7 +142,7 @@ public partial class ExtractResource : AbilityWithCommands
             }
             else 
             {
-                End();
+                Stop();
             }
         }
         else 
@@ -160,6 +170,7 @@ public partial class ExtractResource : AbilityWithCommands
 
         _target = null;
         _extract_type = ResourceType.MAX;
+        End();
     }
 
     public override void _Ready()
@@ -180,9 +191,9 @@ public partial class ExtractResource : AbilityWithCommands
             MoveAbility ability = _character.GetAbility<MoveAbility>();
 
             var resource = ability.FindNearestResource(_extract_type);
-            if (resource == null) 
+            if (resource == null)
             {
-                End(); return;
+                Stop(); return;
             }
 
             Extract(resource);

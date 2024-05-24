@@ -38,7 +38,6 @@ public partial class TileMapAstar2D : TileMapLayer
         Vector2I start_point = LocalToMap(local_start_point);
         Vector2I end_point = LocalToMap(local_end_point);
         var path = _astar.GetPointPath(start_point, end_point, true);
-
         return path;
     }
 
@@ -87,7 +86,6 @@ public partial class TileMapAstar2D : TileMapLayer
                 );
 
                 var tile_data = GetCellTileData(tile_pos);
-                var a = tile_data.GetCustomDataByLayerId(0);
                 if ((bool)tile_data.GetCustomDataByLayerId(0) == false) 
                 {
                     _astar.SetPointSolid(tile_pos);
@@ -96,8 +94,8 @@ public partial class TileMapAstar2D : TileMapLayer
         }
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 	}
 }

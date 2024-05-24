@@ -13,6 +13,7 @@ atlas = ExtResource("3_cd7m6")
 region = Rect2(95, 20, 50, 8)
 
 [node name="HealthAbility" type="Node2D"]
+visible = false
 script = ExtResource("1_xuuyu")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]

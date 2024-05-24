@@ -8,30 +8,26 @@ public partial class Collision : Node2D
     public static Thread CollisionThread;
     Character _character;
     // -1 обозначает точку центра что обозначает Position, 1 обозначает точку принадлежащую юниту, 0 никому не принадлежит
-    int[][] _sizeInCells;
-    // центр
-    Vector2I _center;
-    Vector2I _zero_point;
+    [Export] ushort cell_width = 0;
+    [Export] ushort cell_height = 0;
     // отвечает за действие с коллизией (физикой)
     Area2D _area = new();
     CollisionShape2D _collision = new();
     [Export]Shape2D shape = null;
     TileMapAstar2D _tile_map;
-    List<Vector2I> _collision_cells;
+    List<Vector2I> _global_collision_cells = new();
 
     public Area2D CollisionArea { get { return _area; } }
 
     public Collision() 
     {
-        if (shape != null) 
-        {
-            _collision.Shape = shape;
-        }
+
     }
 
-    public Collision(int[][] SizeInCells, Shape2D shape) 
+    public Collision(ushort height, ushort width, Shape2D shape) 
     {
-        _sizeInCells = SizeInCells;
+        cell_height = height;
+        cell_width = width;
         _collision.Shape = shape;
 
         _area.AddChild(_collision);
@@ -57,116 +53,91 @@ public partial class Collision : Node2D
         return _collision.Shape == null;
     }
 
-    void updateCenter() 
-    {
-        _center = (Vector2I)(_character.Position / 16).Floor();
-
-        Vector2I local_cell_center_pos = getCenterLocalPosFromSizeMap();
-        _zero_point = getZeroPointGlobalCellPos(local_cell_center_pos);
-    }
-
     void updateCells() 
     {
-        _collision_cells = new();
-        if (_sizeInCells.Length > 0)
-        {
-            for (int i = 0; i < _sizeInCells.Length; i++)
-            {
-                int[] row = _sizeInCells[i];
-                for (int j = 0; j < row.Length; j++)
-                {
-                    int cell = row[j];
-                    if (cell == 0)
-                    {
-                        continue;
-                    }
+        _global_collision_cells = new();
+        Vector2I point_global_coord = new
+            (
+                (int)Math.Floor(_character.Position.X / 16),
+                (int)Math.Floor(_character.Position.Y / 16)
+            );
 
-                    Vector2I point_global_coord = _zero_point + new Vector2I(j, i);
-                    _collision_cells.Add(point_global_coord);
-                }
+        int max_height = (int)Math.Ceiling(cell_height/2d);
+        int min_height = cell_height-max_height;
+
+        int max_width = (int)Math.Ceiling(cell_width/2d);
+        int min_width = cell_width - max_width;
+
+        for (int i = -min_height; i < max_height; i++)
+        {
+            for (int j = -min_width; j < max_width; j++)
+            {
+                _global_collision_cells.Add(point_global_coord + new Vector2I(j,i));
             }
         }
     }
 
-    Vector2I getCenterLocalPosFromSizeMap() 
+    Vector2I getCenterLocalPos() 
     {
-        Vector2I pos = new(-1,-1);
-        if (_sizeInCells.Length > 0)
-        {
-            for (int i = 0; i < _sizeInCells.Length; i++)
-            {
-                int[] row = _sizeInCells[i];
-                for (int j = 0; j < row.Length; j++)
-                {
-                    if (row[j] == -1)
-                    {
-                        pos = new(j, i);
-                        return pos;
-                    };
-                }
-            }
-        }
-        throw new Exception("center not exiest");
-    }
+        Vector2I pos = new(
+            cell_height / 2,
+            cell_width / 2
+        );
 
-    Vector2I getZeroPointGlobalCellPos(Vector2I local_cell_center_pos) 
-    {
-        Vector2I zero_arr_point_coord = _center - local_cell_center_pos;
-        return zero_arr_point_coord;
+        return pos;
     }
 
     public void SolidCenterCellZone()
     {
-        _tile_map.Grid.SetPointSolid(_center, true);
+        Vector2I center = new
+        (
+            (int)Math.Floor(_character.Position.X / 16),
+            (int)Math.Floor(_character.Position.Y / 16)
+        );
+        _tile_map.Grid.SetPointSolid(center, true);
     }
 
     public void UnsolidCenterCellZone()
     {
-        _tile_map.Grid.SetPointSolid(_center, false);
+        Vector2I center = new
+        (
+            (int)Math.Floor(_character.Position.X / 16),
+            (int)Math.Floor(_character.Position.Y / 16)
+        );
+        _tile_map.Grid.SetPointSolid(center, false);
     }
 
     public void SolidUnitCellZone()
     {
-        string character_path = _character.GetPath();
-        foreach (var cell in _collision_cells)
+        foreach (var cell in _global_collision_cells)
         {
-            TileData data = _tile_map.GetCellTileData(cell);
-
             _tile_map.Grid.SetPointSolid(cell, true);
         }
     }
 
     public void UnsolidUnitCellZone() 
     {
-        foreach (var cell in _collision_cells)
+        foreach (var cell in _global_collision_cells)
         {
             _tile_map.Grid.SetPointSolid(cell, false);
         }
     }
 
-    public bool IsCellZoneClear()
+    /*static public bool IsCellZoneClear()
     {
-        Vector2I local_cell_center_pos = getCenterLocalPosFromSizeMap();
-        Vector2I zero_arr_point_coord = getZeroPointGlobalCellPos(local_cell_center_pos);
+        Vector2I local_cell_center_pos = getCenterLocalPos();
 
-        if (_sizeInCells.Length > 0)
+        if (cell_height > 0)
         {
-            for (int i = 0; i < _sizeInCells.Length; i++)
+            for (int i = 0; i < cell_width; i++)
             {
-                int[] row = _sizeInCells[i];
-                for (int j = 0; j < row.Length; j++)
+                for (int j = 0; j < cell_width; j++)
                 {
-                    int cell = row[j];
-                    if (cell == 0)
-                    {
-                        continue;
-                    }
-
                     Vector2I point_global_coord = zero_arr_point_coord + new Vector2I(j, i);
                     TileData data = _tile_map.GetCellTileData(point_global_coord);
 
-                    var path = data.GetCustomData("objectincell").ToString();
-                    if (!String.Equals(path, ""))
+                    bool walkable = (bool)data.GetCustomDataByLayerId(0);
+                    if (!walkable)
                     {
                         return false;
                     }
@@ -174,21 +145,22 @@ public partial class Collision : Node2D
             }
         }
         return true;
-    }
+    }*/
 
     private void changeCollisionPosition() 
     {
-        SolidUnitCellZone();
-        updateCenter();
-        updateCells();
         UnsolidUnitCellZone();
+        updateCells();
+        SolidUnitCellZone();
+        QueueRedraw();
     }
 
-    public override void _Ready()
+    public async override void _Ready()
     {
         Game game = GetGameNode();
         if (game == null) { throw new Exception("Game is null"); }
 
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         _tile_map = game.TileMap;
         if (_tile_map == null)
         {
@@ -202,10 +174,31 @@ public partial class Collision : Node2D
             ability.ChangePathPoint += changeCollisionPosition;
         }
 
+        if (shape != null)
+        {
+            _collision.Shape = shape;
+            _area.AddChild(_collision);
+        }
+
         AddChild(_area);
 
-        updateCenter();
-        updateCells();
-        SolidUnitCellZone();
+        changeCollisionPosition();
+    }
+
+    public override void _Draw()
+    {
+        Vector2I pos = new
+        (
+            -8,
+            -8
+        );
+
+        Vector2I correction = new
+        (
+            (int)Math.Floor(cell_width / 2d)*16,
+            (int)Math.Floor(cell_height / 2d)*16
+        );
+
+        DrawRect(new(pos-correction, cell_width*16, cell_height*16), Color.Color8(255, 0, 0));
     }
 }

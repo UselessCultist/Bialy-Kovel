@@ -28,7 +28,7 @@ public static class Factory
         character.AddAbility(new ExtractResource());
         character.AddAbility(new AttackAbility());
         character.AddAbility(new SelectArea());
-        character.AddAbility(new Collision(sizeInCells, circleShape2D));
+        character.AddAbility(new Collision(1, 1, circleShape2D));
         character.AddAbility(new AI());
 
         // Set options
@@ -69,7 +69,7 @@ public static class Factory
         character.AddAbility(new HealthAbility(50, false));
         character.AddAbility(new ExtractResource());
         character.AddAbility(new AttackAbility());
-        character.AddAbility(new Collision(sizeInCells, circleShape2D));
+        character.AddAbility(new Collision(1,1, circleShape2D));
         character.AddAbility(new AI());
 
         // Set options
@@ -113,14 +113,14 @@ public static class Factory
         int[][] sizeInCells = new int[][] 
         {
                          /* 1  2  3  4  5  6  7  8 */
-            /*1*/new int[]{ 1, 1, 1, 1, 1, 1, 1, 1 },
+            /*1*/new int[]{ 1, 1, 1, 1, 1, 1, 0, 0 },
             /*2*/new int[]{ 1, 1, 1, 1,-1, 1, 1, 1 },
-            /*3*/new int[]{ 1, 1, 1, 1, 1, 1, 1, 1 },
+            /*3*/new int[]{ 0, 0, 1, 1, 1, 1, 1, 1 },
         };
 
         // Add abilities
         character.AddAbility(new Sprite(image));
-        character.AddAbility(new Collision(sizeInCells, null));
+        character.AddAbility(new Collision(3,5, null));
         character.AddAbility(new HealthAbility(100, false));
         character.AddAbility(new Storage());
 
@@ -159,7 +159,7 @@ public static class Factory
         character.AddAbility(new SelectArea(circleShape2D));
         character.AddAbility(new HealthAbility(40, false));
         character.AddAbility(new Resource(ResourceType.Stone));
-        character.AddAbility(new Collision(sizeInCells, circleShape2D));
+        character.AddAbility(new Collision(1, 1, circleShape2D));
 
         // Set options
         character.PlayerOwner = null;

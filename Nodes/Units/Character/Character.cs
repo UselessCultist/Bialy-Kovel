@@ -1,6 +1,5 @@
 using Godot;
 using Godot.Collections;
-using System.Collections;
 using System.Collections.Generic;
 
 public enum Type { Unit, Resource, Building }
@@ -40,7 +39,7 @@ public partial class Character : CharacterBody2D, IAbilities, IComandQueue
             handler = ()=>
             {
                 Animation.Stop();
-                Animation.Play("idle");
+                Animation.Play("animation/idle");
                 _inProcess = null;
             };
             _inProcess.Handler += handler;

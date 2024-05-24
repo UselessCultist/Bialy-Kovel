@@ -20,7 +20,7 @@ public partial class AnimationAbility : AnimationPlayer
         library.AddAnimation("move", GetWalkAnimation());
         library.AddAnimation("attack", GetAttackAnimation());
 
-        AddAnimationLibrary("", library);
+        AddAnimationLibrary("animation", library);
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,11 +41,6 @@ public partial class AnimationAbility : AnimationPlayer
 
         trackIndex = idle.AddTrack(Animation.TrackType.Value);
         idle.ValueTrackSetUpdateMode(trackIndex, Animation.UpdateMode.Capture);
-        idle.TrackSetPath(trackIndex, _sprite_path + ":position:y");
-        idle.TrackInsertKey(trackIndex, 0.0f, 0);
-
-        trackIndex = idle.AddTrack(Animation.TrackType.Value);
-        idle.ValueTrackSetUpdateMode(trackIndex, Animation.UpdateMode.Capture);
         idle.TrackSetPath(trackIndex, _sprite_path + ":rotation");
         idle.TrackInsertKey(trackIndex, 0.0f, 0);
 
@@ -60,21 +55,11 @@ public partial class AnimationAbility : AnimationPlayer
 
         trackIndex = move.AddTrack(Animation.TrackType.Value);
         move.ValueTrackSetUpdateMode(trackIndex, Animation.UpdateMode.Capture);
-        move.TrackSetPath(trackIndex, _sprite_path + ":position:x");
-        move.TrackInsertKey(trackIndex, 0.0f, 3);
-        move.TrackInsertKey(trackIndex, 0.25f, 0);
-        move.TrackInsertKey(trackIndex, 0.5f, -3);
-        move.TrackInsertKey(trackIndex, 0.75f, 0);
-        move.TrackInsertKey(trackIndex, 1.0f, 3);
-
-        trackIndex = move.AddTrack(Animation.TrackType.Value);
-        move.ValueTrackSetUpdateMode(trackIndex, Animation.UpdateMode.Capture);
-        move.TrackSetPath(trackIndex, _sprite_path + ":position:y");
-        move.TrackInsertKey(trackIndex, 0.0f, 0);
-        move.TrackInsertKey(trackIndex, 0.25f,-3);
-        move.TrackInsertKey(trackIndex, 0.5f, 0);
-        move.TrackInsertKey(trackIndex, 0.75f,-3);
-        move.TrackInsertKey(trackIndex, 1.0f, 0);
+        move.TrackSetPath(trackIndex, _sprite_path + ":rotation");
+        move.TrackInsertKey(trackIndex, 0.15f, -1);
+        move.TrackInsertKey(trackIndex, 0.35f, 0);
+        move.TrackInsertKey(trackIndex, 0.65f, 1);
+        move.TrackInsertKey(trackIndex, 0.85f, 0);
 
         return move;
     }
@@ -95,17 +80,10 @@ public partial class AnimationAbility : AnimationPlayer
 
         trackIndex = attack.AddTrack(Animation.TrackType.Value);
         attack.ValueTrackSetUpdateMode(trackIndex, Animation.UpdateMode.Capture);
-        attack.TrackSetPath(trackIndex, _sprite_path + ":position:y");
-        attack.TrackInsertKey(trackIndex, 0.6f, 0);
-        attack.TrackInsertKey(trackIndex, 0.7f, -1.25);
-        attack.TrackInsertKey(trackIndex, 0.7f, 0);
-
-        trackIndex = attack.AddTrack(Animation.TrackType.Value);
-        attack.ValueTrackSetUpdateMode(trackIndex, Animation.UpdateMode.Capture);
         attack.TrackSetPath(trackIndex, _sprite_path + ":rotation");
         attack.TrackInsertKey(trackIndex, 0.0f, 0);
         attack.TrackInsertKey(trackIndex, 0.6f, 0);
-        attack.TrackInsertKey(trackIndex, 0.7f, -0.5);
+        attack.TrackInsertKey(trackIndex, 0.7f, -1);
         attack.TrackInsertKey(trackIndex, 0.9f, 0);
 
         return attack;

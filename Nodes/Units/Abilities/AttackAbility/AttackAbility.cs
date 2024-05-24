@@ -75,7 +75,7 @@ public partial class AttackAbility : AbilityWithCommands
         switch (new_state)
         {
             case State.REST:
-                _unit.Animation.Play("idle");
+                _unit.Animation.Play("animation/idle");
                 break;
             case State.FOLLOW:
                 break;
@@ -128,7 +128,7 @@ public partial class AttackAbility : AbilityWithCommands
     async void Attack()
 	{
         _change_state(State.SWING);
-        _unit.Animation.Play("attack");
+        _unit.Animation.Play("animation/attack");
         await ToSignal(GetTree().CreateTimer(0.7f), SceneTreeTimer.SignalName.Timeout);
         _change_state(State.ATTACK);
     }
@@ -180,41 +180,27 @@ public partial class AttackAbility : AbilityWithCommands
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (_state == State.SWING || _reload) 
+        if (_state == State.SWING || _reload || _target == null) 
         {
             return;
         }
 
-        if (_state == State.REST && _target != null)
+        if (!_can_kill_that(_target))
         {
-            if (_can_kill_that(_target))
-            {
-                if (_is_in_attack_area())
-                {
-                    Attack();
-                }
-                else
-                {
-                    _change_state(State.FOLLOW);
-                    CommandMoveToUnit command_move = new CommandMoveToUnit(_unit, _target);
-                    SetCommand(command_move);
-                    InvokeNext();
-                }
-            }
-            else
-            {
-                _target = null;
-                End();
-            }
+            _target = null;
+            End();
         }
 
-        if (_state == State.FOLLOW) 
+        if (_is_in_attack_area())
         {
-            if (_is_in_attack_area())
-            {
-                UndoCommand();
-                Attack();
-            }
+            Attack();
+        }
+        else if(_state != State.FOLLOW)
+        {
+            _change_state(State.FOLLOW);
+            CommandMoveToUnit command_move = new CommandMoveToUnit(_unit, _target);
+            SetCommand(command_move);
+            InvokeNext();
         }
     }
 }

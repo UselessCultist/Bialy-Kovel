@@ -34,6 +34,7 @@ public interface IAbilities
 }
 
 //============ AWC (Ability With Commands) ============
+[Tool]
 public partial class AbilityWithCommands : Node2D, IComandQueue
 {
     protected AnimationPlayer _animation;
@@ -91,7 +92,7 @@ public partial class AbilityWithCommands : Node2D, IComandQueue
 }
 //=====================================================
 
-public partial class Game : Node
+public partial class Game : Node2D
 {
     [Signal] public delegate void GameReadyEventHandler();
 
@@ -138,31 +139,8 @@ public partial class Game : Node
         return list;
     }
 
-    public void Initializate()
-    {
-        _tilemap = GetFirstNode<TileMapAstar2D>(this);
-        EmitSignal(SignalName.GameReady);
-    }
-
     public override void _Ready()
     {
-        Initializate();
-        Player player = GetPlayerByID(1);
-        Player computer = new(-1, PlayerState.Computer);
-        AddChild(computer);
-
-        for (int i = 0; i < 1; i++)
-        {
-            AddChild(Factory.CreateWorker(player, new(i,1)));
-        }
-
-
-        //AddChild(Factory.CreateEnemySoldier(computer, new(1, 1)));
-        AddChild(Factory.CreateStone(new(-10, -10)));
-        AddChild(Factory.CreateStone(new(5, 5)));
-        AddChild(Factory.CreateStone(new(6, 2)));
-        AddChild(Factory.CreateStone(new(10, 20)));
-        AddChild(Factory.CreateStorage(player, new(50,5)));
-        AddChild(Factory.CreateStorage(player, new(-10, 10)));
+        _tilemap = GetFirstNode<TileMapAstar2D>(this);
     }
 }

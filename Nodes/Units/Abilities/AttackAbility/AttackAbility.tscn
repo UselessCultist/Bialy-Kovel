@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Nodes/Units/Abilities/AttackAbility/AttackAbility.cs" id="1_ptxg8"]
 
-[node name="AttackAbility" type="Node"]
+[node name="AttackAbility" type="Node2D"]
 script = ExtResource("1_ptxg8")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbme4yc5tsjyv"]
+[gd_scene load_steps=13 format=3 uid="uid://cbme4yc5tsjyv"]
 
 [ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_gs67f"]
 [ext_resource type="PackedScene" uid="uid://bu4io0nsqmwl0" path="res://Nodes/Units/Abilities/AI/AI.tscn" id="2_lne6w"]
@@ -7,9 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://c6qfhi3l23bam" path="res://Nodes/Units/Abilities/Selectable/SelectArea.tscn" id="5_1f4e0"]
 [ext_resource type="PackedScene" uid="uid://7n5ay50evhqs" path="res://Nodes/Units/Abilities/Sprite/Sprite.tscn" id="6_0bg4n"]
 [ext_resource type="PackedScene" uid="uid://d0qawmbo4pwoj" path="res://Nodes/Units/Abilities/NavigationAstar2D/MoveAbility.tscn" id="7_3d7oe"]
-[ext_resource type="PackedScene" uid="uid://c2rwag00l6hdd" path="res://Nodes/Units/Abilities/ExtractResource/ExtractResource.tscn" id="8_jwhep"]
+[ext_resource type="PackedScene" uid="uid://1vkvc1k4oyx0" path="res://Nodes/Units/Abilities/ExtractResource/ExtractResource.tscn" id="8_jwhep"]
 [ext_resource type="PackedScene" uid="uid://b1wdmsf3gfxnu" path="res://Nodes/Units/Abilities/Collision/Collision.tscn" id="9_8arns"]
 [ext_resource type="PackedScene" uid="uid://nye8j4p40e0d" path="res://Nodes/Units/Abilities/AttackAbility/AttackAbility.tscn" id="10_y5h03"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_68w5o"]
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix8jh"]
 radius = 16.0
@@ -31,10 +34,14 @@ position = Vector2(0, -14)
 position = Vector2(0, -14)
 
 [node name="MoveAbility" parent="." instance=ExtResource("7_3d7oe")]
-
-[node name="ExtractResource" parent="." instance=ExtResource("8_jwhep")]
+_speed = 70.0
+_interact_shape = SubResource("CircleShape2D_68w5o")
 
 [node name="Collision" parent="." instance=ExtResource("9_8arns")]
+cell_width = 1
+cell_height = 1
 shape = SubResource("CircleShape2D_ix8jh")
 
 [node name="AttackAbility" parent="." instance=ExtResource("10_y5h03")]
+
+[node name="ExtractResource" parent="." instance=ExtResource("8_jwhep")]

@@ -22,7 +22,6 @@ _type = 1
 
 [node name="Sprite" parent="." instance=ExtResource("2_3kv5a")]
 position = Vector2(0, -13)
-scale = Vector2(1, 1)
 texture = SubResource("AtlasTexture_223nn")
 
 [node name="SelectArea" parent="." instance=ExtResource("4_302sm")]
@@ -38,4 +37,6 @@ _maxHealth = 40.0
 [node name="Resource" parent="." instance=ExtResource("7_i0okr")]
 
 [node name="Collision" parent="." instance=ExtResource("8_6h8u4")]
+cell_width = 1
+cell_height = 1
 shape = SubResource("CircleShape2D_0vgsk")
