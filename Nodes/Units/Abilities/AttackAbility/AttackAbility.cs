@@ -178,7 +178,9 @@ public partial class AttackAbility : AbilityWithCommands
         _attack_shape.Shape = _shape;
         _attack_area.AddChild(_attack_shape);
 
-        _unit.AddChild(_attack_area);
+        _attack_area.Monitoring = true;
+
+        AddChild(_attack_area);
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

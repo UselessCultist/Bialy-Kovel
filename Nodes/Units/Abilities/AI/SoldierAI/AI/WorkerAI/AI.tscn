@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu4io0nsqmwl0"]
-
-[ext_resource type="Script" path="res://Nodes/Units/Abilities/AI/AI.cs" id="1_7o5qo"]
-
-[node name="AI" type="Node"]
-script = ExtResource("1_7o5qo")

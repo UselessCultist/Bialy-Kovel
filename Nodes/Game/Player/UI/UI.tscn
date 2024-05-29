@@ -108,7 +108,6 @@ texture_pressed = ExtResource("1_qgaj7")
 texture_hover = ExtResource("1_qgaj7")
 
 [node name="Help" type="TextureRect" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

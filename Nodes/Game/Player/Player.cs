@@ -89,7 +89,7 @@ public partial class Player : Node
 		{
             if (_cursor.UnderCursor is Character)
             {
-                Character _unitUnderCursor = _cursor.UnderCursor as Character;
+                Character _unitUnderCursor = _cursor.UnderCursor;
                 if (_unitUnderCursor.PlayerOwner.ID == _playerID)
                 {
                     if (!shift) _selectedUnits.Clear();
@@ -106,7 +106,7 @@ public partial class Player : Node
         {
             if (_cursor.UnderCursor is Character)
             {
-                Character _unitUnderCursor = _cursor.UnderCursor as Character;
+                Character _unitUnderCursor = _cursor.UnderCursor;
 
                 if (_unitUnderCursor.Type != Type.Resource) 
                 {

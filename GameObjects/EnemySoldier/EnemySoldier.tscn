@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://d1roex7kwa6lr"]
 
 [ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_xllmt"]
-[ext_resource type="PackedScene" uid="uid://bu4io0nsqmwl0" path="res://Nodes/Units/Abilities/AI/WorkerAI/AI.tscn" id="2_3dqkn"]
+[ext_resource type="PackedScene" uid="uid://bu4io0nsqmwl0" path="res://Nodes/Units/Abilities/AI/AI.tscn" id="2_3dqkn"]
 [ext_resource type="PackedScene" uid="uid://2n5b53lbjpuw" path="res://Nodes/Units/Abilities/Animation/AnimationAbility.tscn" id="3_18254"]
 [ext_resource type="PackedScene" uid="uid://c3l1kuj1tsmnj" path="res://Nodes/Units/Abilities/HealthAbility/HealthAbility.tscn" id="4_g7g52"]
 [ext_resource type="PackedScene" uid="uid://c6qfhi3l23bam" path="res://Nodes/Units/Abilities/Selectable/SelectArea.tscn" id="5_mfhmn"]
@@ -29,6 +29,8 @@ script = ExtResource("1_xllmt")
 
 [node name="HealthAbility" parent="." instance=ExtResource("4_g7g52")]
 scale = Vector2(0.5, 0.5)
+_health = 200.0
+_maxHealth = 200.0
 
 [node name="SelectArea" parent="." instance=ExtResource("5_mfhmn")]
 position = Vector2(0, -14)

@@ -1,42 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\",
+  "WorkspaceRootPath": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\bialy-kovel-master\\nodes\\units\\abilities\\extractresource\\extractresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\units\\abilities\\extractresource\\extractresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\bialy-kovel-master\\nodes\\game\\gamenode\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\game\\gamenode\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\bialy-kovel-master\\nodes\\game\\tilemapastar2d\\tilemapastar2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\game\\tilemapastar2d\\tilemapastar2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\bialy-kovel-master\\nodes\\game\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\game\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\bialy-kovel-master\\nodes\\units\\abilities\\navigationastar2d\\moveability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\units\\abilities\\navigationastar2d\\moveability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\bialy-kovel-master\\nodes\\units\\abilities\\collision\\collision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\units\\abilities\\collision\\collision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\bialy-kovel-master\\nodes\\units\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\units\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\bialy-kovel-master\\nodes\\units\\abilities\\ai\\ai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\github\\bialy-kovel\\nodes\\units\\abilities\\ai\\ai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\units\\abilities\\ai\\ai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\bialy-kovel-master\\nodes\\units\\abilities\\attackability\\attackability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\github\\bialy-kovel\\nodes\\game\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\game\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\github\\bialy-kovel\\nodes\\game\\player\\cursor\\cursor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\game\\player\\cursor\\cursor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\github\\bialy-kovel\\nodes\\units\\abilities\\attackability\\attackability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\units\\abilities\\attackability\\attackability.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\github\\bialy-kovel\\nodes\\units\\abilities\\collision\\collision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\units\\abilities\\collision\\collision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|c:\\users\\\u0438\u0440\u0435\u043D\u0430\\documents\\github\\bialy-kovel\\nodes\\game\\gamenode\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED809AC1-8829-481C-B74E-7D7492F2E877}|Bialy Kovel.csproj|solutionrelative:nodes\\game\\gamenode\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,120 +42,77 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AI.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Abilities\\AI\\AI.cs",
-              "RelativeDocumentMoniker": "Nodes\\Units\\Abilities\\AI\\AI.cs",
-              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Abilities\\AI\\AI.cs",
-              "RelativeToolTip": "Nodes\\Units\\Abilities\\AI\\AI.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T12:34:26.474Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AttackAbility.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Abilities\\AttackAbility\\AttackAbility.cs",
-              "RelativeDocumentMoniker": "Nodes\\Units\\Abilities\\AttackAbility\\AttackAbility.cs",
-              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Abilities\\AttackAbility\\AttackAbility.cs",
-              "RelativeToolTip": "Nodes\\Units\\Abilities\\AttackAbility\\AttackAbility.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAALQAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T12:13:24.1Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Character.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Character\\Character.cs",
-              "RelativeDocumentMoniker": "Nodes\\Units\\Character\\Character.cs",
-              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Character\\Character.cs",
-              "RelativeToolTip": "Nodes\\Units\\Character\\Character.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T12:11:54.419Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Collision.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Abilities\\Collision\\Collision.cs",
-              "RelativeDocumentMoniker": "Nodes\\Units\\Abilities\\Collision\\Collision.cs",
-              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Abilities\\Collision\\Collision.cs",
-              "RelativeToolTip": "Nodes\\Units\\Abilities\\Collision\\Collision.cs",
-              "ViewState": "AQIAALIAAAAAAAAAAAAAAMoAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T12:08:27.819Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MoveAbility.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Abilities\\NavigationAstar2D\\MoveAbility.cs",
-              "RelativeDocumentMoniker": "Nodes\\Units\\Abilities\\NavigationAstar2D\\MoveAbility.cs",
-              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Abilities\\NavigationAstar2D\\MoveAbility.cs",
-              "RelativeToolTip": "Nodes\\Units\\Abilities\\NavigationAstar2D\\MoveAbility.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T11:57:43.37Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Game\\Player\\Player.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Game\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Nodes\\Game\\Player\\Player.cs",
-              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Game\\Player\\Player.cs",
+              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Game\\Player\\Player.cs",
               "RelativeToolTip": "Nodes\\Game\\Player\\Player.cs",
-              "ViewState": "AQIAAEEAAAAAAAAAAAA5wDIAAAAeAAAA",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAAAD0AAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T09:29:51.413Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ExtractResource.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Abilities\\ExtractResource\\ExtractResource.cs",
-              "RelativeDocumentMoniker": "Nodes\\Units\\Abilities\\ExtractResource\\ExtractResource.cs",
-              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Units\\Abilities\\ExtractResource\\ExtractResource.cs",
-              "RelativeToolTip": "Nodes\\Units\\Abilities\\ExtractResource\\ExtractResource.cs",
-              "ViewState": "AQIAAIAAAAAAAAAAAAAAAKYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T09:30:23.017Z",
+              "WhenOpened": "2024-05-24T14:42:29.591Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "TileMapAstar2D.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Game\\TileMapAstar2D\\TileMapAstar2D.cs",
-              "RelativeDocumentMoniker": "Nodes\\Game\\TileMapAstar2D\\TileMapAstar2D.cs",
-              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Game\\TileMapAstar2D\\TileMapAstar2D.cs",
-              "RelativeToolTip": "Nodes\\Game\\TileMapAstar2D\\TileMapAstar2D.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Title": "Cursor.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Game\\Player\\Cursor\\Cursor.cs",
+              "RelativeDocumentMoniker": "Nodes\\Game\\Player\\Cursor\\Cursor.cs",
+              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Game\\Player\\Cursor\\Cursor.cs",
+              "RelativeToolTip": "Nodes\\Game\\Player\\Cursor\\Cursor.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T09:03:09.204Z",
+              "WhenOpened": "2024-05-24T14:40:37.158Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Game\\GameNode\\Game.cs",
+              "RelativeDocumentMoniker": "Nodes\\Game\\GameNode\\Game.cs",
+              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Game\\GameNode\\Game.cs",
+              "RelativeToolTip": "Nodes\\Game\\GameNode\\Game.cs",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAAACgAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T14:16:30.585Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Collision.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Units\\Abilities\\Collision\\Collision.cs",
+              "RelativeDocumentMoniker": "Nodes\\Units\\Abilities\\Collision\\Collision.cs",
+              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Units\\Abilities\\Collision\\Collision.cs",
+              "RelativeToolTip": "Nodes\\Units\\Abilities\\Collision\\Collision.cs",
+              "ViewState": "AQIAAKsAAAAAAAAAAAAYwLYAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T14:09:28.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AI.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Units\\Abilities\\AI\\AI.cs",
+              "RelativeDocumentMoniker": "Nodes\\Units\\Abilities\\AI\\AI.cs",
+              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Units\\Abilities\\AI\\AI.cs",
+              "RelativeToolTip": "Nodes\\Units\\Abilities\\AI\\AI.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T14:04:34.595Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Game.cs",
-              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Game\\GameNode\\Game.cs",
-              "RelativeDocumentMoniker": "Nodes\\Game\\GameNode\\Game.cs",
-              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\Bialy-Kovel-master\\Nodes\\Game\\GameNode\\Game.cs",
-              "RelativeToolTip": "Nodes\\Game\\GameNode\\Game.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHoAAAAiAAAA",
+              "DocumentIndex": 3,
+              "Title": "AttackAbility.cs",
+              "DocumentMoniker": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Units\\Abilities\\AttackAbility\\AttackAbility.cs",
+              "RelativeDocumentMoniker": "Nodes\\Units\\Abilities\\AttackAbility\\AttackAbility.cs",
+              "ToolTip": "C:\\Users\\\u0418\u0440\u0435\u043D\u0430\\Documents\\GitHub\\Bialy-Kovel\\Nodes\\Units\\Abilities\\AttackAbility\\AttackAbility.cs",
+              "RelativeToolTip": "Nodes\\Units\\Abilities\\AttackAbility\\AttackAbility.cs",
+              "ViewState": "AQIAAKcAAAAAAAAAAAAAALMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T09:00:11.645Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-24T14:03:55.295Z"
             }
           ]
         }

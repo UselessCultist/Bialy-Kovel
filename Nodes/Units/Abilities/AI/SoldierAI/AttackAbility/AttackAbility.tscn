@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://nye8j4p40e0d"]
-
-[ext_resource type="Script" path="res://Nodes/Units/Abilities/AttackAbility/AttackAbility.cs" id="1_ptxg8"]
-
-[node name="AttackAbility" type="Node2D"]
-script = ExtResource("1_ptxg8")

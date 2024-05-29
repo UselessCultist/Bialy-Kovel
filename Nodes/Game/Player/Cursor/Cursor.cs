@@ -1,15 +1,15 @@
 using Godot;
 using System;
 
-public partial class Cursor : Node2D
+public partial class Cursor : Area2D
 {
     enum State { DEFAULT, BEAM, SET, HIDDEN }
 
-    Node2D _underCursor;
+    Character _underCursor;
     State _state = State.DEFAULT;
     AnimatedSprite2D arrow;
 
-    public Node2D UnderCursor { get { return _underCursor; } }
+    public Character UnderCursor { get { return _underCursor; } }
 
     private void _change_state(State new_state)
     {
@@ -45,9 +45,12 @@ public partial class Cursor : Node2D
         Position = GetGlobalMousePosition();
     }
 
-    public void OnBodyEntered(Node2D unit)
+    public void OnBodyEntered(Node2D node)
     {
-        _underCursor = unit;
+        if (node is Character unit) 
+        {
+            _underCursor = unit;
+        }
     }
 
     public void OnBodyExited(Node2D unit)

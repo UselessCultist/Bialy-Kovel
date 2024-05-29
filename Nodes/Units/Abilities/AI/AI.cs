@@ -7,8 +7,8 @@ public partial class AI : Node
 
     Character _unit;
 	State _state = State.ON;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+
+	public async override void _Ready()
 	{
 		if (GetParent() is Character)
 		{
@@ -18,6 +18,10 @@ public partial class AI : Node
 		{
 			throw new Exception("Parent can't use abilities");
 		}
+
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+
+		Area2D attack_area = _unit.GetAbility<AttackAbility>().GetAttackArea;
 
         _unit.GetAbility<AttackAbility>().GetAttackArea.AreaEntered += (Area2D area) => 
 		{
@@ -31,7 +35,6 @@ public partial class AI : Node
 		};
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if (_state == State.OFF) { return; }

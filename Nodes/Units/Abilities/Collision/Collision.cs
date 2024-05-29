@@ -180,6 +180,7 @@ public partial class Collision : Node2D
             _area.AddChild(_collision);
         }
 
+        _area.Monitorable = true;
         AddChild(_area);
 
         changeCollisionPosition();
