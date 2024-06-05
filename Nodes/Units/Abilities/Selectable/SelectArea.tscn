@@ -1,11 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6qfhi3l23bam"]
+[gd_scene load_steps=2 format=3 uid="uid://c6qfhi3l23bam"]
 
 [ext_resource type="Script" path="res://Nodes/Units/Abilities/Selectable/SelectArea.cs" id="1_dk7yc"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jlkw0"]
-radius = 7.0
-height = 32.0
-
-[node name="SelectArea" type="CollisionShape2D"]
-shape = SubResource("CapsuleShape2D_jlkw0")
+[node name="SelectArea" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_dk7yc")

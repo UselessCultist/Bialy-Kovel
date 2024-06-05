@@ -12,6 +12,6 @@ public partial class Camera : Camera2D
         _velocity.Y = Input.GetAxis("ui_up", "ui_down");
 
         _velocity *= (float)(_speed * delta);
-        Position += _velocity;
+        GlobalPosition += _velocity;
     }
 }

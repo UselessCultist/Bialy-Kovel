@@ -13,7 +13,7 @@
 atlas = ExtResource("2_svpk5")
 region = Rect2(128, 16, 16, 16)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cctwx"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_eielt"]
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3b8py"]
@@ -27,7 +27,7 @@ _type = 1
 texture = SubResource("AtlasTexture_1btho")
 
 [node name="SelectArea" parent="." instance=ExtResource("3_ojuxx")]
-shape = SubResource("CircleShape2D_cctwx")
+Shape = SubResource("CircleShape2D_eielt")
 
 [node name="HealthAbility" parent="." instance=ExtResource("4_1ktim")]
 position = Vector2(0, 4)

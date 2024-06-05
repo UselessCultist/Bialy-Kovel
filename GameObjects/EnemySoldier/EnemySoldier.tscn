@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1roex7kwa6lr"]
+[gd_scene load_steps=15 format=3 uid="uid://d1roex7kwa6lr"]
 
 [ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_xllmt"]
 [ext_resource type="PackedScene" uid="uid://bu4io0nsqmwl0" path="res://Nodes/Units/Abilities/AI/AI.tscn" id="2_3dqkn"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://d0qawmbo4pwoj" path="res://Nodes/Units/Abilities/NavigationAstar2D/MoveAbility.tscn" id="7_ihv4k"]
 [ext_resource type="PackedScene" uid="uid://b1wdmsf3gfxnu" path="res://Nodes/Units/Abilities/Collision/Collision.tscn" id="8_fcyab"]
 [ext_resource type="PackedScene" uid="uid://nye8j4p40e0d" path="res://Nodes/Units/Abilities/AttackAbility/AttackAbility.tscn" id="9_icrfn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sn1h"]
+size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ff0jf"]
 size = Vector2(32, 32)
@@ -34,6 +37,7 @@ _maxHealth = 200.0
 
 [node name="SelectArea" parent="." instance=ExtResource("5_mfhmn")]
 position = Vector2(0, -14)
+Shape = SubResource("RectangleShape2D_6sn1h")
 
 [node name="Sprite" parent="." instance=ExtResource("6_ya4td")]
 position = Vector2(0, -14)
@@ -50,3 +54,4 @@ shape = SubResource("CircleShape2D_65c7n")
 
 [node name="AttackAbility" parent="." instance=ExtResource("9_icrfn")]
 _shape = SubResource("RectangleShape2D_bjlc5")
+_damage = 25

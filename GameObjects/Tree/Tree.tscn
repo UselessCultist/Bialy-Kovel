@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcwcj4ilbehv3"]
+[gd_scene load_steps=12 format=3 uid="uid://dcwcj4ilbehv3"]
 
 [ext_resource type="Texture2D" uid="uid://dooderkacvupn" path="res://Texture/Game/Resource/Basic Grass Biom things 1.png" id="1_pwled"]
 [ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_tn5ct"]
@@ -13,6 +13,9 @@
 atlas = ExtResource("1_pwled")
 region = Rect2(16, 0, 32, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55dl0"]
+size = Vector2(16, 32)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0vgsk"]
 radius = 8.0
 
@@ -26,6 +29,7 @@ texture = SubResource("AtlasTexture_223nn")
 
 [node name="SelectArea" parent="." instance=ExtResource("4_302sm")]
 position = Vector2(0, -13)
+Shape = SubResource("RectangleShape2D_55dl0")
 
 [node name="HealthAbility" parent="." instance=ExtResource("5_ypcum")]
 scale = Vector2(0.5, 0.5)

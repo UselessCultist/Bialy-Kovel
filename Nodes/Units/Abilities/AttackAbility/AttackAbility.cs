@@ -44,18 +44,23 @@ public class CommandAttack : ICommand
 //=====================================================
 public partial class AttackAbility : AbilityWithCommands
 {
+    public event EventHandler AttackEvent = () => { };
+
     public EventHandler End = () => { };
     public EventHandler CharacterEnter = () => { };
+    EventHandler DieHandler = () => { };
+
     enum State { REST, FOLLOW, SWING, ATTACK, RELOAD }
 
     Character _unit;
     Character _target;
+    HealthAbility _target_health;
     Area2D _attack_area = new();
     Area2D _target_area;
     CollisionShape2D _attack_shape = new();
     [Export] RectangleShape2D _shape;
 
-    int _damage = 10;
+    [Export] int _damage = 10;
     bool _reload = false;
     State _state = State.REST;
 
@@ -124,6 +129,10 @@ public partial class AttackAbility : AbilityWithCommands
     {
         _target = target;
         _target_area = _target.GetAbility<Collision>().CollisionArea;
+        _target_health = _target.GetAbility<HealthAbility>();
+
+        DieHandler = () => { Stop(); };
+        _target_health.DieEvent += DieHandler;
     }
 
     async void Attack()
@@ -131,7 +140,9 @@ public partial class AttackAbility : AbilityWithCommands
         _change_state(State.SWING);
         _unit.Animation.Play("animation/attack");
         await ToSignal(GetTree().CreateTimer(0.7f), SceneTreeTimer.SignalName.Timeout);
+        if (_target == null) { return; }
         _change_state(State.ATTACK);
+        AttackEvent();
     }
 
     async void Reload() 
@@ -147,6 +158,8 @@ public partial class AttackAbility : AbilityWithCommands
     {
         _change_state(State.REST);
         StopCommands();
+
+        _target_health.DieEvent -= DieHandler;
 
         _reload = false;
         _target = null;

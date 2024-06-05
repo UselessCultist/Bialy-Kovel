@@ -470,6 +470,9 @@ position = Vector2(151, 343)
 [node name="Tree2" parent="GameObjects" instance=ExtResource("6_cbck1")]
 position = Vector2(197, 376)
 
+[node name="Tree10" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(159, 389)
+
 [node name="Tree4" parent="GameObjects" instance=ExtResource("6_cbck1")]
 position = Vector2(160, -104)
 
@@ -495,7 +498,1619 @@ position = Vector2(334, 19)
 position = Vector2(513, 278)
 PlayerOwner = NodePath("../../Player")
 
+[node name="Tree7" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(326, 289)
+
+[node name="Tree8" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(371, 399)
+
+[node name="Tree9" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(341, 352)
+
+[node name="Tree11" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(388, 362)
+
+[node name="Tree12" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(384, 318)
+
+[node name="Tree13" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(174, 357)
+
+[node name="Tree14" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(133, 381)
+
+[node name="Tree15" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(179, 414)
+
+[node name="Tree16" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(141, 427)
+
+[node name="Tree17" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(157, 250)
+
+[node name="Tree18" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(116, 274)
+
+[node name="Tree19" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(162, 307)
+
+[node name="Tree20" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(124, 320)
+
+[node name="Tree21" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(137, 227)
+
+[node name="Tree22" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(96, 251)
+
+[node name="Tree23" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(142, 284)
+
+[node name="Tree24" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(104, 297)
+
+[node name="Tree25" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-342, 296)
+
+[node name="Tree26" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-383, 320)
+
+[node name="Tree27" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-337, 353)
+
+[node name="Tree28" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-375, 366)
+
+[node name="Tree29" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-317, 311)
+
+[node name="Tree30" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-358, 335)
+
+[node name="Tree31" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-312, 368)
+
+[node name="Tree32" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-350, 381)
+
+[node name="Tree33" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-435, 336)
+
+[node name="Tree34" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-476, 360)
+
+[node name="Tree35" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-430, 393)
+
+[node name="Tree36" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-468, 406)
+
+[node name="Tree37" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-410, 351)
+
+[node name="Tree38" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-451, 375)
+
+[node name="Tree39" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-405, 408)
+
+[node name="Tree40" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-443, 421)
+
+[node name="Tree41" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-403, 214)
+
+[node name="Tree42" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-444, 238)
+
+[node name="Tree43" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-398, 271)
+
+[node name="Tree44" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-436, 284)
+
+[node name="Tree45" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-378, 229)
+
+[node name="Tree46" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-419, 253)
+
+[node name="Tree47" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-373, 286)
+
+[node name="Tree48" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-411, 299)
+
+[node name="Tree49" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-495, 248)
+
+[node name="Tree50" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-536, 272)
+
+[node name="Tree51" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-490, 305)
+
+[node name="Tree52" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-528, 318)
+
+[node name="Tree53" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-470, 263)
+
+[node name="Tree54" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-511, 287)
+
+[node name="Tree55" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-465, 320)
+
+[node name="Tree56" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-503, 333)
+
+[node name="Tree57" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(2324, 1465)
+
+[node name="Tree58" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(2283, 1489)
+
+[node name="Tree59" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(2329, 1522)
+
+[node name="Tree60" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(2291, 1535)
+
+[node name="Tree61" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(2349, 1480)
+
+[node name="Tree62" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(2308, 1504)
+
+[node name="Tree63" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(2354, 1537)
+
+[node name="Tree64" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(2316, 1550)
+
+[node name="Tree65" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-576, 284)
+
+[node name="Tree66" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-617, 308)
+
+[node name="Tree67" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-571, 341)
+
+[node name="Tree68" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-609, 354)
+
+[node name="Tree69" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-551, 299)
+
+[node name="Tree70" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-592, 323)
+
+[node name="Tree71" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-546, 356)
+
+[node name="Tree72" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-584, 369)
+
+[node name="Tree73" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-669, 324)
+
+[node name="Tree74" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-710, 348)
+
+[node name="Tree75" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-664, 381)
+
+[node name="Tree76" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-702, 394)
+
+[node name="Tree77" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-644, 339)
+
+[node name="Tree78" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-685, 363)
+
+[node name="Tree79" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-639, 396)
+
+[node name="Tree80" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-677, 409)
+
+[node name="Tree81" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-637, 202)
+
+[node name="Tree82" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-678, 226)
+
+[node name="Tree83" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-632, 259)
+
+[node name="Tree84" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-670, 272)
+
+[node name="Tree85" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-612, 217)
+
+[node name="Tree86" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-653, 241)
+
+[node name="Tree87" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-607, 274)
+
+[node name="Tree88" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-645, 287)
+
+[node name="Tree89" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-729, 236)
+
+[node name="Tree90" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-770, 260)
+
+[node name="Tree91" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-724, 293)
+
+[node name="Tree92" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-762, 306)
+
+[node name="Tree93" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-704, 251)
+
+[node name="Tree94" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-745, 275)
+
+[node name="Tree95" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-699, 308)
+
+[node name="Tree96" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-737, 321)
+
+[node name="Tree97" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-465, 464)
+
+[node name="Tree98" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-506, 488)
+
+[node name="Tree99" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-460, 521)
+
+[node name="Tree100" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-498, 534)
+
+[node name="Tree101" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-440, 479)
+
+[node name="Tree102" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-481, 503)
+
+[node name="Tree103" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-435, 536)
+
+[node name="Tree104" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-473, 549)
+
+[node name="Tree105" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-558, 504)
+
+[node name="Tree106" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-599, 528)
+
+[node name="Tree107" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-553, 561)
+
+[node name="Tree108" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-591, 574)
+
+[node name="Tree109" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-533, 519)
+
+[node name="Tree110" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-574, 543)
+
+[node name="Tree111" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-528, 576)
+
+[node name="Tree112" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-566, 589)
+
+[node name="Tree113" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-526, 382)
+
+[node name="Tree114" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-567, 406)
+
+[node name="Tree115" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-521, 439)
+
+[node name="Tree116" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-559, 452)
+
+[node name="Tree117" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-501, 397)
+
+[node name="Tree118" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-542, 421)
+
+[node name="Tree119" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-496, 454)
+
+[node name="Tree120" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-534, 467)
+
+[node name="Tree121" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-618, 416)
+
+[node name="Tree122" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-659, 440)
+
+[node name="Tree123" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-613, 473)
+
+[node name="Tree124" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-651, 486)
+
+[node name="Tree125" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-593, 431)
+
+[node name="Tree126" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-634, 455)
+
+[node name="Tree127" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-588, 488)
+
+[node name="Tree128" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-626, 501)
+
+[node name="Tree129" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1362, -441)
+
+[node name="Tree130" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1403, -417)
+
+[node name="Tree131" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1357, -384)
+
+[node name="Tree132" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1395, -371)
+
+[node name="Tree133" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1337, -426)
+
+[node name="Tree134" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1378, -402)
+
+[node name="Tree135" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1332, -369)
+
+[node name="Tree136" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1370, -356)
+
+[node name="Tree137" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1455, -401)
+
+[node name="Tree138" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1496, -377)
+
+[node name="Tree139" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1450, -344)
+
+[node name="Tree140" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1488, -331)
+
+[node name="Tree141" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1430, -386)
+
+[node name="Tree142" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1471, -362)
+
+[node name="Tree143" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1425, -329)
+
+[node name="Tree144" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1463, -316)
+
+[node name="Tree145" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1423, -523)
+
+[node name="Tree146" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1464, -499)
+
+[node name="Tree147" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1418, -466)
+
+[node name="Tree148" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1456, -453)
+
+[node name="Tree149" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1398, -508)
+
+[node name="Tree150" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1439, -484)
+
+[node name="Tree151" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1393, -451)
+
+[node name="Tree152" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1431, -438)
+
+[node name="Tree153" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1515, -489)
+
+[node name="Tree154" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1556, -465)
+
+[node name="Tree155" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1510, -432)
+
+[node name="Tree156" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1548, -419)
+
+[node name="Tree157" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1490, -474)
+
+[node name="Tree158" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1531, -450)
+
+[node name="Tree159" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1485, -417)
+
+[node name="Tree160" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1523, -404)
+
+[node name="Tree161" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1036, -430)
+
+[node name="Tree162" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1077, -406)
+
+[node name="Tree163" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1031, -373)
+
+[node name="Tree164" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1069, -360)
+
+[node name="Tree165" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1011, -415)
+
+[node name="Tree166" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1052, -391)
+
+[node name="Tree167" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1006, -358)
+
+[node name="Tree168" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1044, -345)
+
+[node name="Tree169" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1129, -390)
+
+[node name="Tree170" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1170, -366)
+
+[node name="Tree171" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1124, -333)
+
+[node name="Tree172" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1162, -320)
+
+[node name="Tree173" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1104, -375)
+
+[node name="Tree174" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1145, -351)
+
+[node name="Tree175" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1099, -318)
+
+[node name="Tree176" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1137, -305)
+
+[node name="Tree177" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1097, -512)
+
+[node name="Tree178" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1138, -488)
+
+[node name="Tree179" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1092, -455)
+
+[node name="Tree180" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1130, -442)
+
+[node name="Tree181" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1072, -497)
+
+[node name="Tree182" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1113, -473)
+
+[node name="Tree183" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1067, -440)
+
+[node name="Tree184" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1105, -427)
+
+[node name="Tree185" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1189, -478)
+
+[node name="Tree186" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1230, -454)
+
+[node name="Tree187" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1184, -421)
+
+[node name="Tree188" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1222, -408)
+
+[node name="Tree189" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1164, -463)
+
+[node name="Tree190" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1205, -439)
+
+[node name="Tree191" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1159, -406)
+
+[node name="Tree192" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1197, -393)
+
+[node name="Tree193" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1440, -135)
+
+[node name="Tree194" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1399, -111)
+
+[node name="Tree195" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1445, -78)
+
+[node name="Tree196" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1407, -65)
+
+[node name="Tree197" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1465, -120)
+
+[node name="Tree198" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1424, -96)
+
+[node name="Tree199" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1470, -63)
+
+[node name="Tree200" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1432, -50)
+
+[node name="Tree201" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1347, -95)
+
+[node name="Tree202" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1306, -71)
+
+[node name="Tree203" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1352, -38)
+
+[node name="Tree204" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1314, -25)
+
+[node name="Tree205" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1372, -80)
+
+[node name="Tree206" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1331, -56)
+
+[node name="Tree207" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1377, -23)
+
+[node name="Tree208" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1339, -10)
+
+[node name="Tree209" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1379, -217)
+
+[node name="Tree210" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1338, -193)
+
+[node name="Tree211" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1384, -160)
+
+[node name="Tree212" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1346, -147)
+
+[node name="Tree213" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1404, -202)
+
+[node name="Tree214" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1363, -178)
+
+[node name="Tree215" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1409, -145)
+
+[node name="Tree216" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1371, -132)
+
+[node name="Tree217" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1287, -183)
+
+[node name="Tree218" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1246, -159)
+
+[node name="Tree219" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1292, -126)
+
+[node name="Tree220" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1254, -113)
+
+[node name="Tree221" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1312, -168)
+
+[node name="Tree222" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1271, -144)
+
+[node name="Tree223" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1317, -111)
+
+[node name="Tree224" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1279, -98)
+
+[node name="Tree225" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(40, 987)
+
+[node name="Tree226" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1, 1011)
+
+[node name="Tree227" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(45, 1044)
+
+[node name="Tree228" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(7, 1057)
+
+[node name="Tree229" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(65, 1002)
+
+[node name="Tree230" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(24, 1026)
+
+[node name="Tree231" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(70, 1059)
+
+[node name="Tree232" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(32, 1072)
+
+[node name="Tree233" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-53, 1027)
+
+[node name="Tree234" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-94, 1051)
+
+[node name="Tree235" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-48, 1084)
+
+[node name="Tree236" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-86, 1097)
+
+[node name="Tree237" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-28, 1042)
+
+[node name="Tree238" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-69, 1066)
+
+[node name="Tree239" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-23, 1099)
+
+[node name="Tree240" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-61, 1112)
+
+[node name="Tree241" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-21, 905)
+
+[node name="Tree242" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-62, 929)
+
+[node name="Tree243" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-16, 962)
+
+[node name="Tree244" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-54, 975)
+
+[node name="Tree245" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(4, 920)
+
+[node name="Tree246" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-37, 944)
+
+[node name="Tree247" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(9, 977)
+
+[node name="Tree248" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-29, 990)
+
+[node name="Tree249" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-113, 939)
+
+[node name="Tree250" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-154, 963)
+
+[node name="Tree251" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-108, 996)
+
+[node name="Tree252" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-146, 1009)
+
+[node name="Tree253" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-88, 954)
+
+[node name="Tree254" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-129, 978)
+
+[node name="Tree255" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-83, 1011)
+
+[node name="Tree256" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-121, 1024)
+
+[node name="Tree257" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(237, 934)
+
+[node name="Tree258" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(196, 958)
+
+[node name="Tree259" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(242, 991)
+
+[node name="Tree260" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(204, 1004)
+
+[node name="Tree261" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(262, 949)
+
+[node name="Tree262" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(221, 973)
+
+[node name="Tree263" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(267, 1006)
+
+[node name="Tree264" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(229, 1019)
+
+[node name="Tree265" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(144, 974)
+
+[node name="Tree266" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(103, 998)
+
+[node name="Tree267" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(149, 1031)
+
+[node name="Tree268" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(111, 1044)
+
+[node name="Tree269" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(169, 989)
+
+[node name="Tree270" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(128, 1013)
+
+[node name="Tree271" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(174, 1046)
+
+[node name="Tree272" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(136, 1059)
+
+[node name="Tree273" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(176, 852)
+
+[node name="Tree274" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(135, 876)
+
+[node name="Tree275" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(181, 909)
+
+[node name="Tree276" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(143, 922)
+
+[node name="Tree277" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(201, 867)
+
+[node name="Tree278" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(160, 891)
+
+[node name="Tree279" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(206, 924)
+
+[node name="Tree280" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(168, 937)
+
+[node name="Tree281" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(84, 886)
+
+[node name="Tree282" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(43, 910)
+
+[node name="Tree283" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(89, 943)
+
+[node name="Tree284" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(51, 956)
+
+[node name="Tree285" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(109, 901)
+
+[node name="Tree286" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(68, 925)
+
+[node name="Tree287" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(114, 958)
+
+[node name="Tree288" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(76, 971)
+
+[node name="Tree289" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1026, 960)
+
+[node name="Tree290" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(985, 984)
+
+[node name="Tree291" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1031, 1017)
+
+[node name="Tree292" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(993, 1030)
+
+[node name="Tree293" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1051, 975)
+
+[node name="Tree294" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1010, 999)
+
+[node name="Tree295" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1056, 1032)
+
+[node name="Tree296" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1018, 1045)
+
+[node name="Tree297" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(933, 1000)
+
+[node name="Tree298" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(892, 1024)
+
+[node name="Tree299" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(938, 1057)
+
+[node name="Tree300" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(900, 1070)
+
+[node name="Tree301" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(958, 1015)
+
+[node name="Tree302" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(917, 1039)
+
+[node name="Tree303" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(963, 1072)
+
+[node name="Tree304" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(925, 1085)
+
+[node name="Tree305" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(965, 878)
+
+[node name="Tree306" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(924, 902)
+
+[node name="Tree307" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(970, 935)
+
+[node name="Tree308" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(932, 948)
+
+[node name="Tree309" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(990, 893)
+
+[node name="Tree310" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(949, 917)
+
+[node name="Tree311" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(995, 950)
+
+[node name="Tree312" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(957, 963)
+
+[node name="Tree313" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(873, 912)
+
+[node name="Tree314" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(832, 936)
+
+[node name="Tree315" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(878, 969)
+
+[node name="Tree316" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(840, 982)
+
+[node name="Tree317" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(898, 927)
+
+[node name="Tree318" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(857, 951)
+
+[node name="Tree319" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(903, 984)
+
+[node name="Tree320" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(865, 997)
+
+[node name="Tree321" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1294, -1437)
+
+[node name="Tree322" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1335, -1413)
+
+[node name="Tree323" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1289, -1380)
+
+[node name="Tree324" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1327, -1367)
+
+[node name="Tree325" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1269, -1422)
+
+[node name="Tree326" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1310, -1398)
+
+[node name="Tree327" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1264, -1365)
+
+[node name="Tree328" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1302, -1352)
+
+[node name="Tree329" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1387, -1397)
+
+[node name="Tree330" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1428, -1373)
+
+[node name="Tree331" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1382, -1340)
+
+[node name="Tree332" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1420, -1327)
+
+[node name="Tree333" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1362, -1382)
+
+[node name="Tree334" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1403, -1358)
+
+[node name="Tree335" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1357, -1325)
+
+[node name="Tree336" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1395, -1312)
+
+[node name="Tree337" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1355, -1519)
+
+[node name="Tree338" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1396, -1495)
+
+[node name="Tree339" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1350, -1462)
+
+[node name="Tree340" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1388, -1449)
+
+[node name="Tree341" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1330, -1504)
+
+[node name="Tree342" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1371, -1480)
+
+[node name="Tree343" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1325, -1447)
+
+[node name="Tree344" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1363, -1434)
+
+[node name="Tree345" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1447, -1485)
+
+[node name="Tree346" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1488, -1461)
+
+[node name="Tree347" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1442, -1428)
+
+[node name="Tree348" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1480, -1415)
+
+[node name="Tree349" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1422, -1470)
+
+[node name="Tree350" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1463, -1446)
+
+[node name="Tree351" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1417, -1413)
+
+[node name="Tree352" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1455, -1400)
+
+[node name="Tree353" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1107, -1498)
+
+[node name="Tree354" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1148, -1474)
+
+[node name="Tree355" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1102, -1441)
+
+[node name="Tree356" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1140, -1428)
+
+[node name="Tree357" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1082, -1483)
+
+[node name="Tree358" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1123, -1459)
+
+[node name="Tree359" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1077, -1426)
+
+[node name="Tree360" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1115, -1413)
+
+[node name="Tree361" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1200, -1458)
+
+[node name="Tree362" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1241, -1434)
+
+[node name="Tree363" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1195, -1401)
+
+[node name="Tree364" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1233, -1388)
+
+[node name="Tree365" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1175, -1443)
+
+[node name="Tree366" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1216, -1419)
+
+[node name="Tree367" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1170, -1386)
+
+[node name="Tree368" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1208, -1373)
+
+[node name="Tree369" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1168, -1580)
+
+[node name="Tree370" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1209, -1556)
+
+[node name="Tree371" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1163, -1523)
+
+[node name="Tree372" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1201, -1510)
+
+[node name="Tree373" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1143, -1565)
+
+[node name="Tree374" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1184, -1541)
+
+[node name="Tree375" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1138, -1508)
+
+[node name="Tree376" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1176, -1495)
+
+[node name="Tree377" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1260, -1546)
+
+[node name="Tree378" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1301, -1522)
+
+[node name="Tree379" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1255, -1489)
+
+[node name="Tree380" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1293, -1476)
+
+[node name="Tree381" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1235, -1531)
+
+[node name="Tree382" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1276, -1507)
+
+[node name="Tree383" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1230, -1474)
+
+[node name="Tree384" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1268, -1461)
+
+[node name="Tree385" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-860, -1475)
+
+[node name="Tree386" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-901, -1451)
+
+[node name="Tree387" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-855, -1418)
+
+[node name="Tree388" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-893, -1405)
+
+[node name="Tree389" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-835, -1460)
+
+[node name="Tree390" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-876, -1436)
+
+[node name="Tree391" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-830, -1403)
+
+[node name="Tree392" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-868, -1390)
+
+[node name="Tree393" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-953, -1435)
+
+[node name="Tree394" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-994, -1411)
+
+[node name="Tree395" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-948, -1378)
+
+[node name="Tree396" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-986, -1365)
+
+[node name="Tree397" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-928, -1420)
+
+[node name="Tree398" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-969, -1396)
+
+[node name="Tree399" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-923, -1363)
+
+[node name="Tree400" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-961, -1350)
+
+[node name="Tree401" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-921, -1557)
+
+[node name="Tree402" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-962, -1533)
+
+[node name="Tree403" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-916, -1500)
+
+[node name="Tree404" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-954, -1487)
+
+[node name="Tree405" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-896, -1542)
+
+[node name="Tree406" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-937, -1518)
+
+[node name="Tree407" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-891, -1485)
+
+[node name="Tree408" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-929, -1472)
+
+[node name="Tree409" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1013, -1523)
+
+[node name="Tree410" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1054, -1499)
+
+[node name="Tree411" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1008, -1466)
+
+[node name="Tree412" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1046, -1453)
+
+[node name="Tree413" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-988, -1508)
+
+[node name="Tree414" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1029, -1484)
+
+[node name="Tree415" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-983, -1451)
+
+[node name="Tree416" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(-1021, -1438)
+
+[node name="Tree417" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(439, -764)
+
+[node name="Tree418" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(398, -740)
+
+[node name="Tree419" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(444, -707)
+
+[node name="Tree420" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(406, -694)
+
+[node name="Tree421" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(464, -749)
+
+[node name="Tree422" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(423, -725)
+
+[node name="Tree423" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(469, -692)
+
+[node name="Tree424" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(431, -679)
+
+[node name="Tree425" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(346, -724)
+
+[node name="Tree426" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(305, -700)
+
+[node name="Tree427" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(351, -667)
+
+[node name="Tree428" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(313, -654)
+
+[node name="Tree429" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(371, -709)
+
+[node name="Tree430" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(330, -685)
+
+[node name="Tree431" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(376, -652)
+
+[node name="Tree432" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(338, -639)
+
+[node name="Tree433" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(378, -846)
+
+[node name="Tree434" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(337, -822)
+
+[node name="Tree435" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(383, -789)
+
+[node name="Tree436" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(345, -776)
+
+[node name="Tree437" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(403, -831)
+
+[node name="Tree438" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(362, -807)
+
+[node name="Tree439" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(408, -774)
+
+[node name="Tree440" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(370, -761)
+
+[node name="Tree441" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(286, -812)
+
+[node name="Tree442" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(245, -788)
+
+[node name="Tree443" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(291, -755)
+
+[node name="Tree444" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(253, -742)
+
+[node name="Tree445" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(311, -797)
+
+[node name="Tree446" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(270, -773)
+
+[node name="Tree447" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(316, -740)
+
+[node name="Tree448" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(278, -727)
+
+[node name="Tree449" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(636, -835)
+
+[node name="Tree450" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(595, -811)
+
+[node name="Tree451" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(641, -778)
+
+[node name="Tree452" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(603, -765)
+
+[node name="Tree453" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(661, -820)
+
+[node name="Tree454" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(620, -796)
+
+[node name="Tree455" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(666, -763)
+
+[node name="Tree456" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(628, -750)
+
+[node name="Tree457" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(543, -795)
+
+[node name="Tree458" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(502, -771)
+
+[node name="Tree459" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(548, -738)
+
+[node name="Tree460" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(510, -725)
+
+[node name="Tree461" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(568, -780)
+
+[node name="Tree462" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(527, -756)
+
+[node name="Tree463" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(573, -723)
+
+[node name="Tree464" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(535, -710)
+
+[node name="Tree465" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(575, -917)
+
+[node name="Tree466" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(534, -893)
+
+[node name="Tree467" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(580, -860)
+
+[node name="Tree468" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(542, -847)
+
+[node name="Tree469" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(600, -902)
+
+[node name="Tree470" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(559, -878)
+
+[node name="Tree471" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(605, -845)
+
+[node name="Tree472" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(567, -832)
+
+[node name="Tree473" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(483, -883)
+
+[node name="Tree474" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(442, -859)
+
+[node name="Tree475" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(488, -826)
+
+[node name="Tree476" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(450, -813)
+
+[node name="Tree477" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(508, -868)
+
+[node name="Tree478" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(467, -844)
+
+[node name="Tree479" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(513, -811)
+
+[node name="Tree480" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(475, -798)
+
+[node name="Tree481" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1537, -752)
+
+[node name="Tree482" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1496, -728)
+
+[node name="Tree483" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1542, -695)
+
+[node name="Tree484" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1504, -682)
+
+[node name="Tree485" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1562, -737)
+
+[node name="Tree486" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1521, -713)
+
+[node name="Tree487" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1567, -680)
+
+[node name="Tree488" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1529, -667)
+
+[node name="Tree489" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1444, -712)
+
+[node name="Tree490" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1403, -688)
+
+[node name="Tree491" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1449, -655)
+
+[node name="Tree492" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1411, -642)
+
+[node name="Tree493" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1469, -697)
+
+[node name="Tree494" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1428, -673)
+
+[node name="Tree495" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1474, -640)
+
+[node name="Tree496" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1436, -627)
+
+[node name="Tree497" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1476, -834)
+
+[node name="Tree498" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1435, -810)
+
+[node name="Tree499" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1481, -777)
+
+[node name="Tree500" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1443, -764)
+
+[node name="Tree501" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1501, -819)
+
+[node name="Tree502" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1460, -795)
+
+[node name="Tree503" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1506, -762)
+
+[node name="Tree504" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1468, -749)
+
+[node name="Tree505" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1384, -800)
+
+[node name="Tree506" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1343, -776)
+
+[node name="Tree507" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1389, -743)
+
+[node name="Tree508" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1351, -730)
+
+[node name="Tree509" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1409, -785)
+
+[node name="Tree510" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1368, -761)
+
+[node name="Tree511" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1414, -728)
+
+[node name="Tree512" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1376, -715)
+
+[node name="Tree513" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1626, -209)
+
+[node name="Tree514" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1585, -185)
+
+[node name="Tree515" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1631, -152)
+
+[node name="Tree516" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1593, -139)
+
+[node name="Tree517" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1651, -194)
+
+[node name="Tree518" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1610, -170)
+
+[node name="Tree519" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1656, -137)
+
+[node name="Tree520" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1618, -124)
+
+[node name="Tree521" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1533, -169)
+
+[node name="Tree522" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1492, -145)
+
+[node name="Tree523" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1538, -112)
+
+[node name="Tree524" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1500, -99)
+
+[node name="Tree525" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1558, -154)
+
+[node name="Tree526" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1517, -130)
+
+[node name="Tree527" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1563, -97)
+
+[node name="Tree528" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1525, -84)
+
+[node name="Tree529" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1565, -291)
+
+[node name="Tree530" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1524, -267)
+
+[node name="Tree531" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1570, -234)
+
+[node name="Tree532" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1532, -221)
+
+[node name="Tree533" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1590, -276)
+
+[node name="Tree534" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1549, -252)
+
+[node name="Tree535" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1595, -219)
+
+[node name="Tree536" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1557, -206)
+
+[node name="Tree537" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1473, -257)
+
+[node name="Tree538" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1432, -233)
+
+[node name="Tree539" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1478, -200)
+
+[node name="Tree540" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1440, -187)
+
+[node name="Tree541" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1498, -242)
+
+[node name="Tree542" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1457, -218)
+
+[node name="Tree543" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1503, -185)
+
+[node name="Tree544" parent="GameObjects" instance=ExtResource("6_cbck1")]
+position = Vector2(1465, -172)
+
 [node name="Player" parent="." instance=ExtResource("3_t8mdm")]
+scale = Vector2(1e-05, 1e-05)
 
 [node name="Computer" parent="." instance=ExtResource("9_1ie84")]
 _playerID = -1

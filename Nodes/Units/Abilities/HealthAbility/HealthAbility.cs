@@ -4,6 +4,8 @@ using System;
 [Tool]
 public partial class HealthAbility : Node2D
 {
+    public event EventHandler DieEvent = () => { };
+    public event EventHandler GetDamageEvent = () => { };
     public HealthAbility() { }
     public HealthAbility(int MaxHealth, bool IsInvulnerable) 
     {
@@ -45,26 +47,25 @@ public partial class HealthAbility : Node2D
         }
         return 0;
     }
-    public async virtual void KillUnit()
+    public virtual void KillUnit()
     {
         _isDead = true;
-        Character unit = GetParent<Character>();
-        SelectArea select = unit.GetAbility<SelectArea>();
-        if (select != null) { select.QueueFree(); }
+        DieEvent();
 
-        unit.Visible = false;
-        await ToSignal(GetTree().CreateTimer(10.0f), SceneTreeTimer.SignalName.Timeout);
-        GetParent().QueueFree();
+        Character unit = GetParent<Character>();
+        unit.Free();
     }
     public virtual float GetDamage(float damage)
     {
         if (!IsInvulnerable())
         {
             float health = _health - damage;
+            GetDamageEvent();
             if (health <= 0)
             {
                 _health = 0;
                 KillUnit();
+                return damage;
             }
             _health = health;
             return damage;

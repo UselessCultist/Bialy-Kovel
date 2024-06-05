@@ -155,6 +155,19 @@ public partial class MoveAbility : NavigationAgent2D
         return arr.Length;
     }
 
+    public int DistanceInCells<T>(Vector2I start_pos, Vector2I end_pos, T node) where T : Node2D
+    {
+        if (node is Character character) 
+        {
+            var collision = character.GetAbility<Collision>();
+            if (collision != null) { collision.UnsolidCenterCellZone(); }
+            var arr = _tile_map.FindPath(start_pos, end_pos);
+            if (collision != null) { collision.SolidCenterCellZone(); }
+            return arr.Length;
+        }
+        return -1;
+    }
+
     public T FindNearest<T>(List<T> list) where T : Node2D
     {
         int min = -1;
@@ -162,7 +175,8 @@ public partial class MoveAbility : NavigationAgent2D
 
         foreach (var item in list)
         {
-            var value = DistanceInCells((Vector2I)_character.Position, (Vector2I)item.Position);
+            if (item == null) { continue; }
+            var value = DistanceInCells((Vector2I)_character.Position, (Vector2I)item.Position, item);
             if (value < min || min < 0)
             {
                 min = value;
@@ -172,7 +186,7 @@ public partial class MoveAbility : NavigationAgent2D
         return nearest;
     }
 
-    public List<Character> FindNearestCharactersWithAbility<T>(bool FindAlive) where T:Node 
+    public List<Character> FindNearestCharactersWithAbility<T>() where T:Node 
     {
         Game game = GetGameNode();
         var list = Game.GetListNode<Character>(game.GetNode("GameObjects"));
@@ -184,10 +198,6 @@ public partial class MoveAbility : NavigationAgent2D
             var ability = character.GetAbility<T>();
             if (ability != null)
             {
-                if (FindAlive && !HealthAbility.IsDead(character)) 
-                {
-                    continue;
-                }
                 search_list.Add(character);
             }
         }
@@ -198,14 +208,15 @@ public partial class MoveAbility : NavigationAgent2D
 
     public Character FindNearestResource(ResourceType type)
     {
-        var list = FindNearestCharactersWithAbility<Resource>(true);
+        var list = FindNearestCharactersWithAbility<Resource>();
         List<Character> search_list = new List<Character>();
 
 
         foreach (var character in list)
         {
             var ability = character.GetAbility<Resource>();
-            if (ability.ResourceType != type)
+            var health = character.GetAbility<HealthAbility>();
+            if (ability.ResourceType != type || health.IsDead())
             {
                 continue;
             }

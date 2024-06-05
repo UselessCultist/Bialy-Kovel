@@ -42,11 +42,15 @@ public partial class ExtractResource : AbilityWithCommands
     enum State { REST, EXTRACT, FOLLOW_TO_STORAGE }
 
     public EventHandler End = () => { };
+
+    EventHandler DieHandler = () => { };
+
     int[] _inventory_resource = new int[(int)ResourceType.MAX];
     const int _inventory_max = 30;
     [Export] int distance_to_interact_with_storage = 8;
     Character _character;
     Character _target = null;
+    HealthAbility _target_health;
     ResourceType _extract_type = ResourceType.MAX;
     State _state;
 
@@ -75,6 +79,7 @@ public partial class ExtractResource : AbilityWithCommands
 
     public override void InvokeNext()
     {
+        
         if (_queueCommand.Count > 0 && _inProcess == null)
         {
             _inProcess = _queueCommand.Dequeue();
@@ -93,7 +98,7 @@ public partial class ExtractResource : AbilityWithCommands
     public void ToStorage()
     {
         MoveAbility ability = _character.GetAbility<MoveAbility>();
-        var storage_characters = ability.FindNearestCharactersWithAbility<Storage>(true);
+        var storage_characters = ability.FindNearestCharactersWithAbility<Storage>();
         var storage = ability.FindNearest(storage_characters);
 
         if (storage == null) 
@@ -105,6 +110,7 @@ public partial class ExtractResource : AbilityWithCommands
         _change_state(State.FOLLOW_TO_STORAGE);
         _target = storage;
         CommandMoveToUnit command = new(_character, _target);
+        UndoCommand();
         AddCommand(command);
 
         EventHandler handler = () => { };
@@ -158,10 +164,40 @@ public partial class ExtractResource : AbilityWithCommands
         _change_state(State.EXTRACT);
         _target = target;
         Resource ability = target.GetAbility<Resource>();
+        _target_health = _target.GetAbility<HealthAbility>();
         _extract_type = ability.ResourceType;
 
+        DieHandler = () => 
+        {
+            _target_health.DieEvent -= DieHandler;
+            _target = null;
+
+            var res_value = _inventory_resource.Sum() + 10;
+
+            if (res_value >= _inventory_max)
+            {
+                res_value = _inventory_max;
+                for (int i = 0; i < _inventory_resource.Length; i++)
+                {
+                    if ((int)_extract_type == i)
+                    {
+                        continue;
+                    }
+                    res_value -= _inventory_resource[i];
+                }
+                _inventory_resource[(int)_extract_type] = res_value;
+
+                ToStorage();
+            }
+            else
+            {
+                _inventory_resource[(int)_extract_type] = res_value;
+            }
+        };
+        _target_health.DieEvent += DieHandler;
+
         CommandAttack command = new(_character, target);
-        AddCommand(command);
+        SetCommand(command);
         InvokeNext();
     }
 
@@ -169,6 +205,8 @@ public partial class ExtractResource : AbilityWithCommands
     {
         _change_state(State.REST);
         StopCommands();
+
+        _target_health.DieEvent -= DieHandler;
 
         _target = null;
         _extract_type = ResourceType.MAX;
@@ -187,10 +225,11 @@ public partial class ExtractResource : AbilityWithCommands
         {
             return;
         }
-
+                
         if (_target == null && _state == State.EXTRACT)
         {
             MoveAbility ability = _character.GetAbility<MoveAbility>();
+            StopCommands();
 
             var resource = ability.FindNearestResource(_extract_type);
             if (resource == null)
@@ -199,38 +238,6 @@ public partial class ExtractResource : AbilityWithCommands
             }
 
             Extract(resource);
-            return;
-        }
-
-        if (_target != null && _state == State.EXTRACT)
-        {
-            if (_target.GetAbility<HealthAbility>().IsDead())
-            {
-                _target = null;
-                var res_value = _inventory_resource.Sum() + 10;
-
-                if (res_value >= _inventory_max)
-                {
-                    res_value = _inventory_max;
-                    for (int i = 0; i < _inventory_resource.Length; i++)
-                    {
-                        if ((int)_extract_type == i)
-                        {
-                            continue;
-                        }
-                        res_value -= _inventory_resource[i];
-                    }
-                    _inventory_resource[(int)_extract_type] = res_value;
-
-                    ToStorage();
-                    return;
-                }
-                else
-                {
-                    _inventory_resource[(int)_extract_type] = res_value;
-                }
-                NextExtract();
-            }
             return;
         }
     }

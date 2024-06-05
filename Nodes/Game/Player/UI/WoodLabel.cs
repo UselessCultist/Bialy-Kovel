@@ -7,7 +7,7 @@ public partial class WoodLabel : Label
 
     public override void _Ready()
     {
-        _player = GetParent().GetParent().GetParent().GetParent().GetParent().GetParent<Player>();
+        _player = GetNode<Player>("../../../../../../");
     }
 
     public override void _Process(double delta)

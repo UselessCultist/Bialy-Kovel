@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b66fchw7pwj7l" path="res://Nodes/Game/Player/Camera/Camera.tscn" id="3_1w21w"]
 [ext_resource type="PackedScene" uid="uid://bwvhrhtofctsn" path="res://Nodes/Game/Player/Cursor/Cursor.tscn" id="4_2tatm"]
 
-[node name="Player" type="Node"]
+[node name="Player" type="Node2D"]
 script = ExtResource("1_uqokq")
 
 [node name="Camera" parent="." instance=ExtResource("3_1w21w")]

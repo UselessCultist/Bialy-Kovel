@@ -25,11 +25,12 @@ public partial class AI : Node
 
         _unit.GetAbility<AttackAbility>().GetAttackArea.AreaEntered += (Area2D area) => 
 		{
-			if (area.GetParent() is Character unit) 
+			if (area.GetParent() is Character target) 
 			{
-				if (unit.Type != Type.Resource && unit.PlayerOwner.ID != _unit.PlayerOwner.ID) 
+				if (target.Type != Type.Resource && target.PlayerOwner != _unit.PlayerOwner) 
 				{
-					_unit.PlayerOwner.CommandAttackUnit(unit,true);
+                    var command = new CommandAttack(_unit, target);
+                    _unit.SetCommand(command);
                 }
 			}
 		};

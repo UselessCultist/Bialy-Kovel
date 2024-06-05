@@ -71,16 +71,20 @@ public partial class Character : CharacterBody2D, IAbilities, IComandQueue
 
 	public T GetAbility<T>() where T : Node
 	{
-        Array<Node> children = GetChildren();
-        for (int i = 0; i < children.Count; i++)
+        try
         {
-            var item = children[i];
-            if (item == null) continue;
-            if (item is T)
+            Array<Node> children = GetChildren();
+            for (int i = 0; i < children.Count; i++)
             {
-                return item as T;
+                var item = children[i];
+                if (item == null) continue;
+                if (item is T)
+                {
+                    return item as T;
+                }
             }
         }
+        catch { return null; }
         return null;
     }
 
