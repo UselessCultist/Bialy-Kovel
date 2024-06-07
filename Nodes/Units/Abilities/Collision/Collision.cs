@@ -171,7 +171,15 @@ public partial class Collision : Node2D
         MoveAbility ability = _character.GetAbility<MoveAbility>();
         if (ability != null) 
         {
-            ability.ChangePathPoint += changeCollisionPosition;
+            ability.ChangeCeillPosition += changeCollisionPosition;
+            ability.End += changeCollisionPosition;
+
+            ability.OffCharacterCollision += UnsolidUnitCellZone;
+            ability.OnCharacterCollision += () =>
+            {
+                updateCells();
+                SolidUnitCellZone();
+            };
         }
 
         if (shape != null)

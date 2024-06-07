@@ -495,7 +495,7 @@ position = Vector2(505, -290)
 position = Vector2(334, 19)
 
 [node name="Worker2" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
-position = Vector2(513, 278)
+position = Vector2(522, 216)
 PlayerOwner = NodePath("../../Player")
 
 [node name="Tree7" parent="GameObjects" instance=ExtResource("6_cbck1")]

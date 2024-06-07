@@ -94,9 +94,11 @@ public class CommandMoveToUnit : ICommand
 public partial class MoveAbility : NavigationAgent2D
 {
     public event EventHandler End = ()=>{};
+    public event EventHandler ChangeCeillPosition = () => { };
     public event EventHandler PathToTargetComplete = () => { };
-    public event EventHandler ChangePosition = ()=>{};
-    public event EventHandler ChangePathPoint = ()=>{};
+    public event EventHandler OffCharacterCollision = ()=>{};
+    public event EventHandler OnCharacterCollision = ()=>{};
+
     enum State { IDLE, FOLLOW }
 
     //const float MASS = 10.0f;
@@ -140,13 +142,30 @@ public partial class MoveAbility : NavigationAgent2D
         End();
     }
 
-    public bool _move_to(Vector2 local_position)
+    public bool _move_to()
     {
-        _velocity = (local_position - _character.Position).Normalized() * _speed;
-        _character.MoveAndCollide(_velocity * (float)GetProcessDeltaTime());
-        ChangePosition();
+        Vector2I character_ceil = (Vector2I)(_character.GlobalPosition / 16);
+        Vector2I next_character_ceil;
 
-        return _character.Position.DistanceTo(local_position) < ARRIVE_DISTANCE;
+        _velocity = (_next_point - _character.Position).Normalized() * _speed * (float)GetProcessDeltaTime();
+
+        next_character_ceil = (Vector2I)((_character.GlobalPosition + _velocity) / 16);
+        bool is_change_ceil = character_ceil.X != next_character_ceil.X || character_ceil.Y != next_character_ceil.Y;
+
+        if (is_change_ceil)
+        {
+            if (IsSolid(next_character_ceil))
+            {
+                UpdatePath();
+
+                _velocity = (_next_point - _character.Position).Normalized() * _speed * (float)GetProcessDeltaTime();
+            }
+        }
+
+        _character.MoveAndCollide(_velocity);
+        if (is_change_ceil) ChangeCeillPosition();
+
+        return _character.Position.DistanceTo(_next_point) < ARRIVE_DISTANCE;
     }
 
     public int DistanceInCells(Vector2I start_pos, Vector2I end_pos) 
@@ -255,6 +274,12 @@ public partial class MoveAbility : NavigationAgent2D
         return null;
     }
 
+    bool IsSolid(Vector2I ceil) 
+    {
+        bool is_solid = _tile_map.Grid.IsPointSolid(ceil);
+        return is_solid;
+    }
+
     void _update_path() 
     {
         Vector2I pos = (Vector2I)_target_position;
@@ -283,12 +308,15 @@ public partial class MoveAbility : NavigationAgent2D
         _target_position = pos;
 
         _path = _tile_map.FindPath((Vector2I)_character.Position, pos);
+        if (_path.Length > 0) _next_point = _path[0];
         if (is_solid) _tile_map.Grid.SetPointSolid(ceil, true);
     }
 
     public void UpdatePath() 
     {
+        OffCharacterCollision();
         _update_path();
+        OnCharacterCollision();
     }
         
     private void _change_state(State new_state)
@@ -374,17 +402,16 @@ public partial class MoveAbility : NavigationAgent2D
             }
         }
 
-        var arrived_to_next_point = _move_to(_next_point);
-        UpdatePath();
+        var arrived_to_next_point = _move_to();
         if (arrived_to_next_point)
         {
-            ChangePathPoint();
             _path = _path.Skip(1).ToArray();
             if (_path.IsEmpty())
             {
                 Stop();
                 return;
             }
+
             _next_point = _path[0];
         }
     }

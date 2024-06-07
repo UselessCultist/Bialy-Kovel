@@ -103,7 +103,7 @@ public partial class Cursor : Area2D
             Vector2 drag_end = GetGlobalMousePosition();
             var start = ToLocal(drag_start);
             var end = ToLocal(drag_end);
-            var size = (end - start).Abs();
+            var size = end - start;
 
             DrawRect(new Rect2(start, size), Color.Color8(0, 153, 179, 107));
         }
