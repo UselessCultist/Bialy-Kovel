@@ -50,6 +50,7 @@ public partial class ExtractResource : AbilityWithCommands
     [Export] int distance_to_interact_with_storage = 8;
     Character _character;
     Character _target = null;
+    Vector2 _search_point;
     HealthAbility _target_health;
     ResourceType _extract_type = ResourceType.MAX;
     State _state;
@@ -140,7 +141,7 @@ public partial class ExtractResource : AbilityWithCommands
     public void NextExtract()
     {
         MoveAbility ability = _character.GetAbility<MoveAbility>();
-        var target = ability.FindNearestResource(_extract_type);
+        var target = ability.FindNearestResource(_extract_type, _search_point);
 
         if (target == null)
         {
@@ -163,6 +164,7 @@ public partial class ExtractResource : AbilityWithCommands
     {
         _change_state(State.EXTRACT);
         _target = target;
+        _search_point = _target.GlobalPosition;
         Resource ability = target.GetAbility<Resource>();
         _target_health = _target.GetAbility<HealthAbility>();
         _extract_type = ability.ResourceType;
@@ -231,7 +233,7 @@ public partial class ExtractResource : AbilityWithCommands
             MoveAbility ability = _character.GetAbility<MoveAbility>();
             StopCommands();
 
-            var resource = ability.FindNearestResource(_extract_type);
+            var resource = ability.FindNearestResource(_extract_type, _search_point);
             if (resource == null)
             {
                 Stop(); return;

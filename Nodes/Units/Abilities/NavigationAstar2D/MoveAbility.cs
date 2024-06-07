@@ -143,7 +143,7 @@ public partial class MoveAbility : NavigationAgent2D
     public bool _move_to(Vector2 local_position)
     {
         _velocity = (local_position - _character.Position).Normalized() * _speed;
-        _character.Position += _velocity  * (float)GetProcessDeltaTime();
+        _character.MoveAndCollide(_velocity * (float)GetProcessDeltaTime());
         ChangePosition();
 
         return _character.Position.DistanceTo(local_position) < ARRIVE_DISTANCE;
@@ -226,11 +226,64 @@ public partial class MoveAbility : NavigationAgent2D
         return FindNearest(search_list);
     }
 
+    public Character FindNearestResource(ResourceType type, Vector2 pos)
+    {
+        Area2D area = new();
+        CollisionShape2D collision = new();
+        CircleShape2D circle = new CircleShape2D();
+
+        AddChild(area);
+        area.AddChild(collision);
+        collision.Shape = circle;
+
+        circle.Radius = 40;
+        collision.GlobalPosition = pos;
+
+        
+
+        var arr = area.GetOverlappingBodies();
+        foreach (var item in arr)
+        {
+            if (item is Collision col) 
+            {
+                var parent = col.GetParent<Character>();
+
+                var res = parent.GetNode<Resource>("Resource");
+                if (res.ResourceType == type) { return parent; }
+            }
+        }
+        return null;
+    }
+
     void _update_path() 
     {
-        if (_target_collision != null) { _target_collision.UnsolidCenterCellZone(); }
-        _path = _tile_map.FindPath((Vector2I)_character.Position, (Vector2I)_target_position);
-        if (_target_collision != null) { _target_collision.SolidCenterCellZone(); }
+        Vector2I pos = (Vector2I)_target_position;
+        Vector2I ceil = (Vector2I)(_target_position / 16);
+        bool is_solid = _tile_map.Grid.IsPointSolid(ceil);
+        if (is_solid)
+        {
+            is_solid = false;
+            for (short i = 0; i < 1; i++)
+            {
+                var buf = ceil + Vector2I.Up;
+                if (!_tile_map.Grid.IsPointSolid(buf)) { pos = buf * 16; break; }
+
+                buf = ceil + Vector2I.Down;
+                if (!_tile_map.Grid.IsPointSolid(buf)) { pos = buf * 16; break; }
+
+                buf = ceil + Vector2I.Left;
+                if (!_tile_map.Grid.IsPointSolid(buf)) { pos = buf * 16; break; }
+
+                buf = ceil + Vector2I.Right;
+                if (!_tile_map.Grid.IsPointSolid(buf)) { pos = buf * 16; break; }
+                is_solid = true; break;
+            }
+            _tile_map.Grid.SetPointSolid(ceil, false);
+        }
+        _target_position = pos;
+
+        _path = _tile_map.FindPath((Vector2I)_character.Position, pos);
+        if (is_solid) _tile_map.Grid.SetPointSolid(ceil, true);
     }
 
     public void UpdatePath() 
@@ -322,6 +375,7 @@ public partial class MoveAbility : NavigationAgent2D
         }
 
         var arrived_to_next_point = _move_to(_next_point);
+        UpdatePath();
         if (arrived_to_next_point)
         {
             ChangePathPoint();

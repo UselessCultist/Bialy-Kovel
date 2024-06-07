@@ -186,9 +186,9 @@ public partial class Collision : Node2D
         changeCollisionPosition();
     }
 
-    /*public override void _Draw()
+    public override void _Draw()
     {
-        Vector2I pos = new
+        /*Vector2I pos = new
         (
             -8,
             -8
@@ -200,6 +200,6 @@ public partial class Collision : Node2D
             (int)Math.Floor(cell_height / 2d)*16
         );
 
-        DrawRect(new(pos-correction, cell_width*16, cell_height*16), Color.Color8(255, 0, 0));
-    }*/
+        DrawRect(new(pos-correction, cell_width*16, cell_height*16), Color.Color8(255, 0, 0));*/
+    }
 }

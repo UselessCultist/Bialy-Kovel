@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1roex7kwa6lr"]
+[gd_scene load_steps=16 format=3 uid="uid://d1roex7kwa6lr"]
 
 [ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_xllmt"]
 [ext_resource type="PackedScene" uid="uid://bu4io0nsqmwl0" path="res://Nodes/Units/Abilities/AI/AI.tscn" id="2_3dqkn"]
@@ -22,6 +22,9 @@ radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjlc5"]
 size = Vector2(43, 43)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j2lvk"]
+radius = 3.8
 
 [node name="EnemySoldier" type="CharacterBody2D"]
 script = ExtResource("1_xllmt")
@@ -55,3 +58,8 @@ shape = SubResource("CircleShape2D_65c7n")
 [node name="AttackAbility" parent="." instance=ExtResource("9_icrfn")]
 _shape = SubResource("RectangleShape2D_bjlc5")
 _damage = 25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_j2lvk")

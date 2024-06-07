@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Collections.Generic;
 
 public partial class Cursor : Area2D
 {
@@ -8,7 +6,8 @@ public partial class Cursor : Area2D
 
     bool dragging = false;
     Vector2 drag_start;
-    RectangleShape2D _selection_shape = new();
+    Vector2 min_size = new(5,5);
+    RectangleShape2D _selection_shape;
     CollisionShape2D _selection;
 
     Player player;
@@ -59,18 +58,23 @@ public partial class Cursor : Area2D
             // If I'm already dragging and release mouse button
             if (!mouse_event.Pressed && dragging)
             {
-                QueueRedraw();
                 dragging = false;
                 Vector2 drag_end = GetGlobalMousePosition();
+                var size = (drag_end - drag_start).Abs();
 
-                _selection_shape.Size = (drag_end - drag_start).Abs();
-                _selection.GlobalPosition = (drag_end + drag_start)/2;
 
-                foreach (var area in GetOverlappingAreas())
+                if (size >= min_size) 
                 {
-                    Character unit = area.GetParent<Character>();
-                    unit.GetAbility<SelectArea>().select();
-                    player._selectedUnits.Add(unit);
+                    QueueRedraw();
+                    _selection_shape.Size = size;
+                    _selection.GlobalPosition = (drag_end + drag_start) / 2;
+
+                    foreach (var area in GetOverlappingAreas())
+                    {
+                        Character unit = area.GetParent<Character>();
+                        unit.GetAbility<SelectArea>().select();
+                        player._selectedUnits.Add(unit);
+                    }
                 }
 
                 _selection_shape.Size = new(0,0);
@@ -81,13 +85,14 @@ public partial class Cursor : Area2D
 
     public Character GetUnitUnderCursor() 
     {
-        _selection_shape.Size = new(2,2);
+        _selection_shape.Size = new(4,4);
         _selection.GlobalPosition = GetGlobalMousePosition();
         foreach (var area in GetOverlappingAreas())
         {
             Character unit = area.GetParent<Character>();
             return unit;
         }
+        _selection_shape.Size = new(0, 0);
         return null;
     }
 
@@ -98,11 +103,9 @@ public partial class Cursor : Area2D
             Vector2 drag_end = GetGlobalMousePosition();
             var start = ToLocal(drag_start);
             var end = ToLocal(drag_end);
-            var center = (start + end) / 2;
             var size = (end - start).Abs();
 
-            DrawRect(new Rect2(start, size), Color.Color8(0, 0, 255, 200));
-            DrawCircle(center, 5, Color.Color8(255, 0, 0, 255));
+            DrawRect(new Rect2(start, size), Color.Color8(0, 153, 179, 107));
         }
     }
 
@@ -110,6 +113,10 @@ public partial class Cursor : Area2D
     public override void _Ready()
     {
         _selection = GetNode<CollisionShape2D>("CollisionShape2D");
+        _selection.GlobalScale = new(1, 1);
+        _selection_shape = new();
+        _selection_shape.Size = new(0, 0);
+
         _selection.Shape = _selection_shape;
 
         player = GetParent<Player>();
@@ -121,11 +128,21 @@ public partial class Cursor : Area2D
         if (dragging)
         {
             Vector2 drag_end = GetGlobalMousePosition();
-            GD.Print(_selection_shape.Size);
-            _selection_shape.Size = (drag_end - drag_start).Abs();
-            _selection.GlobalPosition = (drag_end + drag_start) / 2;
 
-            QueueRedraw();
+            var size = (drag_end - drag_start).Abs();
+
+            if (size >= min_size)
+            {
+                _selection_shape.Size = size;
+                _selection.GlobalPosition = (drag_end + drag_start) / 2;
+                QueueRedraw();
+            }
+
+
+        }
+        else 
+        {
+            _selection.GlobalPosition = GetGlobalMousePosition();
         }
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bch5y3qp26yeu"]
+[gd_scene load_steps=9 format=3 uid="uid://bch5y3qp26yeu"]
 
 [ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_8yij3"]
 [ext_resource type="PackedScene" uid="uid://b1wdmsf3gfxnu" path="res://Nodes/Units/Abilities/Collision/Collision.tscn" id="2_un7w5"]
@@ -9,6 +9,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcy3d"]
 size = Vector2(136, 56)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0d1j8"]
+radius = 11.0
+height = 123.0
 
 [node name="Storage" type="CharacterBody2D"]
 script = ExtResource("1_8yij3")
@@ -27,3 +31,8 @@ _maxHealth = 300.0
 [node name="Sprite" parent="." instance=ExtResource("5_ku5mo")]
 position = Vector2(0, -8)
 texture = ExtResource("6_t5spm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0d1j8")
