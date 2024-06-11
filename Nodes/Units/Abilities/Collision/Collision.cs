@@ -111,6 +111,9 @@ public partial class Collision : Node2D
     {
         foreach (var cell in _global_collision_cells)
         {
+            ulong l = _character.GetRid().Id;
+            _tile_map.MakeCellObjectID(cell, l);
+
             _tile_map.Grid.SetPointSolid(cell, true);
         }
     }
@@ -119,6 +122,8 @@ public partial class Collision : Node2D
     {
         foreach (var cell in _global_collision_cells)
         {
+            _tile_map.MakeCellObjectID(cell, 0);
+            _tile_map.MakeCellEndOfTarget(cell, false);
             _tile_map.Grid.SetPointSolid(cell, false);
         }
     }
@@ -155,13 +160,12 @@ public partial class Collision : Node2D
         //QueueRedraw();
     }
 
-    public async override void _Ready()
+    public override void _Ready()
     {
         Game game = GetGameNode();
         if (game == null) { throw new Exception("Game is null"); }
+        _tile_map = GetNode<TileMapAstar2D>("../../../TileMapAstar2D");
 
-        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-        _tile_map = game.TileMap;
         if (_tile_map == null)
         {
             throw new Exception("TileMapAstar2D in world is not exiest");
@@ -171,15 +175,18 @@ public partial class Collision : Node2D
         MoveAbility ability = _character.GetAbility<MoveAbility>();
         if (ability != null) 
         {
-            ability.ChangeCeillPosition += changeCollisionPosition;
-            ability.End += changeCollisionPosition;
-
             ability.OffCharacterCollision += UnsolidUnitCellZone;
             ability.OnCharacterCollision += () =>
             {
                 updateCells();
                 SolidUnitCellZone();
             };
+        }
+
+        HealthAbility health = _character.GetAbility<HealthAbility>();
+        if (health != null)
+        {
+            health.DieEvent += UnsolidUnitCellZone;
         }
 
         if (shape != null)

@@ -20,6 +20,7 @@ public partial class Player : Node2D
     [Export] int _playerID = 1;
     [Export] PlayerState _state = PlayerState.Player;
     Cursor _cursor;
+    Game game;
 
     public Cursor Cursor { get { return _cursor; } }
 
@@ -39,8 +40,17 @@ public partial class Player : Node2D
     public void CommandMoveSelectedUnits(Vector2 target, bool set_add)
     {
         if (_selectedUnits.Count == 0) { return; };
-        foreach (Character c in _selectedUnits)
+
+        var list_targets = game.TileMap.GetFreeEndPointsForManyUnits((Vector2I)(target / 16), _selectedUnits.Count);
+
+        for (int i = 0; i < _selectedUnits.Count; i++)
         {
+            target = list_targets[i] * 16;
+            Character c = _selectedUnits[i];
+            if (!c.GetRid().IsValid) { continue; }
+
+            game.TileMap.MakeCellEndOfTarget(list_targets[i], true);
+
             var command = new CommandMoveTo(c, target);
             if (set_add) { c.SetCommand(command); } else { c.AddCommand(command); };
         }
@@ -49,6 +59,7 @@ public partial class Player : Node2D
     public void CommandMoveToUnit(Character target, bool set_add)
     {
         if (_selectedUnits.Count == 0) { return; };
+
         foreach (Character c in _selectedUnits)
         {
             var command = new CommandMoveToUnit(c, target);
@@ -80,6 +91,8 @@ public partial class Player : Node2D
     {
         if (_state == PlayerState.Computer) { return; }
         _cursor = GetNode<Cursor>("Cursor");
+
+        game = GetNode<Game>("../");
     }
 
     public override void _PhysicsProcess(double delta)

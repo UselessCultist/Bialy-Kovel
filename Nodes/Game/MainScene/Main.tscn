@@ -1,9 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://j0gqo1mrwqo"]
+[gd_scene load_steps=15 format=3 uid="uid://j0gqo1mrwqo"]
 
 [ext_resource type="Texture2D" uid="uid://bclmabp21fugw" path="res://Texture/MagicalUI/Sprites/Headers/Header1.png" id="1_cdo65"]
 [ext_resource type="Texture2D" uid="uid://cfvwkcjcxtkoa" path="res://Texture/MagicalUI/Sprites/Body/Scroll3.png" id="3_4rcoa"]
 [ext_resource type="FontFile" uid="uid://dqy15lut3m2ki" path="res://Fonts/MainProgramName/bay-tavern-s-regular.otf" id="3_oi46u"]
 [ext_resource type="Texture2D" uid="uid://dpykk8ydljfm0" path="res://Texture/Game/Main/MainPageImage.png" id="4_47htj"]
+[ext_resource type="Script" path="res://Nodes/Game/MainScene/Start.cs" id="5_lmowq"]
+[ext_resource type="Script" path="res://Nodes/Game/MainScene/History.cs" id="6_5s8xs"]
+[ext_resource type="Script" path="res://Nodes/Game/MainScene/Exit.cs" id="6_tn3dt"]
+[ext_resource type="Texture2D" uid="uid://2b1xq41mgvnn" path="res://Texture/MagicalUI/Sprites/Body/Book.png" id="7_ou6cx"]
+[ext_resource type="Texture2D" uid="uid://dwedv5y0fqyg0" path="res://Texture/MagicalUI/Sprites/BodyAssets/Book Assets/ButtonRight.png" id="8_gn00e"]
+[ext_resource type="Texture2D" uid="uid://dghhtuln0q6iw" path="res://Texture/MagicalUI/Sprites/BodyAssets/Book Assets/ButtonLeft.png" id="9_qlodw"]
+[ext_resource type="Texture2D" uid="uid://o7tst6t3lyf2" path="res://Texture/MagicalUI/Sprites/BodyAssets/Task Assets/Done.png" id="11_rl5gs"]
+[ext_resource type="Script" path="res://Nodes/Game/MainScene/HistoryCloseButton.cs" id="12_bxigt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6507u"]
 font = ExtResource("3_oi46u")
@@ -105,6 +113,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 text = "В приключение!"
 flat = true
+script = ExtResource("5_lmowq")
 
 [node name="History" type="Button" parent="Control/GridContainer/ButtonPanel/GridContainer"]
 layout_mode = 2
@@ -120,6 +129,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 text = "История"
 flat = true
+script = ExtResource("6_5s8xs")
 
 [node name="Options" type="Button" parent="Control/GridContainer/ButtonPanel/GridContainer"]
 layout_mode = 2
@@ -152,3 +162,40 @@ theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 text = "Выход
 "
 flat = true
+script = ExtResource("6_tn3dt")
+
+[node name="TextureHistory" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = -159.5
+offset_right = 193.0
+offset_bottom = 159.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(193, 158.5)
+texture = ExtResource("7_ou6cx")
+
+[node name="ButtonRight" type="Sprite2D" parent="Control/TextureHistory"]
+position = Vector2(345.5, 230)
+texture = ExtResource("8_gn00e")
+
+[node name="ButtonLeft" type="Sprite2D" parent="Control/TextureHistory"]
+position = Vector2(40.5, 230.5)
+texture = ExtResource("9_qlodw")
+
+[node name="TextureButton" type="TextureButton" parent="Control/TextureHistory"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 24.0
+offset_right = 77.0
+offset_bottom = 54.0
+rotation = 1.5708
+texture_normal = ExtResource("11_rl5gs")
+script = ExtResource("12_bxigt")

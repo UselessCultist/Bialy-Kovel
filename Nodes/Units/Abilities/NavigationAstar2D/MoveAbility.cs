@@ -132,11 +132,23 @@ public partial class MoveAbility : NavigationAgent2D
     {
         _target = target;
         _target_collision = collision;
-        Move(target.Position);
+        var list_targets = _tile_map.GetFreeEndPointsForManyUnits((Vector2I)(target.Position / 16), 1);
+        if (list_targets.Count > 0)
+        {
+            Move(list_targets[0]);
+        }
+        else 
+        {
+            Stop();
+        }
     }
 
     public void Stop() 
     {
+        var pos = (Vector2I)(_character.GlobalPosition / 16);
+        _tile_map.MakeCellObjectID(pos, _character.GetRid().Id);
+        _tile_map.MakeCellEndOfTarget(pos, false);
+
         _path = null;
         _change_state(State.IDLE);
         End();
@@ -146,10 +158,12 @@ public partial class MoveAbility : NavigationAgent2D
     {
         Vector2I character_ceil = (Vector2I)(_character.GlobalPosition / 16);
         Vector2I next_character_ceil;
+        Vector2 next_pos;
 
-        _velocity = (_next_point - _character.Position).Normalized() * _speed * (float)GetProcessDeltaTime();
+        _velocity = (_next_point - _character.GlobalPosition).Normalized() * _speed * (float)GetProcessDeltaTime();
 
-        next_character_ceil = (Vector2I)((_character.GlobalPosition + _velocity) / 16);
+        next_pos = (_character.GlobalPosition + _velocity);
+        next_character_ceil = (Vector2I)(next_pos/16);
         bool is_change_ceil = character_ceil.X != next_character_ceil.X || character_ceil.Y != next_character_ceil.Y;
 
         if (is_change_ceil)
@@ -157,8 +171,7 @@ public partial class MoveAbility : NavigationAgent2D
             if (IsSolid(next_character_ceil))
             {
                 UpdatePath();
-
-                _velocity = (_next_point - _character.Position).Normalized() * _speed * (float)GetProcessDeltaTime();
+                _velocity = (_next_point - _character.GlobalPosition).Normalized() * _speed * (float)GetProcessDeltaTime();
             }
         }
 
@@ -179,9 +192,7 @@ public partial class MoveAbility : NavigationAgent2D
         if (node is Character character) 
         {
             var collision = character.GetAbility<Collision>();
-            if (collision != null) { collision.UnsolidCenterCellZone(); }
             var arr = _tile_map.FindPath(start_pos, end_pos);
-            if (collision != null) { collision.SolidCenterCellZone(); }
             return arr.Length;
         }
         return -1;
@@ -314,9 +325,7 @@ public partial class MoveAbility : NavigationAgent2D
 
     public void UpdatePath() 
     {
-        OffCharacterCollision();
         _update_path();
-        OnCharacterCollision();
     }
         
     private void _change_state(State new_state)
@@ -385,6 +394,8 @@ public partial class MoveAbility : NavigationAgent2D
         }
 
         GetParent().AddChild(_interact_area);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        OffCharacterCollision();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -436,6 +436,10 @@ terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 navigation_layer_0/layers = 1
 custom_data_layer_0/name = "walkable"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = "is_end_path_target"
+custom_data_layer_1/type = 1
+custom_data_layer_2/name = "object_id"
+custom_data_layer_2/type = 2
 sources/0 = SubResource("TileSetAtlasSource_eeoqo")
 sources/1 = SubResource("TileSetAtlasSource_wttqu")
 
@@ -2116,6 +2120,54 @@ PlayerOwner = NodePath("../../Player")
 [node name="EnemySoldier2" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("7_h2hmq")]
 position = Vector2(214, 465)
 PlayerOwner = NodePath("../../Computer")
+
+[node name="Worker3" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(488, 248)
+PlayerOwner = NodePath("../../Player")
+
+[node name="Worker4" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(473, 248)
+PlayerOwner = NodePath("../../Player")
+
+[node name="Worker5" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(457, 247)
+PlayerOwner = NodePath("../../Player")
+
+[node name="Worker6" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(441, 247)
+PlayerOwner = NodePath("../../Player")
+
+[node name="Worker7" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(441, 234)
+PlayerOwner = NodePath("../../Player")
+
+[node name="Worker8" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(490, 216)
+PlayerOwner = NodePath("../../Player")
+
+[node name="Worker9" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(456, 234)
+PlayerOwner = NodePath("../../Player")
+
+[node name="Worker10" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(520, 234)
+PlayerOwner = NodePath("../../Player")
+
+[node name="Worker11" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(504, 234)
+PlayerOwner = NodePath("../../Player")
+
+[node name="Worker12" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(473, 234)
+PlayerOwner = NodePath("../../Player")
+
+[node name="Worker13" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(489, 234)
+PlayerOwner = NodePath("../../Player")
+
+[node name="Worker14" parent="GameObjects" node_paths=PackedStringArray("PlayerOwner") instance=ExtResource("3_3aui1")]
+position = Vector2(474, 216)
+PlayerOwner = NodePath("../../Player")
 
 [node name="Player" parent="." instance=ExtResource("3_t8mdm")]
 scale = Vector2(1e-05, 1e-05)

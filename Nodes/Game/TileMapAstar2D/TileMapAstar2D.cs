@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public partial class TileMapAstar2D : TileMapLayer
 {
@@ -17,6 +18,97 @@ public partial class TileMapAstar2D : TileMapLayer
 	Vector2I _start_point;
 	Vector2I _end_point;
 	Vector2[] _path;
+
+    public void MakeCellEndOfTarget(Vector2I cell, bool is_end_of_target) 
+    {
+        var data = GetCellTileData(cell);
+        data.SetCustomDataByLayerId(1, is_end_of_target);
+    }
+
+    public void MakeCellObjectID(Vector2I cell, ulong object_id)
+    {
+        var data = GetCellTileData(cell);
+        data.SetCustomDataByLayerId(2, object_id);
+    }
+
+    bool IsEndOfTarget(Vector2I cell)
+    {
+        var data = GetCellTileData(cell);
+        bool is_end = data.GetCustomDataByLayerId(1).AsBool();
+        return is_end;
+    }
+
+    bool IsValidObjectInCell(Vector2I cell) 
+    {
+        var data = GetCellTileData(cell);
+        var valid = (ulong)data.GetCustomDataByLayerId(2);
+        return valid != 0;
+    }
+
+    public void SetCellInfo(Vector2I cell, Character c)
+    {
+        MakeCellObjectID(cell, c.GetRid().Id);
+        MakeCellEndOfTarget(cell, false);
+    }
+
+    public void ClearCell(Vector2I cell) 
+    {
+        MakeCellObjectID(cell, 0);
+        MakeCellEndOfTarget(cell, false);
+    }
+
+    bool IsPointClearForPathEndPoint(Vector2I cell) 
+    {
+        if (Grid.Region.HasPoint(cell)) 
+        {
+            bool solid = Grid.IsPointSolid(cell);
+            bool end = IsEndOfTarget(cell);
+            bool obj = IsValidObjectInCell(cell);
+            if (solid || end || obj) { return false; }
+
+            var data = GetCellTileData(cell);
+            var IsNotClear = data.GetCustomDataByLayerId(2).AsBool();
+
+            return !IsNotClear;
+        }
+        return false;
+    }
+
+    public List<Vector2I> GetFreeEndPointsForManyUnits(Vector2I start, int n) 
+    {
+        List<Vector2I> freeCells = new();
+
+        Queue<Vector2I> queue = new();
+        HashSet<Vector2I> visited = new();
+        queue.Enqueue(start);
+        visited.Add(start);
+
+        int[] dx = { 0, 0, 1, -1 };
+        int[] dy = { 1, -1, 0, 0 };
+
+        while (queue.Count > 0 && freeCells.Count < n)
+        {
+            var vector2I = queue.Dequeue();
+
+            if (IsPointClearForPathEndPoint(vector2I))
+            {
+                freeCells.Add(vector2I);
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                Vector2I buf = vector2I + new Vector2I(dx[i], dy[i]);
+
+                if (Grid.Region.HasPoint(buf) && !visited.Contains(buf) && IsPointClearForPathEndPoint(buf))
+                {
+                    queue.Enqueue(buf);
+                    visited.Add(buf);
+                }
+            }
+        }
+
+        return freeCells;
+    }
 
     public Vector2 RoundLocalPosition(Vector2 local_position) 
     {

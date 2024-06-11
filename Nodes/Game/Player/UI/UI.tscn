@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dukhewjcw706d"]
+[gd_scene load_steps=19 format=3 uid="uid://dukhewjcw706d"]
 
 [ext_resource type="Texture2D" uid="uid://2b1xq41mgvnn" path="res://Texture/MagicalUI/Sprites/Body/Book.png" id="1_qgaj7"]
 [ext_resource type="Texture2D" uid="uid://dooderkacvupn" path="res://Texture/Game/Resource/Basic Grass Biom things 1.png" id="2_70pnt"]
@@ -9,6 +9,10 @@
 [ext_resource type="Script" path="res://Nodes/Game/Player/UI/HelpButton.cs" id="6_e871o"]
 [ext_resource type="Texture2D" uid="uid://c0a38eyii3cl1" path="res://Texture/Game/Help/help_stone_image.png" id="6_slo0v"]
 [ext_resource type="Texture2D" uid="uid://d0rmkwj6eu7mx" path="res://Texture/Game/Help/help_storage_image.png" id="7_76s4f"]
+[ext_resource type="Texture2D" uid="uid://bclmabp21fugw" path="res://Texture/MagicalUI/Sprites/Headers/Header1.png" id="10_pepfd"]
+[ext_resource type="Script" path="res://Nodes/Game/Player/UI/BuildButton.cs" id="10_y6x7s"]
+[ext_resource type="FontFile" uid="uid://dqy15lut3m2ki" path="res://Fonts/MainProgramName/bay-tavern-s-regular.otf" id="11_qja2c"]
+[ext_resource type="Texture2D" uid="uid://dal7xbj7aqkn0" path="res://Texture/Game/Buildings/storage.png" id="12_p4dhv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sbtpn"]
 atlas = ExtResource("2_70pnt")
@@ -21,6 +25,11 @@ font_color = Color(0, 0, 0, 0.866667)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4xl0q"]
 atlas = ExtResource("2_70pnt")
 region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h6mc5"]
+font = ExtResource("11_qja2c")
+font_size = 30
+font_color = Color(0.0352941, 0.0392157, 0.0784314, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_j515u"]
 font_size = 32
@@ -108,6 +117,71 @@ texture_normal = ExtResource("1_qgaj7")
 texture_pressed = ExtResource("1_qgaj7")
 texture_hover = ExtResource("1_qgaj7")
 script = ExtResource("6_e871o")
+
+[node name="Build" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -141.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("3_v3480")
+
+[node name="Name" type="TextureRect" parent="Control/Build"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.5
+offset_right = 94.5
+offset_bottom = 50.0
+grow_horizontal = 2
+texture = ExtResource("10_pepfd")
+
+[node name="Label" type="Label" parent="Control/Build/Name"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -521.0
+offset_top = -99.0
+offset_right = 521.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(637.5, 112)
+text = "BUILD"
+label_settings = SubResource("LabelSettings_h6mc5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Build"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="Control/Build/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("12_p4dhv")
+script = ExtResource("10_y6x7s")
 
 [node name="Help" type="TextureRect" parent="Control"]
 visible = false
