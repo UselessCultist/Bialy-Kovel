@@ -41,15 +41,11 @@ public partial class Player : Node2D
     {
         if (_selectedUnits.Count == 0) { return; };
 
-        var list_targets = game.TileMap.GetFreeEndPointsForManyUnits((Vector2I)(target / 16), _selectedUnits.Count);
 
         for (int i = 0; i < _selectedUnits.Count; i++)
         {
-            target = list_targets[i] * 16;
             Character c = _selectedUnits[i];
             if (!c.GetRid().IsValid) { continue; }
-
-            game.TileMap.MakeCellEndOfTarget(list_targets[i], true);
 
             var command = new CommandMoveTo(c, target);
             if (set_add) { c.SetCommand(command); } else { c.AddCommand(command); };

@@ -183,6 +183,28 @@ layout_mode = 2
 texture_normal = ExtResource("12_p4dhv")
 script = ExtResource("10_y6x7s")
 
+[node name="WoodRow" type="VFlowContainer" parent="Control/Build"]
+offset_left = 274.0
+offset_top = 88.0
+offset_right = 304.0
+offset_bottom = 112.0
+alignment = 2
+
+[node name="Wood" type="TextureRect" parent="Control/Build/WoodRow"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_sbtpn")
+
+[node name="Value" type="Label" parent="Control/Build/WoodRow"]
+layout_mode = 2
+text = "30
+"
+label_settings = SubResource("LabelSettings_r7ief")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Help" type="TextureRect" parent="Control"]
 visible = false
 layout_mode = 1

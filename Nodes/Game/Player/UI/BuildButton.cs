@@ -5,10 +5,12 @@ public partial class BuildButton : TextureButton
 {
     private bool isButtonSelected = false;
     private PackedScene buildingScene;
+    private Node2D game_objects; 
 
     public override void _Ready()
     {
         buildingScene = (PackedScene)ResourceLoader.Load("res://GameObjects/Storage/Storage.tscn");
+        game_objects = GetNodeOrNull<Node2D>("/root/Game/GameObjects");
     }
 
     private void OnButtonPressed()
@@ -19,24 +21,34 @@ public partial class BuildButton : TextureButton
 
     public override void _Input(InputEvent @event)
     {
-        if (@event is InputEventMouseButton mouseEvent)
+        if (@event is InputEventMouseButton mouseEvent && isButtonSelected)
         {
-            if (isButtonSelected)
+            if (mouseEvent.ButtonIndex == MouseButton.Left)
             {
                 // Получаем позицию курсора мыши
                 Vector2 mousePosition = mouseEvent.Position;
 
                 // Создаем экземпляр здания и добавляем его в сцену
                 var buildingInstance = (Character)buildingScene.Instantiate();
-                buildingInstance.Position = mousePosition;
+                buildingInstance.GlobalPosition = mousePosition;
 
-                GetTree().CurrentScene.AddChild(buildingInstance);
+                if (game_objects != null)
+                {
+                    game_objects.AddChild(buildingInstance);
+                }
+
 
                 // Сбрасываем состояние кнопки
                 isButtonSelected = false;
             }
+            else 
+            {
+                isButtonSelected = false;
+            }
         }
     }
+
+
 
     public override void _Pressed()
     {

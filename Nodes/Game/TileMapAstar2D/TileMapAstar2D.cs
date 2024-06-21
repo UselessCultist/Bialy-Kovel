@@ -21,6 +21,11 @@ public partial class TileMapAstar2D : TileMapLayer
 
     public void MakeCellEndOfTarget(Vector2I cell, bool is_end_of_target) 
     {
+        if (cell == new Vector2I(47,21)) 
+        {
+            GD.Print("error");
+        }
+        GD.Print(cell+"; bool: " + is_end_of_target);
         var data = GetCellTileData(cell);
         data.SetCustomDataByLayerId(1, is_end_of_target);
     }
@@ -57,7 +62,7 @@ public partial class TileMapAstar2D : TileMapLayer
         MakeCellEndOfTarget(cell, false);
     }
 
-    bool IsPointClearForPathEndPoint(Vector2I cell) 
+    bool IsCellClear(Vector2I cell) 
     {
         if (Grid.Region.HasPoint(cell)) 
         {
@@ -66,15 +71,12 @@ public partial class TileMapAstar2D : TileMapLayer
             bool obj = IsValidObjectInCell(cell);
             if (solid || end || obj) { return false; }
 
-            var data = GetCellTileData(cell);
-            var IsNotClear = data.GetCustomDataByLayerId(2).AsBool();
-
-            return !IsNotClear;
+            return true;
         }
         return false;
     }
 
-    public List<Vector2I> GetFreeEndPointsForManyUnits(Vector2I start, int n) 
+    public List<Vector2I> GetFreeEndCellForManyUnits(Vector2I start, int n) 
     {
         List<Vector2I> freeCells = new();
 
@@ -86,21 +88,52 @@ public partial class TileMapAstar2D : TileMapLayer
         int[] dx = { 0, 0, 1, -1 };
         int[] dy = { 1, -1, 0, 0 };
 
-        while (queue.Count > 0 && freeCells.Count < n)
+        if (IsCellClear(start))
+        {
+            freeCells.Add(start);
+        }
+
+        /*while ( queue.Count > 0 && freeCells.Count < n ) 
         {
             var vector2I = queue.Dequeue();
-
-            if (IsPointClearForPathEndPoint(vector2I))
-            {
-                freeCells.Add(vector2I);
-            }
 
             for (int i = 0; i < 4; i++)
             {
                 Vector2I buf = vector2I + new Vector2I(dx[i], dy[i]);
 
-                if (Grid.Region.HasPoint(buf) && !visited.Contains(buf) && IsPointClearForPathEndPoint(buf))
+                if (!visited.Contains(buf) && IsCellClear(buf) && GetCellSourceId(buf) != -1)
                 {
+                    freeCells.Add(buf);
+                    if (freeCells.Count < n) 
+                    {
+                        break;
+                    }
+                    queue.Enqueue(buf);
+                    visited.Add(buf);
+                }
+            }
+        }*/
+
+        while (queue.Count > 0 && freeCells.Count < n)
+        {
+            var vector2I = queue.Dequeue();
+
+
+
+            for (int i = 0; i < 4; i++)
+            {
+                Vector2I buf = vector2I + new Vector2I(dx[i], dy[i]);
+
+                if (!visited.Contains(buf) && GetCellSourceId(buf) != -1)
+                {
+                    if (IsCellClear(buf))
+                    {
+                        freeCells.Add(buf);
+                        if (freeCells.Count < n)
+                        {
+                            return freeCells;
+                        }
+                    }
                     queue.Enqueue(buf);
                     visited.Add(buf);
                 }

@@ -98,6 +98,7 @@ public partial class MoveAbility : NavigationAgent2D
     public event EventHandler PathToTargetComplete = () => { };
     public event EventHandler OffCharacterCollision = ()=>{};
     public event EventHandler OnCharacterCollision = ()=>{};
+    public event EventHandler ChangeTargetPoint = () => { };
 
     enum State { IDLE, FOLLOW }
 
@@ -115,16 +116,63 @@ public partial class MoveAbility : NavigationAgent2D
     Collision _target_collision;
 
     Vector2 _target_position;
+    Vector2I _target_ceil;
     Vector2[] _path;
+    Vector2I _current_ceil;
     Vector2 _next_point;
+    Vector2I _next_character_ceil;
+    Vector2 _next_pos;
 
     Area2D _interact_area = new();
     CollisionShape2D _interact_collision = new();
     [Export] RectangleShape2D _interact_shape;
 
+    public void UpdateCurrentCeill() 
+    {
+        _current_ceil = (Vector2I)_character.GlobalPosition / 16;
+    }
+
+    private void UpdateTargetCeill() 
+    {
+        _target_ceil = (Vector2I)(_target_position/16);
+    }
+
+    private void UpdateNextPoint()
+    {
+        if (_path.Length > 0) 
+        {
+            _next_point = _path[0];
+        }
+    }
+
+    private void SetEndPoint(Vector2 point)
+    {
+        var list_targets = _tile_map.GetFreeEndCellForManyUnits((Vector2I)(point / 16), 1);
+        if (list_targets.Count > 0)
+        {
+            point = list_targets[0]*16;
+        }
+        else
+        {
+            Stop();
+        }
+
+        if (_state == State.FOLLOW) 
+        {
+            Vector2I present_end_cell = _target_ceil;
+            _tile_map.MakeCellEndOfTarget(present_end_cell, false);
+        }
+
+        Vector2I future_end_cell = (Vector2I)point / 16;
+        _tile_map.MakeCellEndOfTarget(future_end_cell, true);
+
+        _target_position = point;
+        ChangeTargetPoint();
+    }
+
     public void Move(Vector2 position) 
     {
-        _target_position = position;
+        SetEndPoint(position);
         _change_state(State.FOLLOW);
     }
 
@@ -132,51 +180,47 @@ public partial class MoveAbility : NavigationAgent2D
     {
         _target = target;
         _target_collision = collision;
-        var list_targets = _tile_map.GetFreeEndPointsForManyUnits((Vector2I)(target.Position / 16), 1);
-        if (list_targets.Count > 0)
-        {
-            Move(list_targets[0]);
-        }
-        else 
-        {
-            Stop();
-        }
+        Move(target.GlobalPosition);
     }
 
     public void Stop() 
     {
-        var pos = (Vector2I)(_character.GlobalPosition / 16);
-        _tile_map.MakeCellObjectID(pos, _character.GetRid().Id);
-        _tile_map.MakeCellEndOfTarget(pos, false);
+        _tile_map.MakeCellEndOfTarget(_target_ceil, false);
 
         _path = null;
         _change_state(State.IDLE);
         End();
     }
 
+    public void UpdateVelocity() 
+    {
+        _velocity = (_next_point - _character.GlobalPosition).Normalized() * _speed * (float)GetProcessDeltaTime();
+    }
+
+    public bool IsChangeCeil() 
+    {
+        UpdateVelocity();
+
+        _next_pos = (_character.GlobalPosition + _velocity);
+        _next_character_ceil = (Vector2I)(_next_pos / 16);
+
+        bool is_change_ceil = _current_ceil.X != _next_character_ceil.X || _current_ceil.Y != _next_character_ceil.Y;
+        return is_change_ceil;
+    }
+
     public bool _move_to()
     {
-        Vector2I character_ceil = (Vector2I)(_character.GlobalPosition / 16);
-        Vector2I next_character_ceil;
-        Vector2 next_pos;
-
-        _velocity = (_next_point - _character.GlobalPosition).Normalized() * _speed * (float)GetProcessDeltaTime();
-
-        next_pos = (_character.GlobalPosition + _velocity);
-        next_character_ceil = (Vector2I)(next_pos/16);
-        bool is_change_ceil = character_ceil.X != next_character_ceil.X || character_ceil.Y != next_character_ceil.Y;
-
-        if (is_change_ceil)
+        if (IsChangeCeil())
         {
-            if (IsSolid(next_character_ceil))
+            if (IsSolid(_next_character_ceil))
             {
-                UpdatePath();
-                _velocity = (_next_point - _character.GlobalPosition).Normalized() * _speed * (float)GetProcessDeltaTime();
+                Update_path();
+                UpdateVelocity();
             }
         }
 
         _character.MoveAndCollide(_velocity);
-        if (is_change_ceil) ChangeCeillPosition();
+        if (IsChangeCeil()) ChangeCeillPosition();
 
         return _character.Position.DistanceTo(_next_point) < ARRIVE_DISTANCE;
     }
@@ -291,41 +335,23 @@ public partial class MoveAbility : NavigationAgent2D
         return is_solid;
     }
 
-    void _update_path() 
+    void update_target_point() 
     {
-        Vector2I pos = (Vector2I)_target_position;
-        Vector2I ceil = (Vector2I)(_target_position / 16);
-        bool is_solid = _tile_map.Grid.IsPointSolid(ceil);
-        if (is_solid)
+        var list_targets = _tile_map.GetFreeEndCellForManyUnits(_target_ceil, 1);
+        if (list_targets.Count > 0)
         {
-            is_solid = false;
-            for (short i = 0; i < 1; i++)
-            {
-                var buf = ceil + Vector2I.Up;
-                if (!_tile_map.Grid.IsPointSolid(buf)) { pos = buf * 16; break; }
-
-                buf = ceil + Vector2I.Down;
-                if (!_tile_map.Grid.IsPointSolid(buf)) { pos = buf * 16; break; }
-
-                buf = ceil + Vector2I.Left;
-                if (!_tile_map.Grid.IsPointSolid(buf)) { pos = buf * 16; break; }
-
-                buf = ceil + Vector2I.Right;
-                if (!_tile_map.Grid.IsPointSolid(buf)) { pos = buf * 16; break; }
-                is_solid = true; break;
-            }
-            _tile_map.Grid.SetPointSolid(ceil, false);
+            SetEndPoint(list_targets[0] * 16);
         }
-        _target_position = pos;
+        else
+        {
+            SetEndPoint((Vector2I)_character.GlobalPosition);
+        }
+    } 
 
-        _path = _tile_map.FindPath((Vector2I)_character.Position, pos);
-        if (_path.Length > 0) _next_point = _path[0];
-        if (is_solid) _tile_map.Grid.SetPointSolid(ceil, true);
-    }
-
-    public void UpdatePath() 
+    void Update_path() 
     {
-        _update_path();
+        _path = _tile_map.FindPath((Vector2I)_character.Position, _target_position);
+        UpdateNextPoint();
     }
         
     private void _change_state(State new_state)
@@ -338,13 +364,14 @@ public partial class MoveAbility : NavigationAgent2D
                 break;
             case State.FOLLOW:
 
-                UpdatePath();
+                Update_path();
                 if (_path.Length < 1)
                 {
                     _change_state(State.IDLE);
                     Stop();
                     return;
                 }
+
                 if (_character.Animation != null) _character.Animation.Play("animation/move");
                 _next_point = _path[0];
                 break;
@@ -371,6 +398,9 @@ public partial class MoveAbility : NavigationAgent2D
     // Called when the node enters the scene tree for the first time.
     public async override void _Ready()
     {
+        ChangeTargetPoint += UpdateTargetCeill;
+        ChangeCeillPosition += UpdateCurrentCeill;
+
         Game game = GetGameNode();
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         if (game == null) { throw new Exception("Game is null"); }
@@ -380,6 +410,7 @@ public partial class MoveAbility : NavigationAgent2D
         {
             throw new Exception("Main node of character is not CharacterBody2D");
         }
+        UpdateCurrentCeill();
 
         _tile_map = game.TileMap;
         if (_tile_map == null)
@@ -401,7 +432,10 @@ public partial class MoveAbility : NavigationAgent2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        if (_state != State.FOLLOW) { return; }
+        if (_state != State.FOLLOW) 
+        {
+            return;
+        }
 
         if (_target != null) 
         {
