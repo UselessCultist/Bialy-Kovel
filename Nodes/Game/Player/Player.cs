@@ -40,12 +40,17 @@ public partial class Player : Node2D
     public void CommandMoveSelectedUnits(Vector2 target, bool set_add)
     {
         if (_selectedUnits.Count == 0) { return; };
+        foreach (Character c in _selectedUnits)
 
+        var list_targets = game.TileMap.GetFreeEndCellForManyUnits((Vector2I)(target / 16), _selectedUnits.Count);
 
         for (int i = 0; i < _selectedUnits.Count; i++)
         {
+            target = list_targets[i] * 16;
             Character c = _selectedUnits[i];
             if (!c.GetRid().IsValid) { continue; }
+
+            game.TileMap.MakeCellEndOfTarget(list_targets[i], true);
 
             var command = new CommandMoveTo(c, target);
             if (set_add) { c.SetCommand(command); } else { c.AddCommand(command); };
@@ -54,6 +59,7 @@ public partial class Player : Node2D
 
     public void CommandMoveToUnit(Character target, bool set_add)
     {
+
         if (_selectedUnits.Count == 0) { return; };
 
         foreach (Character c in _selectedUnits)

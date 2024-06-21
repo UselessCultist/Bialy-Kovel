@@ -184,6 +184,7 @@ texture_normal = ExtResource("12_p4dhv")
 script = ExtResource("10_y6x7s")
 
 [node name="WoodRow" type="VFlowContainer" parent="Control/Build"]
+layout_mode = 0
 offset_left = 274.0
 offset_top = 88.0
 offset_right = 304.0

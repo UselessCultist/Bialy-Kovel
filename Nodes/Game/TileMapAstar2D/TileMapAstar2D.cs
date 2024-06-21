@@ -19,13 +19,12 @@ public partial class TileMapAstar2D : TileMapLayer
 	Vector2I _end_point;
 	Vector2[] _path;
 
+    TileData _edit_cell;
+
+
     public void MakeCellEndOfTarget(Vector2I cell, bool is_end_of_target) 
     {
-        if (cell == new Vector2I(47,21)) 
-        {
-            GD.Print("error");
-        }
-        GD.Print(cell+"; bool: " + is_end_of_target);
+        GD.Print(cell);
         var data = GetCellTileData(cell);
         data.SetCustomDataByLayerId(1, is_end_of_target);
     }
@@ -117,7 +116,6 @@ public partial class TileMapAstar2D : TileMapLayer
         while (queue.Count > 0 && freeCells.Count < n)
         {
             var vector2I = queue.Dequeue();
-
 
 
             for (int i = 0; i < 4; i++)
@@ -222,5 +220,6 @@ public partial class TileMapAstar2D : TileMapLayer
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
-	}
+
+    }
 }

@@ -123,7 +123,6 @@ public partial class Collision : Node2D
         foreach (var cell in _global_collision_cells)
         {
             _tile_map.MakeCellObjectID(cell, 0);
-            _tile_map.MakeCellEndOfTarget(cell, false);
             _tile_map.Grid.SetPointSolid(cell, false);
         }
     }
