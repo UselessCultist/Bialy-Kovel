@@ -3,13 +3,13 @@ using System;
 
 public partial class History : Button
 {
-    TextureRect rect;
+    Control book;
     public override void _Ready()
     {
-        rect = GetNode<TextureRect>("../../../../TextureHistory");
+        book = GetNode<Control>("../../../../Book");
     }
     public override void _Pressed()
     {
-        rect.Visible = !rect.Visible;
+        book.Visible = !book.Visible;
     }
 }

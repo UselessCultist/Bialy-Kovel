@@ -1,0 +1,57 @@
+[gd_scene load_steps=15 format=3 uid="uid://dpjbvaa5uw1fm"]
+
+[ext_resource type="Script" path="res://Nodes/Units/Character/Character.cs" id="1_o0wcg"]
+[ext_resource type="PackedScene" uid="uid://dlnyih21spyth" path="res://Nodes/Units/Abilities/AI/SoldierAI/SoldierAI.tscn" id="2_8pmf5"]
+[ext_resource type="PackedScene" uid="uid://2n5b53lbjpuw" path="res://Nodes/Units/Abilities/Animation/AnimationAbility.tscn" id="3_hircs"]
+[ext_resource type="PackedScene" uid="uid://c3l1kuj1tsmnj" path="res://Nodes/Units/Abilities/HealthAbility/HealthAbility.tscn" id="4_a2xay"]
+[ext_resource type="PackedScene" uid="uid://c6qfhi3l23bam" path="res://Nodes/Units/Abilities/Selectable/SelectArea.tscn" id="5_m3ecl"]
+[ext_resource type="PackedScene" uid="uid://7n5ay50evhqs" path="res://Nodes/Units/Abilities/Sprite/Sprite.tscn" id="6_mi5ww"]
+[ext_resource type="Texture2D" uid="uid://bhugrwc7oka8o" path="res://Texture/Units/Soldier/Soldier.png" id="7_5vcex"]
+[ext_resource type="PackedScene" uid="uid://d0qawmbo4pwoj" path="res://Nodes/Units/Abilities/NavigationAstar2D/MoveAbility.tscn" id="8_lutk0"]
+[ext_resource type="PackedScene" uid="uid://b1wdmsf3gfxnu" path="res://Nodes/Units/Abilities/Collision/Collision.tscn" id="9_tplmt"]
+[ext_resource type="PackedScene" uid="uid://nye8j4p40e0d" path="res://Nodes/Units/Abilities/AttackAbility/AttackAbility.tscn" id="10_7f72m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5bp2"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2n8fh"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wdmxp"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt0lf"]
+size = Vector2(43, 43)
+
+[node name="Soldier" type="CharacterBody2D"]
+script = ExtResource("1_o0wcg")
+
+[node name="SoldierAI" parent="." instance=ExtResource("2_8pmf5")]
+
+[node name="AnimationAbility" parent="." instance=ExtResource("3_hircs")]
+
+[node name="HealthAbility" parent="." instance=ExtResource("4_a2xay")]
+scale = Vector2(0.5, 0.5)
+_health = 200.0
+_maxHealth = 200.0
+
+[node name="SelectArea" parent="." instance=ExtResource("5_m3ecl")]
+position = Vector2(0, -14)
+Shape = SubResource("RectangleShape2D_u5bp2")
+
+[node name="Sprite" parent="." instance=ExtResource("6_mi5ww")]
+position = Vector2(0, -14)
+texture = ExtResource("7_5vcex")
+
+[node name="MoveAbility" parent="." instance=ExtResource("8_lutk0")]
+_speed = 40.0
+_interact_shape = SubResource("RectangleShape2D_2n8fh")
+
+[node name="Collision" parent="." instance=ExtResource("9_tplmt")]
+cell_width = 1
+cell_height = 1
+shape = SubResource("CircleShape2D_wdmxp")
+
+[node name="AttackAbility" parent="." instance=ExtResource("10_7f72m")]
+_shape = SubResource("RectangleShape2D_mt0lf")
+_damage = 25

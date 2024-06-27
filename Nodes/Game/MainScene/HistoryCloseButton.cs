@@ -3,13 +3,13 @@ using System;
 
 public partial class HistoryCloseButton : TextureButton
 {
-    TextureRect rect;
+    Control control;
     public override void _Ready()
     {
-        rect = GetNode<TextureRect>("../");
+        control = GetNode<Control>("../");
     }
     public override void _Pressed()
     {
-        rect.Visible = !rect.Visible;
+        control.Visible = !control.Visible;
     }
 }

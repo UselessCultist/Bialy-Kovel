@@ -93,6 +93,7 @@ public class CommandMoveToUnit : ICommand
 
 public partial class MoveAbility : NavigationAgent2D
 {
+    public event EventHandler Start = () => { };
     public event EventHandler End = ()=>{};
     public event EventHandler ChangeCeillPosition = () => { };
     public event EventHandler PathToTargetComplete = () => { };
@@ -103,7 +104,7 @@ public partial class MoveAbility : NavigationAgent2D
     enum State { IDLE, FOLLOW }
 
     //const float MASS = 10.0f;
-    const float ARRIVE_DISTANCE = 2.5f;
+    const float ARRIVE_DISTANCE = 1f;
 
     [Export]float _speed = 100;
 
@@ -147,24 +148,12 @@ public partial class MoveAbility : NavigationAgent2D
 
     private void SetEndPoint(Vector2 point)
     {
-        var list_targets = _tile_map.GetFreeEndCellForManyUnits((Vector2I)(point / 16), 1);
-        if (list_targets.Count > 0)
-        {
-            point = list_targets[0]*16;
-        }
-        else
-        {
-            Stop();
-        }
-
         if (_state == State.FOLLOW) 
         {
             Vector2I present_end_cell = _target_ceil;
-            _tile_map.MakeCellEndOfTarget(present_end_cell, false);
         }
 
         Vector2I future_end_cell = (Vector2I)point / 16;
-        _tile_map.MakeCellEndOfTarget(future_end_cell, true);
 
         _target_position = point;
         ChangeTargetPoint();
@@ -185,9 +174,8 @@ public partial class MoveAbility : NavigationAgent2D
 
     public void Stop() 
     {
-        _tile_map.MakeCellEndOfTarget(_target_ceil, false);
-
         _path = null;
+        _target = null;
         _change_state(State.IDLE);
         End();
     }
@@ -210,8 +198,11 @@ public partial class MoveAbility : NavigationAgent2D
 
     public bool _move_to()
     {
-        if (IsChangeCeil())
+        bool del_from_grid = false;
+        if (IsChangeCeil()) // проверка до смены позиции
         {
+            _tile_map.GridManager.RemoveFromGrid(_character);
+            del_from_grid = true;
             if (IsSolid(_next_character_ceil))
             {
                 Update_path();
@@ -220,7 +211,8 @@ public partial class MoveAbility : NavigationAgent2D
         }
 
         _character.MoveAndCollide(_velocity);
-        if (IsChangeCeil()) ChangeCeillPosition();
+        if (IsChangeCeil()) ChangeCeillPosition(); // проверка после смены позиции
+        if (del_from_grid) _tile_map.GridManager.AddToGrid(_character);
 
         return _character.Position.DistanceTo(_next_point) < ARRIVE_DISTANCE;
     }
@@ -236,7 +228,9 @@ public partial class MoveAbility : NavigationAgent2D
         if (node is Character character) 
         {
             var collision = character.GetAbility<Collision>();
+            collision.UnsolidCenterCellZone();
             var arr = _tile_map.FindPath(start_pos, end_pos);
+            collision.SolidCenterCellZone();
             return arr.Length;
         }
         return -1;
@@ -302,31 +296,7 @@ public partial class MoveAbility : NavigationAgent2D
 
     public Character FindNearestResource(ResourceType type, Vector2 pos)
     {
-        Area2D area = new();
-        CollisionShape2D collision = new();
-        CircleShape2D circle = new CircleShape2D();
-
-        AddChild(area);
-        area.AddChild(collision);
-        collision.Shape = circle;
-
-        circle.Radius = 40;
-        collision.GlobalPosition = pos;
-
-        
-
-        var arr = area.GetOverlappingBodies();
-        foreach (var item in arr)
-        {
-            if (item is Collision col) 
-            {
-                var parent = col.GetParent<Character>();
-
-                var res = parent.GetNode<Resource>("Resource");
-                if (res.ResourceType == type) { return parent; }
-            }
-        }
-        return null;
+        return _tile_map.GridManager.FindNearestResource(type, pos, 10);
     }
 
     bool IsSolid(Vector2I ceil) 
@@ -344,13 +314,23 @@ public partial class MoveAbility : NavigationAgent2D
         }
         else
         {
-            SetEndPoint((Vector2I)_character.GlobalPosition);
+            Stop();
         }
     } 
 
     void Update_path() 
     {
+        bool is_character_null = _target != null && _target_collision != null;
+        if (is_character_null) 
+        {
+            _target_collision.UnsolidCenterCellZone();
+        }
+
         _path = _tile_map.FindPath((Vector2I)_character.Position, _target_position);
+        if (is_character_null)
+        {
+            _target_collision.SolidCenterCellZone();
+        }
         UpdateNextPoint();
     }
         
@@ -363,7 +343,7 @@ public partial class MoveAbility : NavigationAgent2D
                 _path = new Vector2[]{};
                 break;
             case State.FOLLOW:
-
+                Start();
                 Update_path();
                 if (_path.Length < 1)
                 {
@@ -423,7 +403,7 @@ public partial class MoveAbility : NavigationAgent2D
             _interact_collision.Shape = _interact_shape;
             _interact_area.AddChild(_interact_collision);
         }
-
+        _interact_area.CollisionMask = 0b00000000_00000000_00000000_00001000;
         GetParent().AddChild(_interact_area);
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         OffCharacterCollision();
@@ -445,6 +425,12 @@ public partial class MoveAbility : NavigationAgent2D
                 Stop();
                 return;
             }
+        }
+
+        if (!_tile_map.IsCellClear(_target_ceil)) 
+        {
+            update_target_point();
+            Update_path();
         }
 
         var arrived_to_next_point = _move_to();

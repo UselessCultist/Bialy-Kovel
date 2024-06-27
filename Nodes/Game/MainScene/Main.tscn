@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://j0gqo1mrwqo"]
+[gd_scene load_steps=17 format=3 uid="uid://j0gqo1mrwqo"]
 
 [ext_resource type="Texture2D" uid="uid://bclmabp21fugw" path="res://Texture/MagicalUI/Sprites/Headers/Header1.png" id="1_cdo65"]
 [ext_resource type="Texture2D" uid="uid://cfvwkcjcxtkoa" path="res://Texture/MagicalUI/Sprites/Body/Scroll3.png" id="3_4rcoa"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Nodes/Game/MainScene/Exit.cs" id="6_tn3dt"]
 [ext_resource type="Texture2D" uid="uid://2b1xq41mgvnn" path="res://Texture/MagicalUI/Sprites/Body/Book.png" id="7_ou6cx"]
 [ext_resource type="Texture2D" uid="uid://dwedv5y0fqyg0" path="res://Texture/MagicalUI/Sprites/BodyAssets/Book Assets/ButtonRight.png" id="8_gn00e"]
+[ext_resource type="Script" path="res://Nodes/Game/MainScene/Book.cs" id="8_sgtdf"]
 [ext_resource type="Texture2D" uid="uid://dghhtuln0q6iw" path="res://Texture/MagicalUI/Sprites/BodyAssets/Book Assets/ButtonLeft.png" id="9_qlodw"]
 [ext_resource type="Texture2D" uid="uid://o7tst6t3lyf2" path="res://Texture/MagicalUI/Sprites/BodyAssets/Task Assets/Done.png" id="11_rl5gs"]
 [ext_resource type="Script" path="res://Nodes/Game/MainScene/HistoryCloseButton.cs" id="12_bxigt"]
@@ -20,6 +21,10 @@ font_color = Color(0.0352941, 0.0392157, 0.0784314, 1)
 
 [sub_resource type="Theme" id="Theme_jlpf0"]
 default_font_size = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_q16p4"]
+font_size = 27
+font_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="CanvasLayer"]
 
@@ -131,22 +136,6 @@ text = "История"
 flat = true
 script = ExtResource("6_5s8xs")
 
-[node name="Options" type="Button" parent="Control/GridContainer/ButtonPanel/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 2
-theme = SubResource("Theme_jlpf0")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-text = "Настройки
-"
-flat = true
-
 [node name="Exit" type="Button" parent="Control/GridContainer/ButtonPanel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -164,8 +153,19 @@ text = "Выход
 flat = true
 script = ExtResource("6_tn3dt")
 
-[node name="TextureHistory" type="TextureRect" parent="Control"]
+[node name="Book" type="Control" parent="Control"]
 visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_sgtdf")
+
+[node name="TextureHistory" type="TextureRect" parent="Control/Book"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -182,20 +182,88 @@ scale = Vector2(2, 2)
 pivot_offset = Vector2(193, 158.5)
 texture = ExtResource("7_ou6cx")
 
-[node name="ButtonRight" type="Sprite2D" parent="Control/TextureHistory"]
-position = Vector2(345.5, 230)
-texture = ExtResource("8_gn00e")
-
-[node name="ButtonLeft" type="Sprite2D" parent="Control/TextureHistory"]
-position = Vector2(40.5, 230.5)
-texture = ExtResource("9_qlodw")
-
-[node name="TextureButton" type="TextureButton" parent="Control/TextureHistory"]
-layout_mode = 0
-offset_left = 55.0
-offset_top = 24.0
-offset_right = 77.0
-offset_bottom = 54.0
+[node name="TextureButton" type="TextureButton" parent="Control/Book"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -272.0
+offset_right = -274.0
+offset_bottom = -242.0
+grow_horizontal = 2
+grow_vertical = 2
 rotation = 1.5708
+scale = Vector2(1.4, 1.4)
 texture_normal = ExtResource("11_rl5gs")
 script = ExtResource("12_bxigt")
+
+[node name="LeftPageLabel" type="Label" parent="Control/Book"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -334.0
+offset_top = -242.0
+offset_right = -33.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "В старину кирпичи делали на месте и первая же собранная печь, для их изготовления, состояла не из выветренных кирпичей, закаляясь в процессе."
+label_settings = SubResource("LabelSettings_q16p4")
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[node name="RightPageLabel" type="Label" parent="Control/Book"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -243.0
+offset_right = 329.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Смолянский замок возвели на правом берегу реки Дерновка. Размером он был 100 х 200 метров, позднее Белый Ковель был разрушен во время войны."
+label_settings = SubResource("LabelSettings_q16p4")
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[node name="PrevButton" type="TextureButton" parent="Control/Book"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -326.0
+offset_top = 115.0
+offset_right = -286.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("9_qlodw")
+stretch_mode = 0
+
+[node name="NextButton" type="TextureButton" parent="Control/Book"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 286.0
+offset_top = 121.0
+offset_right = 326.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_gn00e")
+stretch_mode = 0

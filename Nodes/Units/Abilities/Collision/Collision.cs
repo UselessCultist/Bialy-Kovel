@@ -11,7 +11,7 @@ public partial class Collision : Node2D
     [Export] ushort cell_width = 0;
     [Export] ushort cell_height = 0;
     // отвечает за действие с коллизией (физикой)
-    Area2D _area = new();
+    Area2D _area;
     CollisionShape2D _collision = new();
     [Export]Shape2D shape = null;
     TileMapAstar2D _tile_map;
@@ -31,6 +31,33 @@ public partial class Collision : Node2D
         _collision.Shape = shape;
 
         _area.AddChild(_collision);
+    }
+
+    void OffObjectIdInCell() 
+    {
+        foreach (var cell in _global_collision_cells)
+        {
+            _tile_map.ObjectInCell.SetData(cell, 0);
+        }
+    }
+
+
+    void OnObjectIdInCell()
+    {
+        foreach (var cell in _global_collision_cells)
+        {
+            ulong id = _character.GetRid().Id;
+            _tile_map.ObjectInCell.SetData(cell, id);
+        }
+    }
+
+    public void UpdateObjectIDInCell() 
+    {
+        OffObjectIdInCell();
+
+        updateCells();
+
+        OnObjectIdInCell();
     }
 
     public Game GetGameNode()
@@ -111,9 +138,6 @@ public partial class Collision : Node2D
     {
         foreach (var cell in _global_collision_cells)
         {
-            ulong l = _character.GetRid().Id;
-            _tile_map.MakeCellObjectID(cell, l);
-
             _tile_map.Grid.SetPointSolid(cell, true);
         }
     }
@@ -122,7 +146,6 @@ public partial class Collision : Node2D
     {
         foreach (var cell in _global_collision_cells)
         {
-            _tile_map.MakeCellObjectID(cell, 0);
             _tile_map.Grid.SetPointSolid(cell, false);
         }
     }
@@ -174,6 +197,13 @@ public partial class Collision : Node2D
         MoveAbility ability = _character.GetAbility<MoveAbility>();
         if (ability != null) 
         {
+            ability.Start += OffObjectIdInCell;
+            ability.End += ()=> 
+            {
+                updateCells();
+                OnObjectIdInCell();
+            };
+
             ability.OffCharacterCollision += UnsolidUnitCellZone;
             ability.OnCharacterCollision += () =>
             {
@@ -188,13 +218,16 @@ public partial class Collision : Node2D
             health.DieEvent += UnsolidUnitCellZone;
         }
 
-        if (shape != null)
-        {
-            _collision.Shape = shape;
-            _area.AddChild(_collision);
-        }
+        _area = new();
+        _collision.Shape = shape;
+        _area.AddChild(_collision);
 
         _area.Monitorable = true;
+        _area.Monitoring = true;
+
+
+        _area.CollisionLayer = 0b00000000_00000000_00000000_00001000;
+        _area.Name = "CollisionArea";
         AddChild(_area);
 
         changeCollisionPosition();

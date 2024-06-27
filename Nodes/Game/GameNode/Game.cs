@@ -70,7 +70,6 @@ public partial class AbilityWithCommands : Node2D, IComandQueue
     {
         if (_inProcess == null) { return; }
         _inProcess.Undo();
-        _inProcess = null;
     }
 
     public virtual void ClearCommandQueue() 

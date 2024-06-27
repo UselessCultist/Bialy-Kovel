@@ -39,31 +39,37 @@ public partial class Cursor : Area2D
     {
 
 
-        if (@event is InputEventMouseButton mouse_event && mouse_event.ButtonIndex == MouseButton.Left)
+        if (@event is InputEventMouseButton mouse_event)
         {
-            // When the mouse button is pressed, then the dragging starts
-            if (mouse_event.Pressed && !dragging)
+            if (mouse_event.ButtonIndex == MouseButton.Left)
             {
-                foreach (var unit in player._selectedUnits)
+                // When the mouse button is pressed, then the dragging starts
+                if (mouse_event.Pressed && !dragging)
                 {
-                    unit.GetAbility<SelectArea>().deselect();
+                    player._selectedUnits = new();
+                    /*foreach (var unit in player._selectedUnits)
+                    {
+                        if (unit.GetRid().IsValid)
+                        {
+                            unit.GetAbility<SelectArea>().deselect();
+                        }
+                    }*/
+                    player._selectedUnits = new();
+                    dragging = true;
+                    drag_start = GetGlobalMousePosition();
+
+                    return;
                 }
-                player._selectedUnits = new();
-                dragging = true;
-                drag_start = GetGlobalMousePosition();
-
-                return;
             }
-
             // If I'm already dragging and release mouse button
-            if (!mouse_event.Pressed && dragging)
+            if (mouse_event.IsReleased() && dragging)
             {
                 dragging = false;
                 Vector2 drag_end = GetGlobalMousePosition();
                 var size = (drag_end - drag_start).Abs();
 
 
-                if (size >= min_size) 
+                if (size >= min_size)
                 {
                     QueueRedraw();
                     _selection_shape.Size = size;
@@ -77,8 +83,8 @@ public partial class Cursor : Area2D
                     }
                 }
 
-                _selection_shape.Size = new(0,0);
-                _selection.GlobalPosition = new(0,0);
+                _selection_shape.Size = new(0, 0);
+                _selection.GlobalPosition = new(0, 0);
             }
         }
     }

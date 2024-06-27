@@ -10,6 +10,10 @@ public partial class TileMapAstar2D : TileMapLayer
     const float BASE_LINE_WIDTH = 3.0f;
     readonly Color DRAW_COLOR = new Color(1, 1, 1, 0.5f);
 
+    public GridManager GridManager { get; private set; } = new();
+    public CustomDataLayer<bool> EndTarget = new();
+    public CustomDataLayer<ulong> ObjectInCell = new();
+
 
     AStarGrid2D _astar = new();
 
@@ -22,53 +26,25 @@ public partial class TileMapAstar2D : TileMapLayer
     TileData _edit_cell;
 
 
-    public void MakeCellEndOfTarget(Vector2I cell, bool is_end_of_target) 
-    {
-        GD.Print(cell);
-        var data = GetCellTileData(cell);
-        data.SetCustomDataByLayerId(1, is_end_of_target);
-    }
-
-    public void MakeCellObjectID(Vector2I cell, ulong object_id)
-    {
-        var data = GetCellTileData(cell);
-        data.SetCustomDataByLayerId(2, object_id);
-    }
-
     bool IsEndOfTarget(Vector2I cell)
     {
-        var data = GetCellTileData(cell);
-        bool is_end = data.GetCustomDataByLayerId(1).AsBool();
+        bool is_end = EndTarget.GetData(cell);
         return is_end;
     }
 
     bool IsValidObjectInCell(Vector2I cell) 
     {
-        var data = GetCellTileData(cell);
-        var valid = (ulong)data.GetCustomDataByLayerId(2);
+        var valid = ObjectInCell.GetData(cell);
         return valid != 0;
     }
 
-    public void SetCellInfo(Vector2I cell, Character c)
-    {
-        MakeCellObjectID(cell, c.GetRid().Id);
-        MakeCellEndOfTarget(cell, false);
-    }
-
-    public void ClearCell(Vector2I cell) 
-    {
-        MakeCellObjectID(cell, 0);
-        MakeCellEndOfTarget(cell, false);
-    }
-
-    bool IsCellClear(Vector2I cell) 
+    public bool IsCellClear(Vector2I cell) 
     {
         if (Grid.Region.HasPoint(cell)) 
         {
             bool solid = Grid.IsPointSolid(cell);
-            bool end = IsEndOfTarget(cell);
             bool obj = IsValidObjectInCell(cell);
-            if (solid || end || obj) { return false; }
+            if (solid || obj) { return false; }
 
             return true;
         }
@@ -87,36 +63,14 @@ public partial class TileMapAstar2D : TileMapLayer
         int[] dx = { 0, 0, 1, -1 };
         int[] dy = { 1, -1, 0, 0 };
 
-        if (IsCellClear(start))
-        {
-            freeCells.Add(start);
-        }
-
-        /*while ( queue.Count > 0 && freeCells.Count < n ) 
+        while ( queue.Count > 0 && freeCells.Count < n ) 
         {
             var vector2I = queue.Dequeue();
 
-            for (int i = 0; i < 4; i++)
+            if (IsCellClear(vector2I))
             {
-                Vector2I buf = vector2I + new Vector2I(dx[i], dy[i]);
-
-                if (!visited.Contains(buf) && IsCellClear(buf) && GetCellSourceId(buf) != -1)
-                {
-                    freeCells.Add(buf);
-                    if (freeCells.Count < n) 
-                    {
-                        break;
-                    }
-                    queue.Enqueue(buf);
-                    visited.Add(buf);
-                }
+                freeCells.Add(vector2I);
             }
-        }*/
-
-        while (queue.Count > 0 && freeCells.Count < n)
-        {
-            var vector2I = queue.Dequeue();
-
 
             for (int i = 0; i < 4; i++)
             {
@@ -124,19 +78,32 @@ public partial class TileMapAstar2D : TileMapLayer
 
                 if (!visited.Contains(buf) && GetCellSourceId(buf) != -1)
                 {
-                    if (IsCellClear(buf))
-                    {
-                        freeCells.Add(buf);
-                        if (freeCells.Count < n)
-                        {
-                            return freeCells;
-                        }
-                    }
                     queue.Enqueue(buf);
                     visited.Add(buf);
                 }
             }
         }
+
+        /*while (queue.Count > 0 && freeCells.Count < n)
+        {
+            var vector2I = queue.Dequeue();
+
+            if (IsCellClear(vector2I))
+            {
+                freeCells.Add(vector2I);
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                Vector2I buf = vector2I + new Vector2I(dx[i], dy[i]);
+
+                if (!visited.Contains(buf) && GetCellSourceId(buf) != -1)
+                {
+                    queue.Enqueue(buf);
+                    visited.Add(buf);
+                }
+            }
+        }*/
 
         return freeCells;
     }
@@ -215,6 +182,8 @@ public partial class TileMapAstar2D : TileMapLayer
                 }
             }
         }
+
+        AddChild(GridManager);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

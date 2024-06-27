@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://dlnyih21spyth"]
+[gd_scene load_steps=2 format=3 uid="uid://dlnyih21spyth"]
+
+[ext_resource type="Script" path="res://Nodes/Units/Abilities/AI/AI.cs" id="1_agghg"]
 
 [node name="SoldierAI" type="Node"]
+script = ExtResource("1_agghg")

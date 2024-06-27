@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.NetworkInformation;
 using Godot;
 
@@ -50,12 +52,13 @@ public partial class AttackAbility : AbilityWithCommands
     public EventHandler CharacterEnter = () => { };
     EventHandler DieHandler = () => { };
 
-    enum State { REST, FOLLOW, SWING, ATTACK, RELOAD }
 
+    enum State { REST, FOLLOW, SWING, ATTACK, RELOAD }
+    public List<Character> visibleEnemies = new List<Character>();
     Character _unit;
     Character _target;
     HealthAbility _target_health;
-    Area2D _attack_area = new();
+    Area2D _attack_area;
     Area2D _target_area;
     CollisionShape2D _attack_shape = new();
     [Export] RectangleShape2D _shape;
@@ -69,6 +72,22 @@ public partial class AttackAbility : AbilityWithCommands
     public AttackAbility()
     {
 
+    }
+
+    public void AddVisibleEnemy(Character enemy)
+    {
+        if (!visibleEnemies.Contains(enemy))
+        {
+            visibleEnemies.Add(enemy);
+        }
+    }
+
+    public void RemoveVisibleEnemy(Character enemy)
+    {
+        if (visibleEnemies.Contains(enemy))
+        {
+            visibleEnemies.Remove(enemy);
+        }
     }
 
     public AttackAbility(Shape2D AttackShape) 
@@ -131,6 +150,14 @@ public partial class AttackAbility : AbilityWithCommands
         _target_area = _target.GetAbility<Collision>().CollisionArea;
         _target_health = _target.GetAbility<HealthAbility>();
 
+
+        if (!_can_kill_that(_target))
+        {
+            _target = null;
+            End();
+            return;
+        }
+
         DieHandler = () => { Stop(); };
         _target_health.DieEvent += DieHandler;
     }
@@ -140,7 +167,7 @@ public partial class AttackAbility : AbilityWithCommands
         _change_state(State.SWING);
         _unit.Animation.Play("animation/attack");
         await ToSignal(GetTree().CreateTimer(0.7f), SceneTreeTimer.SignalName.Timeout);
-        if (_target == null) { return; }
+        if (_target == null || !_is_in_attack_area()) { return; }
         _change_state(State.ATTACK);
         AttackEvent();
     }
@@ -163,6 +190,7 @@ public partial class AttackAbility : AbilityWithCommands
 
         _reload = false;
         _target = null;
+        End();
     }
 
     public override void InvokeNext()
@@ -174,6 +202,8 @@ public partial class AttackAbility : AbilityWithCommands
             EventHandler handler = () => { };
             handler = () =>
             {
+                _unit.Animation.Stop();
+                _unit.Animation.Play("animation/idle");
                 _inProcess = null;
             };
             _inProcess.Handler += handler;
@@ -188,38 +218,87 @@ public partial class AttackAbility : AbilityWithCommands
         _unit = GetParent<Character>();
         if (_unit == null) { throw new Exception("This object can't use attack ability"); }
 
+        _attack_area = new();
         _attack_shape.Shape = _shape;
         _attack_area.AddChild(_attack_shape);
 
+        _attack_area.Monitorable = true;
         _attack_area.Monitoring = true;
 
+
+        _attack_area.CollisionLayer = 0b00000000_00000000_00000000_00000100;
+        _attack_area.CollisionMask =  0b00000000_00000000_00000000_00001010;
+        _attack_area.Name = "AttackArea";
         AddChild(_attack_area);
+
+        _attack_area.AreaEntered += (Area2D area)=> 
+        {
+            if (area.GetParent() is Character enemy)
+            {
+                if (enemy.Type != Type.Resource && enemy.PlayerOwner != _unit.PlayerOwner)
+                {
+                    GD.Print("Add");
+                    AddVisibleEnemy(enemy);
+                }
+            }
+        };
+
+        _attack_area.AreaExited += (Area2D area) =>
+        {
+            if (area.GetParent() is Character enemy)
+            {
+                if (enemy.Type != Type.Resource && enemy.PlayerOwner != _unit.PlayerOwner)
+                {
+                    GD.Print("Exit");
+                    RemoveVisibleEnemy(enemy);
+                }
+            }
+        };
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (_state == State.SWING || _reload || _target == null) 
+        if (_state == State.SWING || _reload) 
         {
             return;
         }
 
-        if (!_can_kill_that(_target))
-        {
-            _target = null;
-            End();
-        }
+        bool is_null = _target == null;
+        bool is_in_area = is_null ? false : _is_in_attack_area();
+        bool see_enemies = visibleEnemies.Count > 0;
 
-        if (_is_in_attack_area())
+        // добрались до цели?
+        if (is_in_area)
         {
+            StopCommands();
             Attack();
         }
-        else if(_state != State.FOLLOW)
+        else
         {
-            _change_state(State.FOLLOW);
-            CommandMoveToUnit command_move = new CommandMoveToUnit(_unit, _target);
-            SetCommand(command_move);
-            InvokeNext();
+            // Мы ещё не идём до цели?
+            if (_state != State.FOLLOW && !is_null)
+            {
+                _change_state(State.FOLLOW);
+                CommandMoveToUnit command_move = new CommandMoveToUnit(_unit, _target);
+                AddCommand(command_move);
+                InvokeNext();
+                return;
+            }
+
+            // есть противники рядом?
+            if (see_enemies)
+            {
+                var target = visibleEnemies.First();
+                if (is_null || target.GetRid() != _target.GetRid()) 
+                {
+                    var command = new CommandAttack(_unit, target);
+                    _unit.PrependCommand(command);
+                }
+
+                return;
+            }
         }
     }
+
 }

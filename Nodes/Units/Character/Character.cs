@@ -14,7 +14,7 @@ public partial class Character : CharacterBody2D, IAbilities, IComandQueue
     enum State { WORK, REST }
 
     AnimationPlayer _animation;
-    Queue<ICommand> _queueCommand = new();
+    public Queue<ICommand> _queueCommand = new();
     ICommand _inProcess = null;
     State _state;
     [Export] Type _type;
@@ -23,6 +23,35 @@ public partial class Character : CharacterBody2D, IAbilities, IComandQueue
     public Type Type { get { return _type; } }
     public AnimationPlayer Animation { get{return _animation;} }
     public ICommand InProcess { get { return _inProcess; } }
+
+    public void PrependCommand(ICommand command) 
+    {
+        var buf = new Queue<ICommand>();
+        buf.Enqueue(command);
+
+        if (_inProcess != null)
+        {
+            buf.Enqueue(_inProcess);
+            _inProcess.Undo();
+        }
+
+        while (_queueCommand.Count > 0)
+        {
+            buf.Enqueue(_queueCommand.Dequeue());
+        }
+        
+        _queueCommand = buf;
+    }
+
+    public void ClearCommands() 
+    {
+        if (InProcess!=null) 
+        {
+            InProcess.Undo();
+        }
+
+        _queueCommand.Clear();
+    }
 
     public void AddCommand(ICommand command)
     {
@@ -90,6 +119,11 @@ public partial class Character : CharacterBody2D, IAbilities, IComandQueue
 
     public override void _Ready()
     {
+        AddToGroup("game_objects");
+
+        TileMapAstar2D map = GetTree().GetFirstNodeInGroup("map") as TileMapAstar2D;
+        map.GridManager.AddToGrid(this);
+
         _state = State.REST;
         _animation = GetAbility<AnimationPlayer>();
     }

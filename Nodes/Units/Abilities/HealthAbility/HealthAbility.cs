@@ -50,9 +50,11 @@ public partial class HealthAbility : Node2D
     public virtual void KillUnit()
     {
         _isDead = true;
+        Character unit = GetParent<Character>();
+        unit.ClearCommands();
+
         DieEvent();
 
-        Character unit = GetParent<Character>();
         unit.Free();
     }
     public virtual float GetDamage(float damage)
@@ -81,6 +83,12 @@ public partial class HealthAbility : Node2D
 	{
         progressBar = GetNode<TextureProgressBar>("TextureProgressBar");
         Visible = false;
+
+        TileMapAstar2D map = GetTree().GetFirstNodeInGroup("map") as TileMapAstar2D;
+        DieEvent += ()=> 
+        { 
+            map.GridManager.RemoveFromGrid(GetParent<Character>()); 
+        };
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

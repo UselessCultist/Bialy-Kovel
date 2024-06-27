@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public enum PlayerState { Computer, Player, OFF }
 
@@ -40,7 +41,6 @@ public partial class Player : Node2D
     public void CommandMoveSelectedUnits(Vector2 target, bool set_add)
     {
         if (_selectedUnits.Count == 0) { return; };
-        foreach (Character c in _selectedUnits)
 
         var list_targets = game.TileMap.GetFreeEndCellForManyUnits((Vector2I)(target / 16), _selectedUnits.Count);
 
@@ -49,8 +49,6 @@ public partial class Player : Node2D
             target = list_targets[i] * 16;
             Character c = _selectedUnits[i];
             if (!c.GetRid().IsValid) { continue; }
-
-            game.TileMap.MakeCellEndOfTarget(list_targets[i], true);
 
             var command = new CommandMoveTo(c, target);
             if (set_add) { c.SetCommand(command); } else { c.AddCommand(command); };
